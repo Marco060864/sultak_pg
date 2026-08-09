@@ -126,6 +126,9 @@ global w_doc_ff w_doc_ff
 type variables
 udw_001 idw_corrente
 boolean ib_nochangerow, ib_applica_filtro
+//20260809 true durante il salvataggio "di servizio" fatto solo per ottenere
+//rdoc_id prima di aprire la gestione partite: blocca il ricalcolo del castelletto
+boolean ib_no_ricalcolo
 string is_scorporo_iva, is_ultimo_campo
 long il_riga_corrente
 
@@ -178,38 +181,48 @@ long ll_breakrow, ll_iva_id, ll_id_iva_sconto_imp, ll_id_doc
 integer i, li_riga_iva
 decimal{3} ldc_imp, ldc_iva, ldc_imp_met, ldc_sc_imp, ldc_sc_perc, ldc_acconto
 boolean lb_sconto_imp
+datastore lds_iva
+long ll_righe
 
 if tab_1.tabpage_1.dw_1.rowcount()>0 then
 	
-	tab_1.tabpage_2.dw_5.setsort("iva_id")
-	tab_1.tabpage_2.dw_5.sort()
-	tab_1.tabpage_2.dw_5.groupcalc()
+	//20260809 i subtotali per aliquota si calcolano su un datastore locale.
+	//Prima si usava dw_5, che pero' e' in sharedata con dw_2: il setsort/sort
+	//su dw_5 riordinava il buffer delle righe documento e faceva puntare
+	//altrove i numeri di riga tenuti in mano dalle funzioni postate
+	//(wf_gestisci_partita_oro, wf_allinea_finocalo).
+	//Il dataobject si prende da dw_5 e non si scrive a mano, cosi' funziona
+	//anche sui documenti negozio dove dw_5 diventa d_rdoc_negozio_sh01_tb.
+	lds_iva=create datastore
+	lds_iva.dataobject=tab_1.tabpage_2.dw_5.dataobject
+	ll_righe=tab_1.tabpage_2.dw_2.rowcount()
+	if ll_righe>0 then
+		tab_1.tabpage_2.dw_2.rowscopy(1, ll_righe, primary!, lds_iva, 1, primary!)
+		//il raggruppamento per iva_id vuole le righe ordinate per iva_id,
+		//altrimenti le computed "for group 1" non tornano
+		lds_iva.setsort("iva_id")
+		lds_iva.sort()
+		lds_iva.groupcalc()
+	end if
 	
 	ll_breakrow = 0
-	
+	//svuoto la dw_3 dove calcolo il castelletto
 	tab_1.tabpage_1.dw_3.rowsmove(1, 10000, primary!,tab_1.tabpage_1.dw_3, 1, delete! )
-	
+	//prendo l'eventuale acconto e gli sconti documento
 	ldc_acconto=tab_1.tabpage_1.dw_1.getitemdecimal(1, "acconto")
-	
-	
-	
 	ldc_sc_imp=tab_1.tabpage_1.dw_1.getitemnumber(tab_1.tabpage_1.dw_1.getrow(), "doc_sconto_imp")
 	ldc_sc_perc=tab_1.tabpage_1.dw_1.getitemnumber(tab_1.tabpage_1.dw_1.getrow(), "doc_sconto_perc")
 	//devo recuperare l'iva DELLO SCONTO
 	ll_id_iva_sconto_imp=tab_1.tabpage_1.dw_1.getitemnumber(tab_1.tabpage_1.dw_1.getrow(), "iva_sconto_importo")
 	
-	
-	
 	do while ll_breakrow>=0
-		ll_breakrow = tab_1.tabpage_2.dw_5.FindGroupChange(ll_breakrow, 1)
-	
+		ll_breakrow = lds_iva.FindGroupChange(ll_breakrow, 1)
 	// If no breaks are found, exit.
 		IF ll_breakrow <= 0 THEN EXIT
-	
-		ldc_imp=tab_1.tabpage_2.dw_5.GetItemdecimal(ll_breakrow, "c_doc_imp_gr1")  
-		ldc_imp_met=tab_1.tabpage_2.dw_5.GetItemdecimal(ll_breakrow, "c_doc_metallo_gr1")  
-		ldc_iva=tab_1.tabpage_2.dw_5.GetItemdecimal(ll_breakrow, "c_doc_iva_gr1")	
-		ll_iva_id=tab_1.tabpage_2.dw_5.GetItemnumber(ll_breakrow, "iva_id")
+		ldc_imp=lds_iva.GetItemdecimal(ll_breakrow, "c_doc_imp_gr1")  
+		ldc_imp_met=lds_iva.GetItemdecimal(ll_breakrow, "c_doc_metallo_gr1")  
+		ldc_iva=lds_iva.GetItemdecimal(ll_breakrow, "c_doc_iva_gr1")	
+		ll_iva_id=lds_iva.GetItemnumber(ll_breakrow, "iva_id")
 		//prima calcolo lo sconto percentuale (sul totale)
 		if ldc_sc_perc>0 then
 			ldc_imp -= ldc_imp*ldc_sc_perc/100
@@ -247,6 +260,9 @@ if tab_1.tabpage_1.dw_1.rowcount()>0 then
 		ll_breakrow = ll_breakrow + 1
 	
 	LOOP
+
+	destroy lds_iva
+
 	if lb_sconto_imp then
 		messagebox("Attenzione!", "Aliquota iva dello sconto a importo NON trovata o sconto troppo grande! Coreggere dato: lo sconto NON è stato applicato!")
 	end if
@@ -256,8 +272,8 @@ if tab_1.tabpage_1.dw_1.rowcount()>0 then
 	
 	
 	
-	tab_1.tabpage_2.dw_5.setsort("rdoc_numero")
-	tab_1.tabpage_2.dw_5.sort()
+	//20260809 tolto il ripristino dell'ordine su dw_5: non si sorta piu' niente
+	//sul buffer condiviso, quindi non c'e' niente da ripristinare
 	
 	tab_1.tabpage_1.dw_3.post event ue_update() 
 end if
@@ -1246,7 +1262,12 @@ if ls_test='S' then
 		lstr_partita.l_tit=tab_1.tabpage_2.dw_2.getitemnumber(al_row, "tit_id")
 		lstr_partita.l_id_riga_scarico=tab_1.tabpage_2.dw_2.getitemnumber(al_row, "rdoc_id")
 		if isnull(lstr_partita.l_id_riga_scarico) then
+			//20260809 salvataggio di servizio: serve solo a farsi assegnare rdoc_id
+			//prima di aprire la gestione partite. Non deve far ripartire il ricalcolo
+			//del castelletto, che verrebbe postato e girerebbe dentro la modale.
+			ib_no_ricalcolo=true
 			li_ret=tab_1.tabpage_2.dw_2.trigger event ue_update()
+			ib_no_ricalcolo=false
 			lstr_partita.l_id_riga_scarico=tab_1.tabpage_2.dw_2.getitemnumber(al_row, "rdoc_id")
 		end if
 		select m.met_metallo, m.met_id
@@ -3218,7 +3239,10 @@ end event
 
 event updateend;call super::updateend;long ll_id_art_sconto_punti, ll_id_doc
 
-if rowsdeleted+rowsinserted+rowsupdated>0 then
+//20260809 ib_no_ricalcolo e' true solo durante il salvataggio di servizio fatto
+//da wf_gestisci_partita_oro per ottenere rdoc_id: li' il castelletto non va
+//ricalcolato. updateend scatta dentro update(), quindi il flag e' ancora alzato.
+if rowsdeleted+rowsinserted+rowsupdated>0 and not ib_no_ricalcolo then
 	post wf_calcola_totale()
 	post wf_calcola_saldo()
 	
