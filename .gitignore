@@ -20,6 +20,12 @@ _BackupFiles/
 *.xcf
 SULTAKFPU*.png
 
+# residui del workspace classico, superati dalla Solution.
+# NON usare mai il pattern *.pbl: dopo la conversione le librerie sono
+# CARTELLE di sorgenti (sultak002.pbl/ ecc.) e verrebbero ignorate tutte.
+/etichette.pbl
+/sultak125.pbt
+
 # log della migrazione a Solution
 sultak_mig.log
 
