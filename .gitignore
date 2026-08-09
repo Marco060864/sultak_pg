@@ -20,6 +20,10 @@ _BackupFiles/
 *.xcf
 SULTAKFPU*.png
 
+# configurazione di macchina: sultak.ini contiene il DSN ODBC da usare
+# ([Database]/Nome), che cambia da PC a PC. Va tenuto fuori dal repo.
+/sultak.ini
+
 # residui del workspace classico, superati dalla Solution.
 # NON usare mai il pattern *.pbl: dopo la conversione le librerie sono
 # CARTELLE di sorgenti (sultak002.pbl/ ecc.) e verrebbero ignorate tutte.
