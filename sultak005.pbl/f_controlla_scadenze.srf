@@ -1,0 +1,39 @@
+﻿global type f_controlla_scadenze from function_object
+end type
+
+forward prototypes
+global function long f_controlla_scadenze ()
+end prototypes
+
+global function long f_controlla_scadenze ();date ldt_data_scadenza, ldt_data_pagamento, ldt_data_inizio_esercizio
+string ls_stato_scadenza  //P=pagato  N = non pagata D= trasformata in distinta banca I = insoluta
+datastore ds_scad_no_pagate
+long ll_scad_trovate, ll_ret
+
+ldt_data_scadenza=today()
+
+select ese_data_inizio
+into :ldt_data_inizio_esercizio
+from dba.esercizio
+where ese_data_inizio<= :ldt_data_scadenza
+and ese_data_fine>=:ldt_data_scadenza
+;
+
+
+ldt_data_scadenza=relativedate(ldt_data_scadenza, 5)
+ds_scad_no_pagate=create datastore
+ds_scad_no_pagate.dataobject="d_trova_scad_non_pagate"
+ds_scad_no_pagate.settransobject(sqlca)
+ll_scad_trovate=ds_scad_no_pagate.retrieve(ldt_data_inizio_esercizio ,ldt_data_scadenza)
+if ll_scad_trovate>0 then
+	ll_ret=ll_scad_trovate
+	open(w_scadenza_gd)
+else
+	ll_ret=0
+end if
+
+
+
+return ll_ret
+end function
+

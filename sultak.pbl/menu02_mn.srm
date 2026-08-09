@@ -1,0 +1,1583 @@
+﻿forward
+global type menu02_mn from menu
+end type
+type m_anagrafichevarie from menu within menu02_mn
+end type
+type m_azienda from menu within m_anagrafichevarie
+end type
+type m_esercizi from menu within m_anagrafichevarie
+end type
+type m_registri from menu within m_anagrafichevarie
+end type
+type m_valuta from menu within m_anagrafichevarie
+end type
+type m_lingua from menu within m_anagrafichevarie
+end type
+type m_iva from menu within m_anagrafichevarie
+end type
+type m_spesa from menu within m_anagrafichevarie
+end type
+type m_pagamenti from menu within m_anagrafichevarie
+end type
+type m_pianodeiconti from menu within m_anagrafichevarie
+end type
+type m_pdc from menu within m_pianodeiconti
+end type
+type m_mastri from menu within m_pianodeiconti
+end type
+type m_sottomastri from menu within m_pianodeiconti
+end type
+type m_pianodeiconti from menu within m_anagrafichevarie
+m_pdc m_pdc
+m_mastri m_mastri
+m_sottomastri m_sottomastri
+end type
+type m_banche from menu within m_anagrafichevarie
+end type
+type m_registriperesercizio from menu within m_anagrafichevarie
+end type
+type m_anagrafichevarie from menu within menu02_mn
+m_azienda m_azienda
+m_esercizi m_esercizi
+m_registri m_registri
+m_valuta m_valuta
+m_lingua m_lingua
+m_iva m_iva
+m_spesa m_spesa
+m_pagamenti m_pagamenti
+m_pianodeiconti m_pianodeiconti
+m_banche m_banche
+m_registriperesercizio m_registriperesercizio
+end type
+type m_soggetti from menu within menu02_mn
+end type
+type m_agenda from menu within m_soggetti
+end type
+type m_anagraficaeconto from menu within m_soggetti
+end type
+type m_scadenze from menu within m_soggetti
+end type
+type m_tipologiasoggetto from menu within m_soggetti
+end type
+type m_grupposoggetto from menu within m_soggetti
+end type
+type m_dichiarazioniintento from menu within m_soggetti
+end type
+type m_assegnabancaaconto from menu within m_soggetti
+end type
+type m_assegnaivalistinopagamentoaconto from menu within m_soggetti
+end type
+type m_soggetti from menu within menu02_mn
+m_agenda m_agenda
+m_anagraficaeconto m_anagraficaeconto
+m_scadenze m_scadenze
+m_tipologiasoggetto m_tipologiasoggetto
+m_grupposoggetto m_grupposoggetto
+m_dichiarazioniintento m_dichiarazioniintento
+m_assegnabancaaconto m_assegnabancaaconto
+m_assegnaivalistinopagamentoaconto m_assegnaivalistinopagamentoaconto
+end type
+type m_anagrafichemagazzino from menu within menu02_mn
+end type
+type m_listini from menu within m_anagrafichemagazzino
+end type
+type m_lega from menu within m_anagrafichemagazzino
+end type
+type m_titolo from menu within m_anagrafichemagazzino
+end type
+type m_metallo from menu within m_anagrafichemagazzino
+end type
+type m_magazzino from menu within m_anagrafichemagazzino
+end type
+type m_unitamisura from menu within m_anagrafichemagazzino
+end type
+type m_aspettodeibeni from menu within m_anagrafichemagazzino
+end type
+type m_causaliditrasporto from menu within m_anagrafichemagazzino
+end type
+type m_trasporto from menu within m_anagrafichemagazzino
+end type
+type m_note from menu within m_anagrafichemagazzino
+end type
+type m_anagrafichemagazzino from menu within menu02_mn
+m_listini m_listini
+m_lega m_lega
+m_titolo m_titolo
+m_metallo m_metallo
+m_magazzino m_magazzino
+m_unitamisura m_unitamisura
+m_aspettodeibeni m_aspettodeibeni
+m_causaliditrasporto m_causaliditrasporto
+m_trasporto m_trasporto
+m_note m_note
+end type
+type m_menu from menu within menu02_mn
+end type
+type m_articolo from menu within m_menu
+end type
+type m_articolo0 from menu within m_menu
+end type
+type m_attributiarticolo from menu within m_menu
+end type
+type m_fotoarticoli from menu within m_menu
+end type
+type m_0 from menu within m_menu
+end type
+type m_guidadocumento from menu within m_menu
+end type
+type m_documento from menu within m_menu
+end type
+type m_distinta from menu within m_menu
+end type
+type m_menu from menu within menu02_mn
+m_articolo m_articolo
+m_articolo0 m_articolo0
+m_attributiarticolo m_attributiarticolo
+m_fotoarticoli m_fotoarticoli
+m_0 m_0
+m_guidadocumento m_guidadocumento
+m_documento m_documento
+m_distinta m_distinta
+end type
+type m_stampe from menu within menu02_mn
+end type
+type m_schedaclfo from menu within m_stampe
+end type
+type m_schedamagazzino from menu within m_stampe
+end type
+type m_lisadocumenti from menu within m_stampe
+end type
+type m_articoli from menu within m_stampe
+end type
+type m_anagraficheclientiefornitori from menu within m_stampe
+end type
+type m_stampe from menu within menu02_mn
+m_schedaclfo m_schedaclfo
+m_schedamagazzino m_schedamagazzino
+m_lisadocumenti m_lisadocumenti
+m_articoli m_articoli
+m_anagraficheclientiefornitori m_anagraficheclientiefornitori
+end type
+type m_utility from menu within menu02_mn
+end type
+type m_modificapbl from menu within m_utility
+end type
+type m_dwdatxt from menu within m_utility
+end type
+type m_riapririga from menu within m_utility
+end type
+type m_cancelladocumenti from menu within m_utility
+end type
+type m_utility from menu within menu02_mn
+m_modificapbl m_modificapbl
+m_dwdatxt m_dwdatxt
+m_riapririga m_riapririga
+m_cancelladocumenti m_cancelladocumenti
+end type
+type m_grafica from menu within menu02_mn
+end type
+type m_catalogosemplice from menu within m_grafica
+end type
+type m_listaarticoli from menu within m_grafica
+end type
+type m_impostacampinellastampa from menu within m_grafica
+end type
+type m_cataloghi from menu within m_grafica
+end type
+
+type m_grafica from menu within menu02_mn
+m_catalogosemplice m_catalogosemplice
+m_listaarticoli m_listaarticoli
+m_impostacampinellastampa m_impostacampinellastampa
+m_cataloghi m_cataloghi
+end type
+type m_sistema from menu within menu02_mn
+end type
+type m_valoribase from menu within m_sistema
+end type
+type m_aggiornamentisql from menu within m_sistema
+end type
+type m_dbprofilo from menu within m_sistema
+end type
+type m_sistema from menu within menu02_mn
+m_valoribase m_valoribase
+m_aggiornamentisql m_aggiornamentisql
+m_dbprofilo m_dbprofilo
+end type
+type m_help from menu within menu02_mn
+end type
+type m_indice from menu within m_help
+end type
+type m_info from menu within m_help
+end type
+type m_help from menu within menu02_mn
+m_indice m_indice
+m_info m_info
+end type
+type m_contabilità from menu within menu02_mn
+end type
+type m_primanota from menu within m_contabilità
+end type
+type m_contabilità from menu within menu02_mn
+m_primanota m_primanota
+end type
+global type menu02_mn from menu
+m_anagrafichevarie m_anagrafichevarie
+m_soggetti m_soggetti
+m_anagrafichemagazzino m_anagrafichemagazzino
+m_menu m_menu
+m_stampe m_stampe
+m_utility m_utility
+m_grafica m_grafica
+m_sistema m_sistema
+m_help m_help
+m_contabilità m_contabilità
+end type
+end forward
+
+global type menu02_mn from menu
+m_anagrafichevarie m_anagrafichevarie
+m_soggetti m_soggetti
+m_anagrafichemagazzino m_anagrafichemagazzino
+m_menu m_menu
+m_stampe m_stampe
+m_utility m_utility
+m_grafica m_grafica
+m_sistema m_sistema
+m_help m_help
+m_contabilità m_contabilità
+end type
+global menu02_mn menu02_mn
+
+on menu02_mn.create
+menu02_mn=this
+call super::create
+this.m_anagrafichevarie=create m_anagrafichevarie
+this.m_soggetti=create m_soggetti
+this.m_anagrafichemagazzino=create m_anagrafichemagazzino
+this.m_menu=create m_menu
+this.m_stampe=create m_stampe
+this.m_utility=create m_utility
+this.m_grafica=create m_grafica
+this.m_sistema=create m_sistema
+this.m_help=create m_help
+this.m_contabilità=create m_contabilità
+this.Item[UpperBound(this.Item)+1]=this.m_anagrafichevarie
+this.Item[UpperBound(this.Item)+1]=this.m_soggetti
+this.Item[UpperBound(this.Item)+1]=this.m_anagrafichemagazzino
+this.Item[UpperBound(this.Item)+1]=this.m_menu
+this.Item[UpperBound(this.Item)+1]=this.m_stampe
+this.Item[UpperBound(this.Item)+1]=this.m_utility
+this.Item[UpperBound(this.Item)+1]=this.m_grafica
+this.Item[UpperBound(this.Item)+1]=this.m_sistema
+this.Item[UpperBound(this.Item)+1]=this.m_help
+this.Item[UpperBound(this.Item)+1]=this.m_contabilità
+end on
+
+on menu02_mn.destroy
+call super::destroy
+destroy(this.m_anagrafichevarie)
+destroy(this.m_soggetti)
+destroy(this.m_anagrafichemagazzino)
+destroy(this.m_menu)
+destroy(this.m_stampe)
+destroy(this.m_utility)
+destroy(this.m_grafica)
+destroy(this.m_sistema)
+destroy(this.m_help)
+destroy(this.m_contabilità)
+end on
+
+type m_anagrafichevarie from menu within menu02_mn
+m_azienda m_azienda
+m_esercizi m_esercizi
+m_registri m_registri
+m_valuta m_valuta
+m_lingua m_lingua
+m_iva m_iva
+m_spesa m_spesa
+m_pagamenti m_pagamenti
+m_pianodeiconti m_pianodeiconti
+m_banche m_banche
+m_registriperesercizio m_registriperesercizio
+end type
+
+on m_anagrafichevarie.create
+call super::create
+this.text = "Anagrafiche Contabilità"
+this.m_azienda=create m_azienda
+this.m_esercizi=create m_esercizi
+this.m_registri=create m_registri
+this.m_valuta=create m_valuta
+this.m_lingua=create m_lingua
+this.m_iva=create m_iva
+this.m_spesa=create m_spesa
+this.m_pagamenti=create m_pagamenti
+this.m_pianodeiconti=create m_pianodeiconti
+this.m_banche=create m_banche
+this.m_registriperesercizio=create m_registriperesercizio
+this.Item[UpperBound(this.Item)+1]=this.m_azienda
+this.Item[UpperBound(this.Item)+1]=this.m_esercizi
+this.Item[UpperBound(this.Item)+1]=this.m_registri
+this.Item[UpperBound(this.Item)+1]=this.m_valuta
+this.Item[UpperBound(this.Item)+1]=this.m_lingua
+this.Item[UpperBound(this.Item)+1]=this.m_iva
+this.Item[UpperBound(this.Item)+1]=this.m_spesa
+this.Item[UpperBound(this.Item)+1]=this.m_pagamenti
+this.Item[UpperBound(this.Item)+1]=this.m_pianodeiconti
+this.Item[UpperBound(this.Item)+1]=this.m_banche
+this.Item[UpperBound(this.Item)+1]=this.m_registriperesercizio
+end on
+
+on m_anagrafichevarie.destroy
+call super::destroy
+destroy(this.m_azienda)
+destroy(this.m_esercizi)
+destroy(this.m_registri)
+destroy(this.m_valuta)
+destroy(this.m_lingua)
+destroy(this.m_iva)
+destroy(this.m_spesa)
+destroy(this.m_pagamenti)
+destroy(this.m_pianodeiconti)
+destroy(this.m_banche)
+destroy(this.m_registriperesercizio)
+end on
+
+type m_azienda from menu within m_anagrafichevarie
+end type
+
+event clicked; 
+OpenSheet(w_azienda_ff, w_mdi, 2, Original!)
+end event
+
+on m_azienda.create
+call super::create
+this.text = "Azienda"
+end on
+
+on m_azienda.destroy
+call super::destroy
+end on
+
+type m_esercizi from menu within m_anagrafichevarie
+end type
+
+event clicked; 
+OpenSheet(w_ese_gd, w_mdi, 2, Original!)
+end event
+
+on m_esercizi.create
+call super::create
+this.text = "Esercizi"
+end on
+
+on m_esercizi.destroy
+call super::destroy
+end on
+
+type m_registri from menu within m_anagrafichevarie
+end type
+
+event clicked; 
+OpenSheet(w_registro_gd, w_mdi, 2, Original!)
+end event
+
+on m_registri.create
+call super::create
+this.text = "Registri"
+end on
+
+on m_registri.destroy
+call super::destroy
+end on
+
+type m_valuta from menu within m_anagrafichevarie
+end type
+
+event clicked; 
+OpenSheet(w_valuta_gd, w_mdi, 2, Original!)
+end event
+
+on m_valuta.create
+call super::create
+this.text = "Valuta"
+end on
+
+on m_valuta.destroy
+call super::destroy
+end on
+
+type m_lingua from menu within m_anagrafichevarie
+end type
+
+on m_lingua.create
+call super::create
+this.text = "Lingua"
+end on
+
+on m_lingua.destroy
+call super::destroy
+end on
+
+event clicked; 
+OpenSheet(w_lingua_gd, w_mdi, 2, Original!)
+end event
+
+type m_iva from menu within m_anagrafichevarie
+end type
+
+on m_iva.create
+call super::create
+this.text = "Iva"
+end on
+
+on m_iva.destroy
+call super::destroy
+end on
+
+event clicked; 
+OpenSheet(w_iva_gd, w_mdi, 2, Original!)
+end event
+
+type m_spesa from menu within m_anagrafichevarie
+end type
+
+event clicked; 
+OpenSheet(w_spesa_ff, w_mdi, 2, Original!)
+end event
+
+on m_spesa.create
+call super::create
+this.text = "Spese"
+end on
+
+on m_spesa.destroy
+call super::destroy
+end on
+
+type m_pagamenti from menu within m_anagrafichevarie
+event create ( )
+event destroy ( )
+end type
+
+on m_pagamenti.create
+call super::create
+this.text = "Pagamenti"
+end on
+
+on m_pagamenti.destroy
+call super::destroy
+end on
+
+event clicked; OpenSheet(w_paga_cx, w_mdi, 2, Original!)
+
+end event
+
+type m_pianodeiconti from menu within m_anagrafichevarie
+m_pdc m_pdc
+m_mastri m_mastri
+m_sottomastri m_sottomastri
+end type
+
+on m_pianodeiconti.create
+call super::create
+this.text = "Piano dei Conti"
+this.m_pdc=create m_pdc
+this.m_mastri=create m_mastri
+this.m_sottomastri=create m_sottomastri
+this.Item[UpperBound(this.Item)+1]=this.m_pdc
+this.Item[UpperBound(this.Item)+1]=this.m_mastri
+this.Item[UpperBound(this.Item)+1]=this.m_sottomastri
+end on
+
+on m_pianodeiconti.destroy
+call super::destroy
+destroy(this.m_pdc)
+destroy(this.m_mastri)
+destroy(this.m_sottomastri)
+end on
+
+type m_pdc from menu within m_pianodeiconti
+end type
+
+event clicked; 
+OpenSheet(w_pdc_gd, w_mdi, 2, Original!)
+end event
+
+on m_pdc.create
+call super::create
+this.text = "PDC"
+end on
+
+on m_pdc.destroy
+call super::destroy
+end on
+
+type m_mastri from menu within m_pianodeiconti
+end type
+
+event clicked; 
+OpenSheet(w_mastro_gd, w_mdi, 2, Original!)
+end event
+
+on m_mastri.create
+call super::create
+this.text = "Mastri"
+end on
+
+on m_mastri.destroy
+call super::destroy
+end on
+
+type m_sottomastri from menu within m_pianodeiconti
+end type
+
+event clicked; 
+OpenSheet(w_sottomastro_gd, w_mdi, 2, Original!)
+end event
+
+on m_sottomastri.create
+call super::create
+this.text = "Sottomastri"
+end on
+
+on m_sottomastri.destroy
+call super::destroy
+end on
+
+type m_banche from menu within m_anagrafichevarie
+end type
+
+event clicked; 
+OpenSheet(w_banca_ff, w_mdi, 2, Original!)
+end event
+
+on m_banche.create
+call super::create
+this.text = "Banche"
+end on
+
+on m_banche.destroy
+call super::destroy
+end on
+
+type m_registriperesercizio from menu within m_anagrafichevarie
+end type
+
+event clicked; OpenSheet(w_reg_per_esercizio_cx, w_mdi, 2, Original!)
+
+end event
+
+on m_registriperesercizio.create
+call super::create
+this.text = "Registri per Esercizio"
+end on
+
+on m_registriperesercizio.destroy
+call super::destroy
+end on
+
+type m_soggetti from menu within menu02_mn
+m_agenda m_agenda
+m_anagraficaeconto m_anagraficaeconto
+m_scadenze m_scadenze
+m_tipologiasoggetto m_tipologiasoggetto
+m_grupposoggetto m_grupposoggetto
+m_dichiarazioniintento m_dichiarazioniintento
+m_assegnabancaaconto m_assegnabancaaconto
+m_assegnaivalistinopagamentoaconto m_assegnaivalistinopagamentoaconto
+end type
+
+on m_soggetti.create
+call super::create
+this.text = "Soggetti"
+this.m_agenda=create m_agenda
+this.m_anagraficaeconto=create m_anagraficaeconto
+this.m_scadenze=create m_scadenze
+this.m_tipologiasoggetto=create m_tipologiasoggetto
+this.m_grupposoggetto=create m_grupposoggetto
+this.m_dichiarazioniintento=create m_dichiarazioniintento
+this.m_assegnabancaaconto=create m_assegnabancaaconto
+this.m_assegnaivalistinopagamentoaconto=create m_assegnaivalistinopagamentoaconto
+this.Item[UpperBound(this.Item)+1]=this.m_agenda
+this.Item[UpperBound(this.Item)+1]=this.m_anagraficaeconto
+this.Item[UpperBound(this.Item)+1]=this.m_scadenze
+this.Item[UpperBound(this.Item)+1]=this.m_tipologiasoggetto
+this.Item[UpperBound(this.Item)+1]=this.m_grupposoggetto
+this.Item[UpperBound(this.Item)+1]=this.m_dichiarazioniintento
+this.Item[UpperBound(this.Item)+1]=this.m_assegnabancaaconto
+this.Item[UpperBound(this.Item)+1]=this.m_assegnaivalistinopagamentoaconto
+end on
+
+on m_soggetti.destroy
+call super::destroy
+destroy(this.m_agenda)
+destroy(this.m_anagraficaeconto)
+destroy(this.m_scadenze)
+destroy(this.m_tipologiasoggetto)
+destroy(this.m_grupposoggetto)
+destroy(this.m_dichiarazioniintento)
+destroy(this.m_assegnabancaaconto)
+destroy(this.m_assegnaivalistinopagamentoaconto)
+end on
+
+type m_agenda from menu within m_soggetti
+end type
+
+event clicked; 
+OpenSheet(w_agenda, w_mdi, 2, Original!)
+end event
+
+on m_agenda.create
+call super::create
+this.text = "Agenda"
+end on
+
+on m_agenda.destroy
+call super::destroy
+end on
+
+type m_anagraficaeconto from menu within m_soggetti
+event clicked ( )
+end type
+
+event clicked; 
+OpenSheet(w_ana_conto_dest_ff, w_mdi, 2, Original!)
+
+end event
+
+on m_anagraficaeconto.create
+call super::create
+this.text = "Anagrafica Conto Destinazioni"
+end on
+
+on m_anagraficaeconto.destroy
+call super::destroy
+end on
+
+type m_scadenze from menu within m_soggetti
+end type
+
+event clicked; 
+OpenSheet(w_scadenza_gd, w_mdi, 2, Original!)
+end event
+
+on m_scadenze.create
+call super::create
+this.text = "Scadenze"
+end on
+
+on m_scadenze.destroy
+call super::destroy
+end on
+
+type m_tipologiasoggetto from menu within m_soggetti
+end type
+
+event clicked;OpenSheet(w_tipologia_soggetto_gd, w_mdi, 2, Original!)
+end event
+
+on m_tipologiasoggetto.create
+call super::create
+this.text = "Tipologia Soggetto"
+end on
+
+on m_tipologiasoggetto.destroy
+call super::destroy
+end on
+
+type m_grupposoggetto from menu within m_soggetti
+end type
+
+event clicked;OpenSheet(w_gruppo_soggetto_gd, w_mdi, 2, Original!)
+end event
+
+on m_grupposoggetto.create
+call super::create
+this.text = "Gruppo Soggetto"
+end on
+
+on m_grupposoggetto.destroy
+call super::destroy
+end on
+
+type m_dichiarazioniintento from menu within m_soggetti
+end type
+
+event clicked;OpenSheet(w_dich_int_gd, w_mdi, 2, Original!)
+end event
+
+on m_dichiarazioniintento.create
+call super::create
+this.text = "Dichiarazioni Intento"
+end on
+
+on m_dichiarazioniintento.destroy
+call super::destroy
+end on
+
+type m_assegnabancaaconto from menu within m_soggetti
+end type
+
+event clicked;OpenSheet(w_ins_conto_banca_gd, w_mdi, 2, Original!)
+end event
+
+on m_assegnabancaaconto.create
+call super::create
+this.text = "Assegna Banca a Conto"
+end on
+
+on m_assegnabancaaconto.destroy
+call super::destroy
+end on
+
+type m_assegnaivalistinopagamentoaconto from menu within m_soggetti
+end type
+
+event clicked;OpenSheet(w_ins_iva_listino_pagamento_gd, w_mdi, 2, Original!)
+end event
+
+on m_assegnaivalistinopagamentoaconto.create
+call super::create
+this.text = "Assegna Iva Listino Pagamento a conto"
+end on
+
+on m_assegnaivalistinopagamentoaconto.destroy
+call super::destroy
+end on
+
+type m_anagrafichemagazzino from menu within menu02_mn
+m_listini m_listini
+m_lega m_lega
+m_titolo m_titolo
+m_metallo m_metallo
+m_magazzino m_magazzino
+m_unitamisura m_unitamisura
+m_aspettodeibeni m_aspettodeibeni
+m_causaliditrasporto m_causaliditrasporto
+m_trasporto m_trasporto
+m_note m_note
+end type
+
+on m_anagrafichemagazzino.create
+call super::create
+this.text = "Anagrafiche Magazzino"
+this.m_listini=create m_listini
+this.m_lega=create m_lega
+this.m_titolo=create m_titolo
+this.m_metallo=create m_metallo
+this.m_magazzino=create m_magazzino
+this.m_unitamisura=create m_unitamisura
+this.m_aspettodeibeni=create m_aspettodeibeni
+this.m_causaliditrasporto=create m_causaliditrasporto
+this.m_trasporto=create m_trasporto
+this.m_note=create m_note
+this.Item[UpperBound(this.Item)+1]=this.m_listini
+this.Item[UpperBound(this.Item)+1]=this.m_lega
+this.Item[UpperBound(this.Item)+1]=this.m_titolo
+this.Item[UpperBound(this.Item)+1]=this.m_metallo
+this.Item[UpperBound(this.Item)+1]=this.m_magazzino
+this.Item[UpperBound(this.Item)+1]=this.m_unitamisura
+this.Item[UpperBound(this.Item)+1]=this.m_aspettodeibeni
+this.Item[UpperBound(this.Item)+1]=this.m_causaliditrasporto
+this.Item[UpperBound(this.Item)+1]=this.m_trasporto
+this.Item[UpperBound(this.Item)+1]=this.m_note
+end on
+
+on m_anagrafichemagazzino.destroy
+call super::destroy
+destroy(this.m_listini)
+destroy(this.m_lega)
+destroy(this.m_titolo)
+destroy(this.m_metallo)
+destroy(this.m_magazzino)
+destroy(this.m_unitamisura)
+destroy(this.m_aspettodeibeni)
+destroy(this.m_causaliditrasporto)
+destroy(this.m_trasporto)
+destroy(this.m_note)
+end on
+
+type m_listini from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_listino_prezzi_cx, w_mdi, 2, Original!)
+end event
+
+on m_listini.create
+call super::create
+this.text = "Listini"
+end on
+
+on m_listini.destroy
+call super::destroy
+end on
+
+type m_lega from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_lega_gd, w_mdi, 2, Original!)
+end event
+
+on m_lega.create
+call super::create
+this.text = "Lega"
+end on
+
+on m_lega.destroy
+call super::destroy
+end on
+
+type m_titolo from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_titolo_gd, w_mdi, 2, Original!)
+end event
+
+on m_titolo.create
+call super::create
+this.text = "Titolo"
+end on
+
+on m_titolo.destroy
+call super::destroy
+end on
+
+type m_metallo from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_metallo_gd, w_mdi, 2, Original!)
+end event
+
+on m_metallo.create
+call super::create
+this.text = "Metallo"
+end on
+
+on m_metallo.destroy
+call super::destroy
+end on
+
+type m_magazzino from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_maga_gd, w_mdi, 2, Original!)
+end event
+
+on m_magazzino.create
+call super::create
+this.text = "Magazzino"
+end on
+
+on m_magazzino.destroy
+call super::destroy
+end on
+
+type m_unitamisura from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_um_gd, w_mdi, 2, Original!)
+end event
+
+on m_unitamisura.create
+call super::create
+this.text = "Unita Misura"
+end on
+
+on m_unitamisura.destroy
+call super::destroy
+end on
+
+type m_aspettodeibeni from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_asp_beni_gd, w_mdi, 2, Original!)
+end event
+
+on m_aspettodeibeni.create
+call super::create
+this.text = "Aspetto dei Beni"
+end on
+
+on m_aspettodeibeni.destroy
+call super::destroy
+end on
+
+type m_causaliditrasporto from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_caus_trasporto_gd, w_mdi, 2, Original!)
+end event
+
+on m_causaliditrasporto.create
+call super::create
+this.text = "Causali di trasporto"
+end on
+
+on m_causaliditrasporto.destroy
+call super::destroy
+end on
+
+type m_trasporto from menu within m_anagrafichemagazzino
+end type
+
+event clicked; 
+OpenSheet(w_trasporto_gd, w_mdi, 2, Original!)
+end event
+
+on m_trasporto.create
+call super::create
+this.text = "Trasporto"
+end on
+
+on m_trasporto.destroy
+call super::destroy
+end on
+
+type m_note from menu within m_anagrafichemagazzino
+event create ( )
+event destroy ( )
+end type
+
+on m_note.create
+call super::create
+this.text = "Note"
+end on
+
+on m_note.destroy
+call super::destroy
+end on
+
+event clicked; 
+OpenSheet(w_nota_gd, w_mdi, 2, Original!)
+end event
+
+type m_menu from menu within menu02_mn
+m_articolo m_articolo
+m_articolo0 m_articolo0
+m_attributiarticolo m_attributiarticolo
+m_fotoarticoli m_fotoarticoli
+m_0 m_0
+m_guidadocumento m_guidadocumento
+m_documento m_documento
+m_distinta m_distinta
+end type
+
+on m_menu.create
+call super::create
+this.text = "Magazzino"
+this.m_articolo=create m_articolo
+this.m_articolo0=create m_articolo0
+this.m_attributiarticolo=create m_attributiarticolo
+this.m_fotoarticoli=create m_fotoarticoli
+this.m_0=create m_0
+this.m_guidadocumento=create m_guidadocumento
+this.m_documento=create m_documento
+this.m_distinta=create m_distinta
+this.Item[UpperBound(this.Item)+1]=this.m_articolo
+this.Item[UpperBound(this.Item)+1]=this.m_articolo0
+this.Item[UpperBound(this.Item)+1]=this.m_attributiarticolo
+this.Item[UpperBound(this.Item)+1]=this.m_fotoarticoli
+this.Item[UpperBound(this.Item)+1]=this.m_0
+this.Item[UpperBound(this.Item)+1]=this.m_guidadocumento
+this.Item[UpperBound(this.Item)+1]=this.m_documento
+this.Item[UpperBound(this.Item)+1]=this.m_distinta
+end on
+
+on m_menu.destroy
+call super::destroy
+destroy(this.m_articolo)
+destroy(this.m_articolo0)
+destroy(this.m_attributiarticolo)
+destroy(this.m_fotoarticoli)
+destroy(this.m_0)
+destroy(this.m_guidadocumento)
+destroy(this.m_documento)
+destroy(this.m_distinta)
+end on
+
+type m_articolo from menu within m_menu
+end type
+
+event clicked; 
+OpenSheet(w_codifica_gd, w_mdi, 2, Original!)
+
+end event
+
+on m_articolo.create
+call super::create
+this.text = "Codifica Articolo"
+this.microhelp = "Crea le categorie di codifica per gli articoli"
+end on
+
+on m_articolo.destroy
+call super::destroy
+end on
+
+type m_articolo0 from menu within m_menu
+end type
+
+event clicked; 
+OpenSheet(w_art_gd, w_mdi, 2, Original!)
+end event
+
+on m_articolo0.create
+call super::create
+this.text = "Articolo"
+end on
+
+on m_articolo0.destroy
+call super::destroy
+end on
+
+type m_attributiarticolo from menu within m_menu
+end type
+
+event clicked; 
+OpenSheet(w_attr_art_gd, w_mdi, 2, Original!)
+end event
+
+on m_attributiarticolo.create
+call super::create
+this.text = "Attributi Articolo"
+end on
+
+on m_attributiarticolo.destroy
+call super::destroy
+end on
+
+type m_fotoarticoli from menu within m_menu
+event clicked ( )
+end type
+
+event clicked; 
+OpenSheet(w_art_foto_gd, w_mdi, 2, Original!)
+end event
+
+on m_fotoarticoli.create
+call super::create
+this.text = "Foto Articoli"
+end on
+
+on m_fotoarticoli.destroy
+call super::destroy
+end on
+
+type m_0 from menu within m_menu
+event clicked ( )
+end type
+
+event clicked; 
+OpenSheet(w_causale_ff, w_mdi, 2, Original!)
+end event
+
+on m_0.create
+call super::create
+this.text = "Causali"
+end on
+
+on m_0.destroy
+call super::destroy
+end on
+
+type m_guidadocumento from menu within m_menu
+event clicked ( )
+end type
+
+event clicked; 
+OpenSheet(w_guida_ff, w_mdi, 2, Original!)
+end event
+
+on m_guidadocumento.create
+call super::create
+this.text = "Guida Documento"
+end on
+
+on m_guidadocumento.destroy
+call super::destroy
+end on
+
+type m_documento from menu within m_menu
+event clicked ( )
+end type
+
+event clicked; 
+OpenSheet(w_doc_ff, w_mdi, 2, Original!)
+end event
+
+on m_documento.create
+call super::create
+this.text = "Documento"
+end on
+
+on m_documento.destroy
+call super::destroy
+end on
+
+type m_distinta from menu within m_menu
+end type
+
+event clicked;OpenSheet(w_distinta_ff, w_mdi, 2, Original!)
+end event
+
+on m_distinta.create
+call super::create
+this.text = "Distinta"
+end on
+
+on m_distinta.destroy
+call super::destroy
+end on
+
+type m_stampe from menu within menu02_mn
+m_schedaclfo m_schedaclfo
+m_schedamagazzino m_schedamagazzino
+m_lisadocumenti m_lisadocumenti
+m_articoli m_articoli
+m_anagraficheclientiefornitori m_anagraficheclientiefornitori
+end type
+
+on m_stampe.create
+call super::create
+this.text = "Stampe"
+this.m_schedaclfo=create m_schedaclfo
+this.m_schedamagazzino=create m_schedamagazzino
+this.m_lisadocumenti=create m_lisadocumenti
+this.m_articoli=create m_articoli
+this.m_anagraficheclientiefornitori=create m_anagraficheclientiefornitori
+this.Item[UpperBound(this.Item)+1]=this.m_schedaclfo
+this.Item[UpperBound(this.Item)+1]=this.m_schedamagazzino
+this.Item[UpperBound(this.Item)+1]=this.m_lisadocumenti
+this.Item[UpperBound(this.Item)+1]=this.m_articoli
+this.Item[UpperBound(this.Item)+1]=this.m_anagraficheclientiefornitori
+end on
+
+on m_stampe.destroy
+call super::destroy
+destroy(this.m_schedaclfo)
+destroy(this.m_schedamagazzino)
+destroy(this.m_lisadocumenti)
+destroy(this.m_articoli)
+destroy(this.m_anagraficheclientiefornitori)
+end on
+
+type m_schedaclfo from menu within m_stampe
+end type
+
+event clicked; 
+OpenSheet(w_scheda_cl_fo, w_mdi, 2, Original!)
+end event
+
+on m_schedaclfo.create
+call super::create
+this.text = "Scheda CL/FO"
+end on
+
+on m_schedaclfo.destroy
+call super::destroy
+end on
+
+type m_schedamagazzino from menu within m_stampe
+end type
+
+event clicked; 
+OpenSheet(w_scheda_magazzino, w_mdi, 2, Original!)
+end event
+
+on m_schedamagazzino.create
+call super::create
+this.text = "Scheda Magazzino"
+end on
+
+on m_schedamagazzino.destroy
+call super::destroy
+end on
+
+type m_lisadocumenti from menu within m_stampe
+end type
+
+event clicked; 
+OpenSheet(w_lista_documenti, w_mdi, 2, Original!)
+end event
+
+on m_lisadocumenti.create
+call super::create
+this.text = "Lista Documenti"
+end on
+
+on m_lisadocumenti.destroy
+call super::destroy
+end on
+
+type m_articoli from menu within m_stampe
+end type
+
+on m_articoli.create
+call super::create
+this.text = "Articoli"
+end on
+
+on m_articoli.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet(w_art_st, w_mdi, 2, Original!)
+end event
+
+type m_anagraficheclientiefornitori from menu within m_stampe
+end type
+
+event clicked;OpenSheet(w_anag_clfo_st, w_mdi, 2, Original!)
+end event
+
+on m_anagraficheclientiefornitori.create
+call super::create
+this.text = "Anagrafiche Clienti e Fornitori"
+end on
+
+on m_anagraficheclientiefornitori.destroy
+call super::destroy
+end on
+
+type m_utility from menu within menu02_mn
+m_modificapbl m_modificapbl
+m_dwdatxt m_dwdatxt
+m_riapririga m_riapririga
+m_cancelladocumenti m_cancelladocumenti
+end type
+
+on m_utility.create
+call super::create
+this.text = "Utility"
+this.m_modificapbl=create m_modificapbl
+this.m_dwdatxt=create m_dwdatxt
+this.m_riapririga=create m_riapririga
+this.m_cancelladocumenti=create m_cancelladocumenti
+this.Item[UpperBound(this.Item)+1]=this.m_modificapbl
+this.Item[UpperBound(this.Item)+1]=this.m_dwdatxt
+this.Item[UpperBound(this.Item)+1]=this.m_riapririga
+this.Item[UpperBound(this.Item)+1]=this.m_cancelladocumenti
+end on
+
+on m_utility.destroy
+call super::destroy
+destroy(this.m_modificapbl)
+destroy(this.m_dwdatxt)
+destroy(this.m_riapririga)
+destroy(this.m_cancelladocumenti)
+end on
+
+type m_modificapbl from menu within m_utility
+end type
+
+event clicked; 
+OpenSheet(w_mod_pbl, w_mdi, 2, Original!)
+end event
+
+on m_modificapbl.create
+call super::create
+this.text = "Modifica PBL"
+end on
+
+on m_modificapbl.destroy
+call super::destroy
+end on
+
+type m_dwdatxt from menu within m_utility
+end type
+
+event clicked;OpenSheet(w_carica_txt, w_mdi, 2, Original!)
+end event
+
+on m_dwdatxt.create
+call super::create
+this.text = "Dw Da TXT"
+end on
+
+on m_dwdatxt.destroy
+call super::destroy
+end on
+
+type m_riapririga from menu within m_utility
+end type
+
+event clicked;OpenSheet(w_riapri_riga_gd, w_mdi, 2, Original!)
+end event
+
+on m_riapririga.create
+call super::create
+this.text = "Riapri Riga"
+end on
+
+on m_riapririga.destroy
+call super::destroy
+end on
+
+type m_cancelladocumenti from menu within m_utility
+end type
+
+event clicked;OpenSheet(w_cancella_doc, w_mdi, 2, Original!)
+end event
+
+on m_cancelladocumenti.create
+call super::create
+this.text = "Cancella Documenti"
+end on
+
+on m_cancelladocumenti.destroy
+call super::destroy
+end on
+
+type m_grafica from menu within menu02_mn
+m_catalogosemplice m_catalogosemplice
+m_listaarticoli m_listaarticoli
+m_impostacampinellastampa m_impostacampinellastampa
+m_cataloghi m_cataloghi
+
+end type
+
+on m_grafica.create
+call super::create
+this.text = "Grafica"
+this.m_catalogosemplice=create m_catalogosemplice
+this.m_listaarticoli=create m_listaarticoli
+this.m_impostacampinellastampa=create m_impostacampinellastampa
+this.m_cataloghi=create m_cataloghi
+
+this.Item[UpperBound(this.Item)+1]=this.m_catalogosemplice
+this.Item[UpperBound(this.Item)+1]=this.m_listaarticoli
+this.Item[UpperBound(this.Item)+1]=this.m_impostacampinellastampa
+this.Item[UpperBound(this.Item)+1]=this.m_cataloghi
+
+end on
+
+on m_grafica.destroy
+call super::destroy
+destroy(this.m_catalogosemplice)
+destroy(this.m_listaarticoli)
+destroy(this.m_impostacampinellastampa)
+destroy(this.m_cataloghi)
+
+end on
+
+type m_catalogosemplice from menu within m_grafica
+end type
+
+event clicked; 
+OpenSheet(w_cat_semplificato, w_mdi, 2, Original!)
+end event
+
+on m_catalogosemplice.create
+call super::create
+this.text = "Catalogo Semplice"
+end on
+
+on m_catalogosemplice.destroy
+call super::destroy
+end on
+
+type m_listaarticoli from menu within m_grafica
+end type
+
+event clicked;OpenSheet(w_lista_art_cx, w_mdi, 2, Original!)
+end event
+
+on m_listaarticoli.create
+call super::create
+this.text = "Lista Articoli"
+end on
+
+on m_listaarticoli.destroy
+call super::destroy
+end on
+
+type m_impostacampinellastampa from menu within m_grafica
+end type
+
+event clicked;OpenSheet(w_cat_imp_campi_gd, w_mdi, 2, Original!)
+end event
+
+on m_impostacampinellastampa.create
+call super::create
+this.text = "Imposta campi nella stampa"
+end on
+
+on m_impostacampinellastampa.destroy
+call super::destroy
+end on
+
+type m_cataloghi from menu within m_grafica
+end type
+
+event clicked;OpenSheet(w_catalogo_cx, w_mdi, 2, Original!)
+end event
+
+on m_cataloghi.create
+call super::create
+this.text = "Cataloghi"
+end on
+
+on m_cataloghi.destroy
+call super::destroy
+end on
+
+type m_sistema from menu within menu02_mn
+m_valoribase m_valoribase
+m_aggiornamentisql m_aggiornamentisql
+m_dbprofilo m_dbprofilo
+end type
+
+on m_sistema.create
+call super::create
+this.text = "Sistema"
+this.m_valoribase=create m_valoribase
+this.m_aggiornamentisql=create m_aggiornamentisql
+this.m_dbprofilo=create m_dbprofilo
+this.Item[UpperBound(this.Item)+1]=this.m_valoribase
+this.Item[UpperBound(this.Item)+1]=this.m_aggiornamentisql
+this.Item[UpperBound(this.Item)+1]=this.m_dbprofilo
+end on
+
+on m_sistema.destroy
+call super::destroy
+destroy(this.m_valoribase)
+destroy(this.m_aggiornamentisql)
+destroy(this.m_dbprofilo)
+end on
+
+type m_valoribase from menu within m_sistema
+end type
+
+event clicked; 
+OpenSheet(w_val_base_ff, w_mdi, 2, Original!)
+end event
+
+on m_valoribase.create
+call super::create
+this.text = "Valori Base"
+end on
+
+on m_valoribase.destroy
+call super::destroy
+end on
+
+type m_aggiornamentisql from menu within m_sistema
+end type
+
+event clicked; 
+OpenSheet(w_sql_agg_gd, w_mdi, 2, Original!)
+end event
+
+on m_aggiornamentisql.create
+call super::create
+this.text = "Aggiornamenti SQL"
+end on
+
+on m_aggiornamentisql.destroy
+call super::destroy
+end on
+
+type m_dbprofilo from menu within m_sistema
+end type
+
+on m_dbprofilo.create
+call super::create
+this.text = "DB Profilo"
+end on
+
+on m_dbprofilo.destroy
+call super::destroy
+end on
+
+event clicked;OpenSheet(w_db, w_mdi, 2, Original!)
+end event
+
+type m_help from menu within menu02_mn
+m_indice m_indice
+m_info m_info
+end type
+
+on m_help.create
+call super::create
+this.text = "Help"
+this.m_indice=create m_indice
+this.m_info=create m_info
+this.Item[UpperBound(this.Item)+1]=this.m_indice
+this.Item[UpperBound(this.Item)+1]=this.m_info
+end on
+
+on m_help.destroy
+call super::destroy
+destroy(this.m_indice)
+destroy(this.m_info)
+end on
+
+type m_indice from menu within m_help
+end type
+
+on m_indice.create
+call super::create
+this.text = "Indice~tAlt+F1"
+this.shortcut = 624
+this.microhelp = "Help"
+end on
+
+on m_indice.destroy
+call super::destroy
+end on
+
+type m_info from menu within m_help
+end type
+
+on m_info.create
+call super::create
+this.text = "INFO~tShift+Alt+I"
+this.shortcut = 1609
+this.microhelp = "Informazioni sulla versione"
+this.toolbaritemvisible = false
+end on
+
+on m_info.destroy
+call super::destroy
+end on
+
+type m_contabilità from menu within menu02_mn
+m_primanota m_primanota
+end type
+
+on m_contabilità.create
+call super::create
+this.text = "Contabilità"
+this.m_primanota=create m_primanota
+this.Item[UpperBound(this.Item)+1]=this.m_primanota
+end on
+
+on m_contabilità.destroy
+call super::destroy
+destroy(this.m_primanota)
+end on
+
+type m_primanota from menu within m_contabilità
+end type
+
+event clicked;OpenSheet(w_pnota, w_mdi, 2, Original!)
+end event
+
+on m_primanota.create
+call super::create
+this.text = "Prima nota"
+end on
+
+on m_primanota.destroy
+call super::destroy
+end on
+

@@ -1,0 +1,68 @@
+﻿global type f_gg_mese from function_object
+end type
+
+forward prototypes
+global function integer f_gg_mese (integer ai_mese, integer ai_anno)
+end prototypes
+
+global function integer f_gg_mese (integer ai_mese, integer ai_anno);// --------------------------------------------------------------------------------
+//
+//	Nome funzione			:	f_gmese
+//	Scopo						:	calcola, per valori tra 1 e 12, il numero di giorni del
+//									mese
+//
+//	Argomenti				:	integer		ai_mese			il mese
+//									integer		ai_anno			l'anno
+//
+//	Ritorno					:	integer		numero di giorni di quel mese di quell'anno
+// --------------------------------------------------------------------------------
+
+integer	li_ret, li_mese, li_anno
+boolean	lb_leap
+
+//li_mese = month(ad_data)
+//li_anno = year(ad_data)
+li_mese = ai_mese
+li_anno = ai_anno
+
+choose case li_mese
+	case 1
+		li_ret = 31
+	case 2
+		li_ret = 28
+	case 3
+		li_ret = 31
+	case 4
+		li_ret = 30
+	case 5
+		li_ret = 31
+	case 6
+		li_ret = 30
+	case 7
+		li_ret = 31
+	case 8
+		li_ret = 31
+	case 9
+		li_ret = 30
+	case 10
+		li_ret = 31
+	case 11
+		li_ret = 30
+	case 12
+		li_ret = 31
+	case else
+		li_ret = 0
+end choose
+
+if li_mese = 2 then
+	lb_leap = false
+	if mod(li_anno,4) = 0 then lb_leap = true
+	if mod(li_anno,100) = 0 then lb_leap = false
+	if mod(li_anno,400) = 0 then lb_leap = true
+	if lb_leap then li_ret = 29
+end if
+
+return li_ret
+
+end function
+

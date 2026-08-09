@@ -1,0 +1,10 @@
+﻿//objectcomments Per il passaggio di parametri da w_dis_banca_cx a w_distinta_ff.
+global type s_distinta from structure
+	long		l_id_esercizio
+	character		c_tipo_scadenza
+	long		l_id_dis_banca
+	long		l_righe
+	date		d_dat_rib
+	string		ls_path_riba
+end type
+

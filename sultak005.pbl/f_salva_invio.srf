@@ -1,0 +1,38 @@
+﻿global type f_salva_invio from function_object
+end type
+
+forward prototypes
+global subroutine f_salva_invio (long al_id_doc)
+end prototypes
+
+global subroutine f_salva_invio (long al_id_doc);datetime ldt_data_ora_invio 
+long ll_id_invio
+
+//select data_ora_invio
+//into :ldt_data_ora_invio
+//from dba.FE_invio
+//where doc_id=:al_id_doc
+//;
+//if string(ldt_data_ora_invio, "yyyy-mm-dd hh:mm")> string(datetime("2018-12-01"),"yyyy-mm-dd hh:mm")   then
+//	if messagebox("Attenzione!", "Il documento è stato già inviato una volta ("+ string(ldt_data_ora_invio, "yyyy-mm-dd hh:mm")+"). Vuoi inviarlo ancora lo stesso?", stopsign!, yesno!)=2 then
+//		return
+//	end if
+//end if
+select max(id_invio_fe)
+into :ll_id_invio
+from dba.fe_invio
+;
+if isnull(ll_id_invio) then ll_id_invio=0
+ll_id_invio++
+ldt_data_ora_invio=datetime(today(), now())
+insert into dba.fe_invio (id_invio_fe, data_ora_invio, doc_id)
+values (:ll_id_invio, :ldt_data_ora_invio, :al_id_doc)
+;
+if sqlca.sqlcode=0 then
+	commit;
+else
+	rollback;
+	messagebox("Attenzione!", "L'invio NON è stato registrato nella tabella degli invii (FE_invio): contattare assistenza!")
+end if
+end subroutine
+

@@ -1,0 +1,4 @@
+﻿{
+    "version": "250",
+    "comment": "dw e windows di ricerca (da rivedere, probabilmente non servono, si può fare tutto con istanze della w_ricerca_sw, solo le dw dovrebbero restare)"
+}

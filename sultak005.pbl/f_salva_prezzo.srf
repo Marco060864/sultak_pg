@@ -1,0 +1,58 @@
+﻿global type f_salva_prezzo from function_object
+end type
+
+forward prototypes
+global function integer f_salva_prezzo (long al_vali_id, long al_art_id, decimal adc_prezzo, string as_tipo_prezzo)
+end prototypes
+
+global function integer f_salva_prezzo (long al_vali_id, long al_art_id, decimal adc_prezzo, string as_tipo_prezzo);long ll_blocco
+
+select ins_manuale
+into :ll_blocco
+from dba.prezzo
+where vali_id=:al_vali_id and art_id=:al_art_id;
+if ll_blocco= 1 then return 0
+
+if as_tipo_prezzo='N' then
+	update dba.prezzo
+	set pr_pezzo=:adc_prezzo
+	where vali_id=:al_vali_id and art_id=:al_art_id;
+	if sqlca.sqlnrows>0 then
+		commit;
+		return 1
+	else
+		rollback;
+		insert into dba. prezzo (vali_id, art_id, pr_pezzo)
+		values (:al_vali_id, :al_art_id, :adc_prezzo)
+		;
+		if sqlca.sqlcode=0 then
+			commit;
+			return 1
+		else
+			rollback;
+			return -1
+		end if
+	end if
+else
+	update dba.prezzo
+	set pr_peso=:adc_prezzo
+	where vali_id=:al_vali_id and art_id=:al_art_id;
+	if sqlca.sqlnrows>0 then
+		commit;
+		return 1
+	else
+		rollback;
+		insert into dba. prezzo (vali_id, art_id, pr_peso)
+		values (:al_vali_id, :al_art_id, :adc_prezzo)
+		;
+		if sqlca.sqlcode=0 then
+			commit;
+			return 1
+		else
+			rollback;
+			return -1
+		end if
+	end if
+end if
+end function
+

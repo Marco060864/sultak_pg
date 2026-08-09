@@ -1,0 +1,37 @@
+﻿global type f_trova_doc_acq from function_object
+end type
+
+forward prototypes
+global function string f_trova_doc_acq (string as_a_data, long al_id_art, long al_qta)
+end prototypes
+
+global function string f_trova_doc_acq (string as_a_data, long al_id_art, long al_qta);string ls_doc_acq, ls_num_doc
+integer li_righe, i
+long ll_qta, ll_qta_tot
+date ldt_data, ldt_a_data
+
+datastore ds_trova_acq
+
+ldt_a_data=date(as_a_data)
+ds_trova_acq=create datastore
+ds_trova_acq.dataobject="d_trova_doc_acq"
+ds_trova_acq.settransobject(sqlca)
+li_righe=ds_trova_acq.retrieve(al_id_art, ldt_a_data)
+for i=1 to li_righe
+	ls_num_doc=ds_trova_acq.getitemstring(i, "doc_numero")
+	ldt_data=ds_trova_acq.getitemdate(i, "doc_data")
+	ll_qta=ds_trova_acq.getitemnumber(i, "rdoc_qta")
+	if i> 1 then ls_doc_acq+=";"
+	ls_doc_acq+= " DOC. ACQ. N. "+ls_num_doc+" del "+string(ldt_data, "dd/mm/yy")+" (Qta = "+string(ll_qta)+") "
+	ll_qta_tot+=ll_qta
+	if ll_qta_tot>=al_qta then 
+		if i> 1 then ls_doc_acq= left(ls_doc_acq, len(ls_doc_acq) - 1)
+		exit
+	end if
+next
+destroy ds_trova_acq
+return ls_doc_acq
+
+
+end function
+

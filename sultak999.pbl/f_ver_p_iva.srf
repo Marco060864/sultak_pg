@@ -1,0 +1,69 @@
+﻿global type f_ver_p_iva from function_object
+end type
+
+forward prototypes
+global function integer f_ver_p_iva (string as_partita_iva, string as_nazione)
+end prototypes
+
+global function integer f_ver_p_iva (string as_partita_iva, string as_nazione);// ***********************************************************************************
+//
+//   Scopo: Funzione globale per il controllo della validità dell Partita IVA. 
+//				Accetta in input due stringhe ls_partita_iva (partita iva) e ls_Nazione 
+//				(nazione). Deve restituire 0 se la validazione ha successo e 1 se non ha 
+//				successo.
+//
+// Se la nazione non è "IT" ritorna 0 comunque
+// ***********************************************************************************
+integer li_cifra[11], li_i, li_lung, li_total, li_tn, li_retval
+integer li_totali, li_sbagli
+string  ls_c
+
+if as_nazione = "IT" then
+	// siamo in Italia, si usa l'algoritmo Italiano
+	li_lung = len(as_partita_iva)
+	li_sbagli = 0
+	for li_i = 1 to 11
+		ls_c = mid(as_partita_iva,li_i,1)
+		if ls_c >= "0" and ls_c <="9" then
+			li_cifra[li_i] = integer(mid(as_partita_iva,li_i,1))
+		else
+			li_sbagli ++
+		end if
+	next
+	//
+	//
+	//
+	if li_sbagli = 0 then
+		for li_i = 2 to 10 step 2
+			li_cifra[li_i] = li_cifra[li_i] * 2
+			if li_cifra[li_i] >= 10 then li_cifra[li_i] = li_cifra[li_i] - 9
+		next
+		//
+		li_total=0
+		for li_i=1 to 10
+			li_total = li_total+li_cifra[li_i]
+		next
+		//
+		li_totali = li_total/10
+		if (li_totali*10) = li_total then 
+			li_total=0
+		else
+				li_tn = (li_totali+1) * 10
+				li_total = li_tn - li_total
+		end if
+		//
+		if li_total = li_cifra[11] then li_retval = 0 else li_retval = 1
+	else
+		li_retval = 1
+	end if
+else
+	// siamo all'estero, si vedrà, intanto va bene
+	li_retval = 0
+end if
+
+return li_retval
+
+
+
+end function
+

@@ -1,0 +1,23 @@
+﻿global type f_trova_conto from function_object
+end type
+
+forward prototypes
+global function string f_trova_conto (long al_id_ana)
+end prototypes
+
+global function string f_trova_conto (long al_id_ana);datastore ds_trova_tipo_sog
+string ls_tipo=""
+integer i
+ds_trova_tipo_sog=create datastore
+ds_trova_tipo_sog.dataobject="d_trova_tipo_soggetto"
+ds_trova_tipo_sog.settransobject(sqlca)
+ds_trova_tipo_sog.retrieve(al_id_ana)
+for i= 1 to ds_trova_tipo_sog.rowcount()
+	ls_tipo+=ds_trova_tipo_sog.getitemstring(i, "conto_conto_codice")
+	
+next
+
+destroy ds_trova_tipo_sog
+return ls_tipo
+end function
+

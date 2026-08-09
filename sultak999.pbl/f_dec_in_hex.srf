@@ -1,0 +1,37 @@
+﻿global type f_dec_in_hex from function_object
+end type
+
+forward prototypes
+global function string f_dec_in_hex (long al_numero, integer ai_digits)
+end prototypes
+
+global function string f_dec_in_hex (long al_numero, integer ai_digits);// --------------------------------------------------------------------------------
+//
+// questa funzione converte un long in stringa esadecimale
+//
+// --------------------------------------------------------------------------------
+
+long			ll_n1, ll_n2
+string		ls_ret
+char			lc_hdig[16]
+integer		li_l1
+
+lc_hdig = "0123456789ABCDEF"
+ls_ret = ""
+ll_n1 = al_numero
+do while (ll_n1 > 0)
+	ll_n2 = mod (ll_n1,16)
+	ls_ret = lc_hdig[ll_n2+1]+ls_ret
+	ll_n1 = ll_n1 / 16
+loop
+
+li_l1 = ai_digits - len(ls_ret)
+
+if li_l1>=0 then
+	ls_ret = fill("0",li_l1)+ls_ret
+end if
+
+return ls_ret
+
+end function
+

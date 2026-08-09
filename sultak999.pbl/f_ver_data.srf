@@ -1,0 +1,48 @@
+﻿global type f_ver_data from function_object
+end type
+
+forward prototypes
+global function string f_ver_data (string as_data1, string as_data2)
+end prototypes
+
+global function string f_ver_data (string as_data1, string as_data2);// --------------------------------------------------------------------------------
+//
+//  Nome funzione: f_ver_data
+//   
+//          Scopo: Validare il formato di una data e restituirne uno conforme a
+//                 PowerBuilder
+//      Argomenti: string          as_data1         data da controllare
+//                 string          as_data2         data risultante
+//        Se ritorna "" allora data errata
+//    Descrizione: viene analizzata la stringa as_data1. Se è una data valida si
+//                 ritorna 0 e si copia in as_data_out. Se invece non è valida si deve
+//                 tentare di trasformarla in una valida. Se ci si riesce si ritorna
+//                 1, se non ci si riesce si torna -1
+//
+// --------------------------------------------------------------------------------
+
+string  ls_data
+
+if as_data1="" then
+	setNull(as_data2)
+	
+else
+	if IsDate(as_data1) then
+			as_data2 = as_data1
+		
+	else
+		ls_data = left(as_data1,2)+"/"+mid(as_data1,3,2)+"/"+mid(as_data1,5)
+		if IsDate(ls_data) then
+			as_data2 = ls_data
+			
+		else
+			as_data2 = ""
+			
+		end if
+	end if
+end if
+
+return as_data2
+
+end function
+

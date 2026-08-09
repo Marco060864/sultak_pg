@@ -1,0 +1,23 @@
+﻿global type s_sel_stampa from structure
+	string		s_cl_fo
+	date		s_da_data
+	date		s_a_data
+	date		s_data_inizio
+	string		s_tipo_stampa
+	long		s_id_magazzino
+	long		s_id_articolo
+	long		s_id_titolo
+	long		s_id_metallo
+	long		s_id_causale[]
+	string		s_tipo_registro
+	long		s_id_registro
+	string		s_evasi_no_tutti
+	string		da_articolo
+	string		ad_articolo
+	long		cat_codifica
+	string		fiscale
+	long		id_conto
+	datawindow		s_dw
+	decimal{0}		percentuale
+end type
+

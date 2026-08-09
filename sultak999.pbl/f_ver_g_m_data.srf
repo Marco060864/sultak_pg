@@ -1,0 +1,27 @@
+﻿global type f_ver_g_m_data from function_object
+end type
+
+forward prototypes
+global function boolean f_ver_g_m_data (integer li_giorno, integer li_mese)
+end prototypes
+
+global function boolean f_ver_g_m_data (integer li_giorno, integer li_mese);// ***********************************************************************************
+//
+//    Scopo: Funzione globale: controlla che i due parametri passati (giorno e mese)
+//				appartengano ad una data valida.
+//    Nota: La costante ls_Anno_Fittizio deve contenere un anno bisestile.
+//
+// ***********************************************************************************
+
+CONSTANT String ls_Anno_Fittizio = "1080-"
+Boolean lb_Data_Valida
+String ls_Data
+
+ls_Data = ls_Anno_Fittizio+String(li_mese)+"-"+String(li_giorno)
+
+lb_Data_Valida = IsDate(ls_Data)
+
+RETURN lb_Data_Valida
+
+end function
+

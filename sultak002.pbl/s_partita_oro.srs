@@ -1,0 +1,14 @@
+﻿global type s_partita_oro from structure
+	decimal { 3 }		dc_finocalo
+	string		s_tipo_partita
+	date		data_fine
+	long		l_tit
+	string		s_metallo
+	decimal { 2 }		dc_coef_calo
+	long		l_conto
+	long		l_metallo
+	long		l_id_riga_scarico
+	date		data_inizio_saldi
+	decimal{2}		dc_legato
+end type
+

@@ -1,0 +1,15 @@
+﻿global type s_ric_articolo from structure
+	integer		cod_tabella
+	string		cod_articolo
+	string		des_articolo
+	string		inserito_su
+	integer		num_prog_immagine
+	string		file_immagine
+	integer		num_progressivo_lega
+	string		cod_lega
+	decimal {2}	coef_calo
+	string		um_lunghezza
+	decimal {6}	lunghezza
+	decimal {6}	peso_unitario
+end type
+

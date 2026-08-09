@@ -1,0 +1,16 @@
+﻿global type f_cambia_virgola_in_punto from function_object
+end type
+
+forward prototypes
+global function string f_cambia_virgola_in_punto (string as_val)
+end prototypes
+
+global function string f_cambia_virgola_in_punto (string as_val);integer li_pos
+
+li_pos=pos(as_val, ",")
+if li_pos>0 then
+	as_val=left(as_val, li_pos - 1)+"."+right(as_val, len(as_val) - li_pos)
+end if
+return as_val
+end function
+

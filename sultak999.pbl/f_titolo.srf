@@ -1,0 +1,17 @@
+﻿global type f_titolo from function_object
+end type
+
+forward prototypes
+global function decimal f_titolo (integer al_tit_id)
+end prototypes
+
+global function decimal f_titolo (integer al_tit_id);decimal{2} ld_titolo
+
+select tit_titolo
+into :ld_titolo
+from dba.titolo
+where tit_id = :al_tit_id
+;
+return ld_titolo
+end function
+

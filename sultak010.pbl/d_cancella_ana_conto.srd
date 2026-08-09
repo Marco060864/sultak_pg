@@ -1,0 +1,46 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=93 color="536870912" )
+table(column=(type=char(8) updatewhereclause=yes name=conto_conto_codice dbname="conto.conto_codice" )
+ column=(type=long updatewhereclause=yes name=conto_conto_id dbname="conto.conto_id" )
+ column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=ana_ana_id dbname="ana.ana_id" )
+ column=(type=char(80) updatewhereclause=yes name=ana_ana_rag_sociale dbname="ana.ana_rag_sociale" )
+ column=(type=char(16) updatewhereclause=yes name=ana_ana_p_iva dbname="ana.ana_p_iva" )
+ column=(type=char(16) updatewhereclause=yes name=ana_ana_c_f dbname="ana.ana_c_f" )
+ column=(type=char(1) updatewhereclause=yes name=c_cancella dbname="c_cancella" initial="1" values="	1/	0" )
+ retrieve="  SELECT  conto.conto_codice ,           conto.conto_id ,           ana.ana_id ,           ana.ana_rag_sociale ,           ana.ana_p_iva ,           ana.ana_c_f ,    
+       cast(0 as char(1)) as c_cancella    FROM dba.ana ,          dba.conto     WHERE ( conto.ana_id = ana.ana_id )   " update="dba.ana" updatewhere=0 updatekeyinplace=yes )
+text(band=header alignment="2" text="Conto
+Conto Codice" border="2" color="33554432" x="7" y="10" height="128" width="358" html.valueishtml="0"  name=conto_conto_codice_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Conto
+Conto Id" border="2" color="33554432" x="373" y="10" height="128" width="219" html.valueishtml="0"  name=conto_conto_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ana
+Ana Id" border="2" color="33554432" x="600" y="10" height="128" width="168" html.valueishtml="0"  name=ana_ana_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ana
+Ana Rag Sociale" border="2" color="33554432" x="775" y="10" height="128" width="1518" html.valueishtml="0"  name=ana_ana_rag_sociale_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ana
+Ana P Iva" border="2" color="33554432" x="2300" y="10" height="128" width="329" html.valueishtml="0"  name=ana_ana_p_iva_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ana
+Ana C F" border="2" color="33554432" x="2637" y="10" height="128" width="464" html.valueishtml="0"  name=ana_ana_c_f_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Scegli" border="2" color="33554432" x="3109" y="10" height="128" width="168" html.valueishtml="0"  name=c_cancella_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554432" x="7" y="10" height="74" width="358" format="[general]" html.valueishtml="0"  name=conto_conto_codice visible="1" edit.limit=8 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="5" color="33554432" x="373" y="10" height="74" width="219" format="[General]" html.valueishtml="0"  name=conto_conto_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="5" color="33554432" x="600" y="10" height="74" width="168" format="[General]" html.valueishtml="0"  name=ana_ana_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554432" x="775" y="10" height="74" width="1518" format="[general]" html.valueishtml="0"  name=ana_ana_rag_sociale visible="1" edit.limit=80 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="33554432" x="2300" y="10" height="74" width="329" format="[general]" html.valueishtml="0"  name=ana_ana_p_iva visible="1" edit.limit=11 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="33554432" x="2637" y="10" height="74" width="464" format="[general]" html.valueishtml="0"  name=ana_ana_c_f visible="1" edit.limit=16 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="2" tabsequence=32766 border="0" color="33554432" x="3109" y="10" height="74" width="168" format="[general]" html.valueishtml="0"  name=c_cancella visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

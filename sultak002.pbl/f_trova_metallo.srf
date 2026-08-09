@@ -1,0 +1,19 @@
+﻿global type f_trova_metallo from function_object
+end type
+
+forward prototypes
+global function string f_trova_metallo (long al_id_titolo)
+end prototypes
+
+global function string f_trova_metallo (long al_id_titolo);string ls_return
+
+select met_metallo
+into :ls_return
+from dba.metallo m, dba.titolo t
+where m.met_id=t.met_id
+and t.tit_id=:al_id_titolo
+;
+return ls_return
+
+end function
+

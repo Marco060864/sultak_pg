@@ -1,0 +1,46 @@
+﻿global type f_recupera_prezzo from function_object
+end type
+
+forward prototypes
+global function decimal f_recupera_prezzo (long al_riga, long al_id_art, string as_tipo_prezzo, long al_vali_id)
+end prototypes
+
+global function decimal f_recupera_prezzo (long al_riga, long al_id_art, string as_tipo_prezzo, long al_vali_id);decimal ldc_prezzo
+
+choose case as_tipo_prezzo
+	case "N"
+		select first pr_pezzo
+		into :ldc_prezzo
+		from prezzo
+		where vali_id=:al_vali_id
+		and art_id=:al_id_art
+		;		
+	case "P"
+		select first pr_peso
+		into :ldc_prezzo
+		from prezzo
+		where vali_id=:al_vali_id
+		and art_id=:al_id_art
+		;
+	case "CALO"
+		select first pr_c_calo
+		into :ldc_prezzo
+		from prezzo
+		where vali_id=:al_vali_id
+		and art_id=:al_id_art
+		;
+	case "AGG"
+		select first pr_aggiuntivo
+		into :ldc_prezzo
+		from prezzo
+		where vali_id=:al_vali_id
+		and art_id=:al_id_art
+		;
+end choose
+
+
+
+
+return ldc_prezzo
+end function
+

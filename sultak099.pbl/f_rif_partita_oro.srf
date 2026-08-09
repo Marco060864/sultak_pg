@@ -1,0 +1,25 @@
+﻿global type f_rif_partita_oro from function_object
+end type
+
+forward prototypes
+global function string f_rif_partita_oro (long al_id_riga_scarico)
+end prototypes
+
+global function string f_rif_partita_oro (long al_id_riga_scarico);  string ls_return
+ 
+ SELECT   'Rif. vs. Doc. n. '+doc.doc_numero+' del '+string(doc.doc_data)       +' g. '+string(sum(partita_scarico.scarico))
+ into :ls_return
+    FROM "doc",   
+         "partita_scarico",   
+         "rdoc" "rdoc_a" 
+   WHERE ( "rdoc_a"."rdoc_id" = "partita_scarico"."id_apertura" ) and  
+         ( "rdoc_a"."rdoc_doc_id" = "doc"."doc_id" ) and  
+         ( "partita_scarico"."id_scarico" =  :al_id_riga_scarico )   
+			group BY "doc"."doc_data" ,  "doc"."doc_numero" 
+ORDER BY "doc"."doc_data" ASC,   
+         "doc"."doc_numero" ASC   ;
+
+			
+			return ls_return
+end function
+

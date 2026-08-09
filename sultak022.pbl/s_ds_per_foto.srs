@@ -1,0 +1,18 @@
+﻿global type s_ds_per_foto from structure
+	datastore		ds_dati_doc
+	string		dw
+	string		titolo
+	integer		h_max
+	integer		w_max
+	integer		x_1
+	integer		y_1
+	integer		centra
+	integer		h_fissa
+	integer		taglia
+	string		cat_imp
+	integer		n_righe
+	string		dwchild
+	integer		w_pagina
+	integer		h_pagina
+end type
+

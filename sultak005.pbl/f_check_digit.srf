@@ -1,0 +1,74 @@
+﻿global type f_check_digit from function_object
+end type
+
+forward prototypes
+global function integer f_check_digit (string cod_barre, integer lunghezza)
+end prototypes
+
+global function integer f_check_digit (string cod_barre, integer lunghezza);Integer  li_i, li_pari, li_dispari, li_check_digit, li_decina
+Decimal {1} ld_i, ld_app
+string stringa[18]
+integer i,j1,j2
+
+setnull(li_check_digit)
+
+       
+    for i = 1 to (lunghezza - 1)
+        stringa[i] = mid(cod_barre,i,1)
+    next
+   
+    i=18
+    j1=0
+    j2=0
+   
+    do while (i>0)
+        j1 = j1 + integer(stringa[i])
+        if (i>1) then j2 = j2 +integer( stringa[i - 1])
+        i = i - 2
+    loop
+       
+    j2= j1 * 3 + j2
+    j2= 10 - mod(j2,10)
+    if j2=10 then j2=0
+    li_check_digit = integer(char(48+j2))
+   
+
+//    messagebox("Calcolo del Check Digit", "Non è possibile calcolare il Check Digit ~r~nper le tipologie non EAN")
+
+
+Return li_check_digit
+
+
+//Integer  li_i, li_pari, li_dispari, li_check_digit, li_decina, li_lunghezza
+//Decimal {1} ld_i, ld_app
+//
+//setnull(li_check_digit)
+//li_lunghezza=8
+//
+//for li_i=1 to li_lunghezza - 1
+//	ld_i = li_i/2
+//	
+//	if ld_i = truncate(li_i/2, 0) then		
+//		li_pari = li_pari + Integer(Mid( codice, li_i, 1 ))
+//	else		
+//		li_dispari = li_dispari + Integer(Mid( codice, li_i, 1 ))
+//	end if
+//end for
+//
+//li_check_digit = (li_pari * 3) + li_dispari
+//
+//ld_app = li_check_digit / 10
+//if ld_app = truncate(li_check_digit/10, 0) then		
+//	li_check_digit = 0
+//else
+//	do
+//		li_decina += 10
+//		
+//	loop while li_check_digit > li_decina
+//	
+//	li_check_digit = li_decina - li_check_digit
+//end if
+//
+//Return li_check_digit
+end function
+

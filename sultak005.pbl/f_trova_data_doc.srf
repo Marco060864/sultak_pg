@@ -1,0 +1,17 @@
+﻿global type f_trova_data_doc from function_object
+end type
+
+forward prototypes
+global function date f_trova_data_doc (long al_doc_id)
+end prototypes
+
+global function date f_trova_data_doc (long al_doc_id);date ldt_data_doc
+
+select doc_data
+into :ldt_data_doc
+from dba.doc 
+where  doc_id=:al_doc_id
+;
+return ldt_data_doc;
+end function
+

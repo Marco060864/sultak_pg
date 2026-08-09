@@ -1,0 +1,49 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=93 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes name=conto_banca_conto_id dbname="conto_banca.conto_id" )
+ column=(type=long update=yes updatewhereclause=yes name=conto_banca_banca_id dbname="conto_banca.banca_id" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=conto_banca_conto_banca_base dbname="conto_banca.conto_banca_base" initial="N" values="	S/	N" )
+ column=(type=char(4) update=yes updatewhereclause=yes name=conto_banca_cin_internazionale dbname="conto_banca.cin_internazionale" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=conto_banca_cin dbname="conto_banca.cin" )
+ column=(type=char(12) update=yes updatewhereclause=yes name=conto_banca_c_c dbname="conto_banca.c_c" initial="0" )
+ column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=conto_banca_conto_banca_id dbname="conto_banca.conto_banca_id" )
+ column=(type=char(8) updatewhereclause=yes name=conto_conto_codice dbname="conto.conto_codice" )
+ column=(type=char(80) updatewhereclause=yes name=ana_ana_rag_sociale dbname="ana.ana_rag_sociale" )
+ retrieve="  SELECT  conto_banca.conto_id ,           conto_banca.banca_id ,           conto_banca.conto_banca_base , 
+          conto_banca.cin_internazionale ,           conto_banca.cin ,           conto_banca.c_c ,           conto_banca.conto_banca_id ,      
+     conto.conto_codice ,           ana.ana_rag_sociale     FROM dba.ana ,           dba.conto ,      
+     dba.conto_banca    
+ WHERE ( conto.ana_id = ana.ana_id )
+ and     
+     ( conto.conto_id = conto_banca.conto_id )   " update="conto_banca" updatewhere=1 updatekeyinplace=yes  sort="ana_ana_rag_sociale A " )
+text(band=header alignment="0" text="Conto" border="2" color="33554432" x="7" y="10" height="64" width="417" html.valueishtml="0"  name=conto_banca_conto_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127"  height.autosize=yes)
+text(band=header alignment="0" text="Ragione Sociale" border="2" color="33554432" x="432" y="10" height="64" width="837" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Banca
+Base" border="2" color="33554432" x="2282" y="10" height="128" width="249" html.valueishtml="0"  name=conto_banca_conto_banca_base_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cin
+ Inter." border="2" color="33554432" x="2538" y="10" height="128" width="168" html.valueishtml="0"  name=conto_banca_cin_internazionale_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Cin" border="2" color="33554432" x="2714" y="10" height="64" width="139" html.valueishtml="0"  name=conto_banca_cin_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="C C" border="2" color="33554432" x="2860" y="10" height="64" width="358" html.valueishtml="0"  name=conto_banca_c_c_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Banca" border="2" color="33554432" x="1276" y="10" height="64" width="998" html.valueishtml="0"  name=conto_banca_banca_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=detail id=4 alignment="0" tabsequence=40 border="5" color="33554432" x="2538" y="10" height="74" width="168" format="[general]" html.valueishtml="0"  name=conto_banca_cin_internazionale visible="1" edit.limit=4 edit.case=upper edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=50 border="5" color="33554432" x="2714" y="10" height="74" width="139" format="[general]" html.valueishtml="0"  name=conto_banca_cin visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=60 border="5" color="33554432" x="2860" y="10" height="74" width="358" format="[general]" html.valueishtml="0"  name=conto_banca_c_c visible="1" edit.limit=12 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="2" tabsequence=30 border="5" color="33554432" x="2282" y="10" height="74" width="249" format="[general]" html.valueishtml="0"  name=conto_banca_conto_banca_base visible="1" checkbox.text="" checkbox.on="S" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="67108864" )
+column(band=detail id=1 alignment="0" tabsequence=10 border="5" color="33554432" x="7" y="10" height="70" width="417" format="[general]" html.valueishtml="0"  name=conto_banca_conto_id visible="1" dddw.name=d_ana_conto_gd dddw.displaycolumn=conto_conto_codice dddw.datacolumn=conto_conto_id dddw.percentwidth=300 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.nilisnull=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554432" x="432" y="10" height="70" width="837" format="[general]" html.valueishtml="0"  name=conto_banca_conto_id_1 visible="1" dddw.name=d_ana_conto_gd dddw.displaycolumn=ana_ana_rag_sociale dddw.datacolumn=conto_conto_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=no dddw.case=any dddw.nilisnull=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=2 alignment="0" tabsequence=20 border="5" color="33554432" x="1276" y="10" height="74" width="998" format="[general]" html.valueishtml="0"  name=conto_banca_banca_id visible="1" dddw.name=d_banca_gd dddw.displaycolumn=compute_2 dddw.datacolumn=banca_id dddw.percentwidth=200 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=yes dddw.case=any dddw.nilisnull=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

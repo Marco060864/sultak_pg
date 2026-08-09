@@ -1,0 +1,54 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=122 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=77 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=distinta_banca_id_distinta_banca dbname="distinta_banca.id_dist_banca" )
+ column=(type=long updatewhereclause=yes name=riga_dis_banca_num_riga dbname="riga_dis_banca.num_riga" )
+ column=(type=char(80) updatewhereclause=yes name=anagrafica_rag_soc_1 dbname="ana.ana_rag_sociale" )
+ column=(type=char(40) updatewhereclause=yes name=anagrafica_indirizzo dbname="ana.ana_indirizzo" )
+ column=(type=char(40) updatewhereclause=yes name=anagrafica_localita dbname="ana.ana_localita" )
+ column=(type=char(64) updatewhereclause=yes name=azienda_az_rag_sociale dbname="azienda.az_rag_sociale" )
+ column=(type=char(80) updatewhereclause=yes name=azienda_rag_soc2 dbname="azienda.rag_soc2" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"ana~" )  TABLE(NAME=~"conto~" )  TABLE(NAME=~"distinta_banca~" )  TABLE(NAME=~"riga_dis_banca~" )  TABLE(NAME=~"scadenza~" )  TABLE(NAME=~"doc~" )  TABLE(NAME=~"azienda~" ) COLUMN(NAME=~"distinta_banca.id_dist_banca~") COLUMN(NAME=~"riga_dis_banca.num_riga~") COLUMN(NAME=~"ana.ana_rag_sociale~") COLUMN(NAME=~"ana.ana_indirizzo~") COLUMN(NAME=~"ana.ana_localita~") COLUMN(NAME=~"azienda.az_rag_sociale~") COLUMN(NAME=~"azienda.rag_soc2~")    JOIN (LEFT=~"ana.ana_id~"    OP =~"=~"RIGHT=~"conto.ana_id~" )    JOIN (LEFT=~"riga_dis_banca.id_scadenza~"    OP =~"=~"RIGHT=~"scadenza.id_scadenza~" )    JOIN (LEFT=~"distinta_banca.id_dist_banca~"    OP =~"=~"RIGHT=~"riga_dis_banca.id_distinta_banca~" )    JOIN (LEFT=~"doc.doc_id~"    OP =~"=~"RIGHT=~"scadenza.doc_id~" )    JOIN (LEFT=~"doc.doc_conto_id~"    OP =~"=~"RIGHT=~"conto.conto_id~" )WHERE(    EXP1 =~"~~~"distinta_banca~~~".~~~"id_dist_banca~~~"~"   OP =~"=~"    EXP2 =~":rn_id_dis~" )  GROUP(NAME=~"distinta_banca.id_dist_banca~") GROUP(NAME=~"riga_dis_banca.num_riga~") GROUP(NAME=~"ana.ana_indirizzo~") GROUP(NAME=~"ana.ana_rag_sociale~") GROUP(NAME=~"ana.ana_localita~") GROUP(NAME=~"azienda.rag_soc2~") GROUP(NAME=~"azienda.az_rag_sociale~")) ORDER(NAME=~"riga_dis_banca.num_riga~" ASC=yes ) ARG(NAME = ~"rn_id_dis~" TYPE = number) " arguments=(("rn_id_dis", number)) )
+text(band=header alignment="2" text="Anagrafica
+Rag Soc 1" border="0" color="0" x="775" y="3" height="112" width="940" html.valueishtml="0"  name=anagrafica_rag_soc_1_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Indirizzo" border="0" color="0" x="1719" y="3" height="112" width="936" html.valueishtml="0"  name=anagrafica_indirizzo_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Localita" border="0" color="0" x="2666" y="3" height="112" width="479" html.valueishtml="0"  name=anagrafica_localita_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Record 20" border="0" color="0" x="3163" y="3" height="112" width="2139" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dis Banca
+Id Distinta Banca" border="0" color="0" x="4" y="3" height="112" width="366" html.valueishtml="0"  name=dis_banca_id_distinta_banca_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Riga Dis Banca
+Num Riga" border="0" color="0" x="439" y="3" height="112" width="333" html.valueishtml="0"  name=riga_dis_banca_num_riga_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="/* space(1) +
+'20' + 
+right('0000000' + riga_dis_banca_num_riga, 7) + 
+left( if(isnull(indirizzo), space(24), indirizzo)  + space(24), 24) + 
+left( if(isnull( localita ), space(24), indirizzo)  + space(24), 24) + 
+space(48) +
+space(14) */                                                                                                                 space(1) +
+'20' + 
+right('0000000' + riga_dis_banca_num_riga, 7) +
+left( if(isnull(  azienda_az_rag_sociale ), space(24),   azienda_az_rag_sociale )  + space(24), 24) + 
+left( if(isnull(   azienda_rag_soc2 ), space(24),   azienda_rag_soc2 )  + space(24), 24) + 
+space(48) +
+space(14)  "border="0" color="0" x="3163" y="3" height="70" width="2139" format="[general]" html.valueishtml="0"  name=rec_20 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="439" y="3" height="70" width="333" format="[general]" html.valueishtml="0"  name=riga_dis_banca_num_riga visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=0 border="0" color="0" x="830" y="3" height="64" width="827" html.valueishtml="0"  name=anagrafica_rag_soc_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=0 border="0" color="0" x="1752" y="3" height="64" width="881" html.valueishtml="0"  name=anagrafica_indirizzo visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=0 border="0" color="0" x="2699" y="6" height="61" width="417" html.valueishtml="0"  name=anagrafica_localita visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=0 border="0" color="0" x="37" y="12" height="51" width="362" html.valueishtml="0"  name=distinta_banca_id_distinta_banca visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

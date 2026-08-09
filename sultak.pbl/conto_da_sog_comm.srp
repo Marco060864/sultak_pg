@@ -1,0 +1,56 @@
+﻿PIPELINE(source_connect=fomacometa,destination_connect=fomasultak,type=update,commit=100,errors=100,keyname="conto")
+SOURCE(name="sog_commerciale/anagrafica",COLUMN(type=long,name="id_sog",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=varchar,name="sog_commerciale.codice",dbtype="char(8)",nulls_allowed=no)
+ COLUMN(type=long,name="c_id_sottomastro",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=long,name="sog_commerciale.id_anagrafica",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=long,name="pip01",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=long,name="pip02",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=long,name="pip03",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=varchar,name="sog_commerciale.num_ns_prot_documenti",dbtype="char(10)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="sog_commerciale.num_lr_prot_documenti",dbtype="char(10)",nulls_allowed=yes)
+ COLUMN(type=date,name="sog_commerciale.data_ns_prot_documenti",dbtype="date",nulls_allowed=yes)
+ COLUMN(type=date,name="sog_commerciale.data_lr_prot_documenti",dbtype="date",nulls_allowed=yes)
+ COLUMN(type=long,name="pip04",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=varchar,name="pip05",dbtype="char(2)",nulls_allowed=no)
+ COLUMN(type=long,name="anno",dbtype="integer",nulls_allowed=no)
+ COLUMN(type=varchar,name="barcode",dbtype="char(2)",nulls_allowed=no)
+ COLUMN(type=long,name="pip022",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=varchar,name="anagrafica.rag_soc_1",dbtype="char(40)",nulls_allowed=no))
+RETRIEVE(statement="SELECT cast(null as integer) as id_sog,   
+         ~"sog_commerciale~".~"codice~",   
+         cast(case tipo when 'C' then 1 when 'F' then 2 when 'V' then 4 end  as integer) as c_id_sottomastro,   
+         ~"sog_commerciale~".~"id_anagrafica~",   
+         cast(0 as integer) as pip01,   
+         cast(0 as integer) as pip02,   
+         cast(0 as integer) as pip03,   
+         ~"sog_commerciale~".~"num_ns_prot_documenti~",   
+         ~"sog_commerciale~".~"num_lr_prot_documenti~",   
+         ~"sog_commerciale~".~"data_ns_prot_documenti~",   
+         ~"sog_commerciale~".~"data_lr_prot_documenti~",   
+         cast(0 as integer) as pip04,   
+         cast('' as char(2)) as pip05,   
+         cast(2012 as integer) as anno,   
+         cast('' as char(2)) as barcode,   
+         cast(null as integer) as pip022,   
+         ~"anagrafica~".~"rag_soc_1~"  
+    FROM ~"sog_commerciale~",   
+         ~"anagrafica~"  
+   WHERE ( ~"anagrafica~".~"id_anagrafica~" = ~"sog_commerciale~".~"id_anagrafica~" )   
+and left( ~"sog_commerciale~".~"codice~", 2)<>'AL'")
+DESTINATION(name="conto",COLUMN(type=long,name="conto_id",dbtype="integer",nulls_allowed=no,initial_value="exclude",default_value="autoincrement")
+ COLUMN(type=varchar,name="conto_codice",dbtype="char(8)",key=yes,nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=long,name="sottomastro_id",dbtype="integer",nulls_allowed=no,initial_value="0")
+ COLUMN(type=long,name="ana_id",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=long,name="iva_id",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=long,name="listino_id",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=long,name="paga_id",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=long,name="di_ns_prot",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=long,name="di_vs_prot",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=date,name="di_ns_data",dbtype="date",nulls_allowed=yes)
+ COLUMN(type=date,name="di_vs_data",dbtype="date",nulls_allowed=yes)
+ COLUMN(type=long,name="di_ns_pag",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=varchar,name="di_uff_iva",dbtype="varchar(32)",nulls_allowed=yes)
+ COLUMN(type=decimal,name="anno_dich_intento",dbtype="numeric(4,0)",nulls_allowed=yes)
+ COLUMN(type=varchar,name="barcode",dbtype="varchar(32)",nulls_allowed=yes)
+ COLUMN(type=long,name="id_tipo_conto",dbtype="integer",nulls_allowed=yes)
+ COLUMN(type=varchar,name="descrizione",dbtype="varchar(255)",nulls_allowed=no,initial_value="spaces"))

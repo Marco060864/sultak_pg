@@ -1,0 +1,68 @@
+﻿global type f_dich_intento from function_object
+end type
+
+forward prototypes
+global function string f_dich_intento (long al_id_conto, date adt_data_doc)
+end prototypes
+
+global function string f_dich_intento (long al_id_conto, date adt_data_doc);string ls_return, ls_data, ls_numero,  ls_art_iva, ls_num_prot_AE
+date ldt_data, ldt_ns_data, ldt_pres_AE
+integer li_numero, li_ns_numero, li_anno
+long ll_id_iva
+
+
+
+if adt_data_doc>= date('2017-03-01') then
+	select vs_data, vs_numero, ns_numero, ns_data, id_iva, num_prot_AE, data_pres_ae
+	into :ldt_data, :li_numero, :li_ns_numero, :ldt_ns_data, :ll_id_iva, :ls_num_prot_AE, :ldt_pres_AE
+	from dba.dich_intento
+	where id_conto=:al_id_conto
+	and inizio<=:adt_data_doc and fine>=:adt_data_doc
+	;
+
+else
+	li_anno=year(adt_data_doc)
+	select vs_data, vs_numero, ns_numero, ns_data
+	into :ldt_data, :li_numero, :li_ns_numero, :ldt_ns_data
+	from dba.dich_intento
+	where id_conto=:al_id_conto
+	and anno=:li_anno
+	;
+end if
+if ll_id_iva>0 then
+	select iva_codice
+	into :ls_art_iva
+	from dba.iva
+	where iva_id=:ll_id_iva;
+	
+	if adt_data_doc>=date("2020-01-01") then //dal primo gennaio occorre anche la data
+		if 	ls_num_prot_AE> " " then //and  ldt_pres_AE>date('1900-01-01') then
+			ls_return=" "+ ls_num_prot_AE  +"@"+string(ldt_pres_AE, "yyyy-mm-dd")
+		end if
+	elseif  adt_data_doc<= date("2019-12-31") then
+		if li_numero>0 and ldt_data> date('2000-01-01')  then  //and li_ns_numero>0 and ldt_ns_data > date('2000-01-01')
+			ls_numero=trim(string(li_numero))
+			ls_data=string(ldt_data, "dd/mm/yy")
+			//ls_return="Operazione non imponibile IVA ai sensi dello art. "+ls_art_iva+" DPR 633/72 e successive modifiche come da Vs. dichiarazione di intento n. "+&
+			//ls_numero+" emessa in data "+ls_data+" e da noi registrata il "+string(ldt_ns_data, "dd/mm/yy")+" al  n. "+string(li_ns_numero)+"."
+			
+			ls_return="Dich. Intento n. "+ls_numero+" emessa in data "+ls_data
+			if li_ns_numero>0 and ldt_ns_data > date('2000-01-01') then
+				ls_return+= " e da noi reg. al N. "+string(li_ns_numero)+" il "+string(ldt_ns_data, "dd/mm/yyyy")
+			end if
+		else
+			ls_return=""
+		end if
+	else //siamo nel 2020 sono cambiati i campi da riportare (data presentazioen all'agenzia e num_protocollo dell'agenzia (fino al 2022) vedi sopra
+//		if ls_num_prot_AE>" " and ldt_pres_AE> date('2000-01-01')  then
+//			ls_return="Dich. Intento n. prot. A.E. "+ls_num_prot_AE // dice che basta così solo il numerone    +" registrata in data "+string(ldt_pres_AE, "dd/mm/yyyy")
+//		else
+//			ls_return=""
+//		end if
+	end if
+	return ls_return
+else
+	return ""
+end if
+end function
+

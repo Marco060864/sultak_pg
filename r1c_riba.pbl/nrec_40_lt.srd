@@ -1,0 +1,109 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=122 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=80 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=dis_banca_id_distinta_banca dbname="distinta_banca.id_dist_banca" )
+ column=(type=char(40) updatewhereclause=yes name=indirizzo dbname="ana.ana_indirizzo" )
+ column=(type=char(40) updatewhereclause=yes name=localita dbname="ana.ana_localita" )
+ column=(type=char(5) updatewhereclause=yes name=cap dbname="ana.ana_cap" )
+ column=(type=char(2) updatewhereclause=yes name=provincia dbname="ana.ana_provincia" )
+ column=(type=long updatewhereclause=yes name=riga_dis_banca_num_riga dbname="riga_dis_banca.num_riga" )
+ column=(type=char(25) updatewhereclause=yes name=loc_prov dbname="loc_prov" )
+ column=(type=char(40) updatewhereclause=yes name=destinazione_indirizzo dbname="destinazione.dest_indirizzo" )
+ column=(type=char(10) updatewhereclause=yes name=destinazione_cap dbname="destinazione.dest_cap" )
+ column=(type=char(40) updatewhereclause=yes name=destinazione_localita dbname="destinazione.dest_localita" )
+ column=(type=char(5) updatewhereclause=yes name=destinazione_provincia dbname="destinazione.dest_provincia" )
+ column=(type=char(25) updatewhereclause=yes name=destinazione_loc_prov dbname="destinazione_loc_prov" )
+ retrieve="  SELECT ~"distinta_banca~".~"id_dist_banca~",   
+         ~"ana~".~"ana_indirizzo~",   
+         ~"ana~".~"ana_localita~",   
+         ~"ana~".~"ana_cap~",   
+         ~"ana~".~"ana_provincia~",   
+         ~"riga_dis_banca~".~"num_riga~",   
+         CAST(SUBSTR(~"ana~".~"ana_localita~" || ' ' || ~"ana~".~"ana_provincia~", 1, 25) AS CHAR(25)) AS loc_prov,   
+         ~"destinazione~".~"dest_indirizzo~",   
+         ~"destinazione~".~"dest_cap~",   
+         ~"destinazione~".~"dest_localita~",   
+         ~"destinazione~".~"dest_provincia~",   
+         CAST(SUBSTR( ~"destinazione~".~"dest_localita~" || ' ' || ~"destinazione~".~"dest_provincia~" , 1, 25) AS CHAR(25)) AS destinazione_loc_prov  
+    FROM dba.~"distinta_banca~",   
+         dba.~"riga_dis_banca~",   
+         dba.~"scadenza~",   
+         dba.~"ana~",
+			dba.~"conto~",
+			dba.~"destinazione~", 
+dba.~"doc~"
+   WHERE ~"distinta_banca~".~"id_dist_banca~" = :rn_id_dis AND
+			~"riga_dis_banca~".~"id_distinta_banca~" = ~"distinta_banca~".~"id_dist_banca~" AND
+         ~"scadenza~".~"id_scadenza~"  = ~"riga_dis_banca~".~"id_scadenza~" AND
+		~"scadenza~".~"doc_id~"=~"doc~".~"doc_id~" and
+         ~"conto~".~"conto_id~" = ~"doc~".~"doc_conto_id~" AND
+
+         ~"ana~".~"ana_id~" = ~"conto~".~"ana_id~" and
+			~"destinazione~".~"ana_id~"	=* ~"conto~".~"ana_id~" AND
+			~"destinazione~".~"dest_tipo~" = 'R'
+GROUP BY ~"distinta_banca~".~"id_dist_banca~",   
+         ~"ana~".~"ana_indirizzo~",   
+         ~"ana~".~"ana_localita~",   
+         ~"ana~".~"ana_cap~",   
+         ~"ana~".~"ana_provincia~",   
+         ~"riga_dis_banca~".~"num_riga~", 
+			~"destinazione~".~"dest_indirizzo~",   
+         ~"destinazione~".~"dest_cap~",   
+         ~"destinazione~".~"dest_localita~",   
+         ~"destinazione~".~"dest_provincia~"
+ORDER BY ~"riga_dis_banca~".~"num_riga~" ASC   
+" arguments=(("rn_id_dis", number)) )
+text(band=header alignment="2" text="Dis Banca
+Id Distinta Banca" border="0" color="0" x="4" y="3" height="112" width="366" html.valueishtml="0"  name=dis_banca_id_distinta_banca_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Q1" border="0" color="0" x="377" y="3" height="58" width="62" html.valueishtml="0"  name=q1_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Q2" border="0" color="0" x="443" y="3" height="58" width="69" html.valueishtml="0"  name=q2_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Indirizzo" border="0" color="0" x="519" y="3" height="112" width="940" html.valueishtml="0"  name=anagrafica_indirizzo_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Localita" border="0" color="0" x="1463" y="3" height="112" width="936" html.valueishtml="0"  name=anagrafica_localita_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Cap" border="0" color="0" x="2406" y="3" height="112" width="249" html.valueishtml="0"  name=anagrafica_cap_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Provincia" border="0" color="0" x="2662" y="3" height="112" width="245" html.valueishtml="0"  name=anagrafica_provincia_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression=" space(1) +
+'40' +
+right('0000000' + riga_dis_banca_num_riga, 7) +
+
+if ( not isnull(  destinazione_indirizzo ) ,   
+   (left(destinazione_indirizzo + space(30), 30) +
+   left(if(isnull(  destinazione_cap  ), space(5),  destinazione_cap ) + space(5), 5)  +
+   left(if(isnull(   destinazione_loc_prov  ), space(25),   destinazione_loc_prov  ) +         space(25), 25 ) ),
+
+   (left(if(isnull( indirizzo ), space(30), indirizzo) + space(30), 30) +
+   left(if(isnull( cap ), space(5), cap) + space(5), 5)  +
+   left(if(isnull(  loc_prov ), space(25),  loc_prov ) + space(25), 25) )
+   ) +
+
+space(50) "border="0" color="0" x="3719" y="0" height="77" width="256" format="[general]" html.valueishtml="0"  name=rec_40 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="2842" y="9" height="54" width="362" format="[general]" html.valueishtml="0"  name=riga_dis_banca_num_riga visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if(len(indirizzo) > 30, mid(indirizzo, 1, 30), indirizzo+ space(30 - len(indirizzo))) "border="0" color="0" x="3251" y="9" height="54" width="183" format="[general]" html.valueishtml="0"  name=ind visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" if(len(localita) > 24, mid(localita, 1, 24), localita+ space(24 - len(localita))) "border="0" color="0" x="3474" y="9" height="54" width="183" format="[general]" html.valueishtml="0"  name=loc visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="6009" y="19" height="51" width="391" format="[general]" html.valueishtml="0"  name=destinazione_provincia visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="5614" y="16" height="51" width="358" format="[general]" html.valueishtml="0"  name=destinazione_localita visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="5098" y="19" height="51" width="479" format="[general]" html.valueishtml="0"  name=destinazione_cap visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="4667" y="19" height="51" width="380" format="[general]" html.valueishtml="0"  name=destinazione_indirizzo visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="62" y="0" height="64" width="201" format="[General]" html.valueishtml="0"  name=dis_banca_id_distinta_banca visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4037" y="12" height="58" width="578" format="[general]" html.valueishtml="0"  name=loc_prov visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="2421" y="3" height="64" width="201" format="[general]" html.valueishtml="0"  name=cap visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2633" y="3" height="64" width="201" format="[general]" html.valueishtml="0"  name=provincia visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="816" y="12" height="64" width="201" format="[general]" html.valueishtml="0"  name=indirizzo visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="1697" y="12" height="64" width="201" format="[general]" html.valueishtml="0"  name=localita visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

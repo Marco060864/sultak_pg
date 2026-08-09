@@ -1,0 +1,171 @@
+﻿global type f_crea_c_f from function_object
+end type
+
+forward prototypes
+global function string f_crea_c_f (string as_cognome, string as_nome, string as_sesso, string as_comnas, string as_provnas, date ad_datanas)
+end prototypes
+
+global function string f_crea_c_f (string as_cognome, string as_nome, string as_sesso, string as_comnas, string as_provnas, date ad_datanas);//
+boolean	lb_goon
+string	ls_retval, ls_datanas
+integer	li_tmp1
+//
+integer	li_k, li_z, li_w, li_x, li_j, li_ms, li_init, li_gior
+string	ls_cogn, ls_nom, ls_gior, ls_mese, ls_anno, ls_kk, ls_jj, ls_cfcom
+string	ls_codfisc, ls_codcom
+char		lc_ccon[20], lc_cvoc[20], lc_ncon[20], lc_nvoc[20], lc_lt
+integer	li_pari, li_dispari, li_totale, li_q, li_quoz
+
+Constant string ls_Char = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+Constant string ls_conv = " 0 1 1 0 2 5 3 7 4 9 513 615 717 819 921 0 1 1 0 2 5 3 7 4 9 513 615 717 819 92110 211 412181320141115 316 617 818121914201621102222232524242523"
+Constant string ls_mesi = "ABCDEHLMPRST"
+
+lb_goon = true
+ls_retval = ""
+//
+// check parametri passati (poi si vede per la data)
+if (isNull(as_cognome)) or (as_cognome="") then lb_goon = false
+if (isNull(as_nome)) or (as_nome="") then lb_goon = false
+if (isNull(as_sesso)) or (as_sesso="") then lb_goon = false
+if (isNull(as_comnas)) or (as_comnas="") then lb_goon = false
+if (isNull(as_provnas)) or (as_provnas="") then lb_goon = false
+// trasformo in maiuscolo. Per ora conto di possedere già il codice del comune
+as_cognome = upper(as_cognome)
+as_nome = upper(as_nome)
+as_sesso = upper(as_sesso)
+as_comnas = upper(as_comnas)
+as_provnas = upper(as_provnas)
+ls_datanas = string(ad_datanas,"dd/mm/yyyy")
+
+
+if lb_goon then
+	// separazione delle vocali e delle consonanti del cognome
+	li_k = 0
+	li_z = 0
+	li_w = 0
+	//// forse non servono perché ho option base 1 qui (credo)
+	//lc_ccon[0] = ' '
+	//lc_cvoc[0] = ' '
+	do while li_w < len(as_cognome)
+		li_w ++
+		lc_lt = mid(as_cognome,li_w,1)		// ls_lt candidato da string a char
+		if (lc_lt>='A') and (lc_lt <='Z') then
+			if (lc_lt<>'A') and (lc_lt<>'E') and (lc_lt<>'I') and (lc_lt<>'O') and (lc_lt<>'U') then
+				li_z ++
+				lc_ccon[li_z] = lc_lt
+			else
+				li_k ++
+				lc_cvoc[li_k] = lc_lt
+				ls_kk=trim(string(li_k))
+			end if
+		end if
+	loop
+	// separazione delle vocali e delle consonanti del nome
+	li_x = 0
+	li_j = 0
+	li_w = 0
+	//// forse non servono perché ho option base 1 qui (credo)
+	//lc_ncon[0] = ' '
+	//lc_nvoc[0] = ' '
+	do while li_w < len(as_nome)
+		li_w ++
+		lc_lt = mid(as_nome,li_w,1)		// ls_lt candidato da string a char
+		if (lc_lt>='A') and (lc_lt <='Z') then
+			if (lc_lt<>'A') and (lc_lt<>'E') and (lc_lt<>'I') and (lc_lt<>'O') and (lc_lt<>'U') then
+				li_x ++
+				lc_ncon[li_x] = lc_lt
+			else
+				li_j ++
+				lc_nvoc[li_j] = lc_lt
+				ls_jj=trim(string(li_j))
+			end if
+		end if
+	loop
+	// calcolo della data di nascita
+	li_gior = integer(mid(ls_datanas,1,2))
+	if as_sesso = "F" then li_gior = li_gior + 40
+	ls_gior = trim(string(li_gior))
+	if li_gior<10 then ls_gior = "0"+ls_gior
+	li_ms = integer(mid(ls_datanas,4,2))
+	ls_anno = mid(ls_datanas,9,2)
+	ls_mese = mid(ls_mesi,li_ms,1)
+	// calcolo del codice del comune in base a località e provincia, per ora si salta
+	// poi si fa un embedded sql
+	ls_codcom = as_comnas+as_provnas
+	// calcolo dei caratteri del cognome
+	choose case li_z
+		case is >= 3
+			ls_cogn = lc_ccon[1]+lc_ccon[2]+lc_ccon[3]
+		case 2
+			ls_cogn = lc_ccon[1]+lc_ccon[2]+lc_cvoc[1]
+		case 1
+			if li_k >= 2 then
+				ls_cogn = lc_ccon[1]+lc_cvoc[1]+lc_cvoc[2]
+			else
+				ls_cogn = lc_ccon[1]+lc_cvoc[1]+'X'
+			end if
+		case 0
+			if li_k=2 then
+				ls_cogn = lc_cvoc[1]+lc_cvoc[2]+'X'
+			end if
+	end choose
+	//
+	choose case li_x
+		case is >=4
+			ls_Nom = lc_ncon[1]+lc_ncon[3]+lc_ncon[4]
+		case 3
+			ls_Nom = lc_ncon[1]+lc_ncon[2]+lc_ncon[3]
+		case 2
+			ls_Nom = lc_ncon[1]+lc_ncon[2]+lc_nvoc[1]
+		case 1
+			choose case li_j
+				case is >=2
+					ls_Nom = lc_ncon[1]+lc_nvoc[1]+lc_nvoc[2]
+				case 1
+					ls_Nom = lc_ncon[1]+lc_nvoc[1]+'X'
+				case 2
+					ls_Nom = lc_ncon[1]+lc_nvoc[2]+'X'	// dubbio
+			end choose
+	end choose
+	//
+	ls_codfisc = ls_cogn+ls_nom+ls_anno+ls_mese+ls_gior+ls_codcom
+	// calcolo del carattere di CRC
+	li_w = 1
+	li_init = 0
+	li_dispari = 0
+	do while li_w < len(ls_codfisc)
+		if li_init=1 then li_w= li_w + 2
+		li_init = 1
+		if li_w <= len(ls_codfisc) then
+			lc_lt = mid(ls_codfisc,li_w,1)
+			li_tmp1 = ((pos(ls_char,lc_lt) - 1) * 4) + 3
+			li_dispari = li_dispari+ integer(mid(ls_conv,(li_tmp1),2))
+		end if
+	loop
+	//
+	li_w = 0
+	li_pari = 0
+	do while li_w < len(ls_codfisc)
+		li_w = li_w + 2
+		if li_w <= len(ls_codfisc) then
+			lc_lt = mid(ls_codfisc,li_w,1)
+			li_tmp1 = ((pos(ls_char,lc_lt) - 1) * 4) + 1
+			li_pari = li_pari+ integer(mid(ls_conv,(li_tmp1),2))
+		end if
+	loop
+	//
+	li_totale = li_pari+li_dispari
+//	li_q = li_totale / 26
+//	li_quoz = li_totale - (li_q * 26)
+	li_quoz = mod(li_totale,26)
+	lc_lt = char(65+li_quoz)
+	
+	ls_retval = ls_cogn+ls_nom+ls_anno+ls_mese+ls_gior+ls_codcom+lc_lt
+else
+	ls_retval = ""
+end if
+
+return ls_retval
+
+end function
+

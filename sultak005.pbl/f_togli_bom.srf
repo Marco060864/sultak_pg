@@ -1,0 +1,35 @@
+﻿global type f_togli_bom from function_object
+end type
+
+forward prototypes
+global subroutine f_togli_bom (string ls_path)
+end prototypes
+
+global subroutine f_togli_bom (string ls_path);string  ls_file, ls_chunk, ls_ansi
+//ls_path = sle_path.text
+int li_file, li_test, li_file2
+if not fileexists(ls_path) then return
+
+li_file = FileOpen(ls_path, streammode!)
+if li_file > 0 then
+    FileSeek(li_file, 3, FromBeginning!) //skip the utf-8 BOM
+
+    //read the file by blocks, FileRead is limited to 32kB
+    do while FileRead(li_file, ls_chunk) > 0
+        ls_file += ls_chunk //concatenate in loop works but is not so performant
+    loop
+	
+    FileClose(li_file)
+	 ls_path=left(ls_path, len(ls_path) - 4)+"2.XML"
+	 li_file2 = FileOpen(ls_path, streamMode!, Write!, LockWrite!, Replace!, EncodingUTF8!)
+li_test=FileWriteEx(li_file2, ls_file)
+ FileClose(li_file2)
+  //  ls_ansi = utf8_to_ansi(ls_file)
+  //  dw_tab.importstring( text!, ls_ansi)
+end if
+
+
+
+
+end subroutine
+

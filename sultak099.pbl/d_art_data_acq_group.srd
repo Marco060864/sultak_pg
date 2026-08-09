@@ -1,0 +1,51 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=176 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=74 color="536870912" )
+detail(height=0 color="536870912"  height.autosize=yes)
+table(column=(type=decimal(4) updatewhereclause=yes name=c_peso1 dbname="c_peso1" )
+ column=(type=decimal(4) updatewhereclause=yes name=c_qta1 dbname="c_qta1" )
+ column=(type=char(32) updatewhereclause=yes name=art_art_codice dbname="art.art_codice" )
+ column=(type=long updatewhereclause=yes name=art_art_id dbname="art.art_id" )
+ retrieve="  SELECT sum( if ~"rdoc~".~"causale_id~"=1 then ~"rdoc~".~"rdoc_peso~"    else ~"rdoc~".~"rdoc_peso~" * -1    endif) as c_peso1,   
+         sum( if ~"rdoc~".~"causale_id~"=1 then ~"rdoc~".~"rdoc_qta~"    else ~"rdoc~".~"rdoc_qta~" * -1    endif) as c_qta1,   
+         ~"art~".~"art_codice~",   
+         ~"art~".~"art_id~"  
+    FROM ~"art~",   
+         ~"doc~",   
+         ~"rdoc~"  
+   WHERE ( ~"rdoc~".~"rdoc_doc_id~" = ~"doc~".~"doc_id~" ) and  
+         ( ~"rdoc~".~"rdoc_art_id~" = ~"art~".~"art_id~" ) and  
+         (~"rdoc~".~"causale_id~" = 1 OR  
+         ~"rdoc~".~"causale_id~" = 2 OR  
+         ~"rdoc~".~"causale_id~" = 12 OR  
+         ~"rdoc~".~"causale_id~" = 18) AND  
+         ~"doc~".~"doc_data~" <= :a_data 
+           
+GROUP BY ~"art~".~"art_codice~" , ~"art~".~"art_id~"    
+" filter=" c_qta1 >0"arguments=(("a_data", date))  sort="art_art_codice A " )
+text(band=header alignment="0" text="Stampa giacenza Articoli con relativo Doc. di Acquisto" border="0" color="33554432" x="33" y="0" height="80" width="2593" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-12" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Art Codice" border="0" color="33554432" x="4" y="102" height="64" width="691" html.valueishtml="0"  name=art_art_codice_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Estremi Documento/i di Acquisto" border="0" color="33554432" x="1518" y="102" height="64" width="1810" html.valueishtml="0"  name=doc_doc_data_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Qta" border="0" color="33554432" x="1126" y="102" height="64" width="366" html.valueishtml="0"  name=rdoc_rdoc_qta_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Peso" border="0" color="33554432" x="720" y="102" height="64" width="380" html.valueishtml="0"  name=rdoc_rdoc_peso_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=detail x1="0" y1="80~tc_doc_acq.Y+10" x2="3321" y2="80~tc_doc_acq.Y+10"  name=l_1 visible="1" pen.style="0" pen.width="4" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="2" tabsequence=32766 border="0" color="33554432" x="4" y="6" height="64" width="691" format="[general]" html.valueishtml="0"  name=art_art_codice visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_trova_doc_acq(string( a_data ), art_art_id ,  c_qta1 )"border="0" color="33554432" x="1518" y="6" height="64" width="1810" format="[General]" html.valueishtml="0"  name=c_doc_acq visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912"  height.autosize=yes)
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="1126" y="6" height="64" width="366" format="#,0" html.valueishtml="0"  name=c_qta1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="33554432" x="720" y="6" height="64" width="380" format="#,0.00" html.valueishtml="0"  name=c_peso1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="33554432" x="2425" y="3" height="67" width="706" format="[general]" html.valueishtml="0"  name=page_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="today()"border="0" color="33554432" x="18" y="3" height="67" width="505" format="[general]" html.valueishtml="0"  name=date_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="~"Articoli Trovati: ~"+string(rowcount())"border="0" color="33554432" x="717" y="3" height="67" width="801" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

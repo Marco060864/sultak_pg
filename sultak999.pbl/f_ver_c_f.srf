@@ -1,0 +1,80 @@
+﻿global type f_ver_c_f from function_object
+end type
+
+forward prototypes
+global function integer f_ver_c_f (string as_cf, string as_nazione)
+end prototypes
+
+global function integer f_ver_c_f (string as_cf, string as_nazione);// ***********************************************************************************
+//
+//    Scopo: Funzione globale per il controllo della validità del Codice Fiscale. 
+//				Accetta in input due stringhe as_CF (codice fiscale) e as_Nazione (nazione).
+//				Deve restituire 0 se la validazione ha successo o 1 se non ha successo.
+//
+// ***********************************************************************************
+
+Constant string ls_Char = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+Constant string ls_conv = " 0 1 1 0 2 5 3 7 4 9 513 615 717 819 921 0 1 1 0 2 5 3 7 4 9 513 615 717 819 92110 211 412181320141115 316 617 818121914201621102222232524242523"
+
+integer	li_retval
+string	ls_codfisc,ls_check
+integer	li_w, li_init, li_pari, li_dispari, li_tmp1, li_totale, li_quoz
+char		lc_lt, lc_check
+long		ll_lung
+
+if as_nazione = "IT" then
+	// siamo in Italia, si usa l'algoritmo Italiano
+	ll_lung = len(as_cf)
+	if ll_lung = 16 then
+		ls_codfisc = mid(as_cf,1,15)
+		lc_check = mid(as_cf,16,1)
+		
+	// calcolo del carattere di CRC
+		li_w = 1
+		li_init = 0
+		li_dispari = 0
+		do while li_w < len(ls_codfisc)
+			if li_init=1 then li_w= li_w + 2
+			li_init = 1
+			if li_w <= len(ls_codfisc) then
+				lc_lt = mid(ls_codfisc,li_w,1)
+				li_tmp1 = ((pos(ls_char,lc_lt) - 1) * 4) + 3
+				li_dispari = li_dispari+ integer(mid(ls_conv,(li_tmp1),2))
+			end if
+		loop
+	//
+		li_w = 0
+		li_pari = 0
+		do while li_w < len(ls_codfisc)
+			li_w = li_w + 2
+			if li_w <= len(ls_codfisc) then
+				lc_lt = mid(ls_codfisc,li_w,1)
+				li_tmp1 = ((pos(ls_char,lc_lt) - 1) * 4) + 1
+				li_pari = li_pari+ integer(mid(ls_conv,(li_tmp1),2))
+			end if
+		loop
+	//
+		li_totale = li_pari+li_dispari
+	//	li_q = li_totale / 26
+	//	li_quoz = li_totale - (li_q * 26)
+		li_quoz = mod(li_totale,26)
+		lc_lt = char(65+li_quoz)
+	
+		if (lc_lt=lc_check) then
+			li_retval = 0
+		else
+			li_retval = 1
+		end if
+	// la lunghezza del parametro as_cf non è 16, mi spiace
+	else
+		li_retval = 1
+	end if
+	
+else
+	// siamo all'estero, si vedrà, intanto va bene
+	li_retval = 0
+end if
+
+return li_retval
+end function
+

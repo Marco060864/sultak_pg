@@ -1,0 +1,34 @@
+﻿global type f_blob_a_base64 from function_object
+end type
+
+forward prototypes
+global function string f_blob_a_base64 (blob ablb_dato)
+end prototypes
+
+global function string f_blob_a_base64 (blob ablb_dato);//public function string f_blob_a_base64 (blob ablb_dato);
+//codifica un blob in base64 tramite l'API Windows CryptBinaryToStringA (crypt32.dll)
+//NON usare più il trucco MSXML/OLE: per blob grandi (es. un PDF) corrompe i dati oltre una certa dimensione
+ulong lul_len_input, lul_len_output
+string ls_base64
+boolean lb_ok
+
+lul_len_input = len(ablb_dato)
+if lul_len_input = 0 then return ""
+
+//dimensione buffer output: formula base64 (ceil(n/3)*4) + margine di sicurezza
+lul_len_output = ((lul_len_input + 2) / 3) * 4 + 4
+ls_base64 = space(lul_len_output)
+
+//1090519041 = CRYPT_STRING_BASE64 (1) OR CRYPT_STRING_NOCRLF (0x40000000): base64 puro, senza a-capo
+lb_ok = CryptBinaryToStringW(ablb_dato, lul_len_input, 1073741825, ls_base64, lul_len_output)
+
+if not lb_ok then
+	messagebox("Attenzione!", "Errore nella codifica Base64 dell'allegato PDF (CryptBinaryToStringA)! Codice errore Windows: "+string(GetLastError()))
+	return ""
+end if
+
+return left(ls_base64, lul_len_output)
+
+
+end function
+

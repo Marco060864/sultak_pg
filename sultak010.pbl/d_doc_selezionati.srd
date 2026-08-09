@@ -1,0 +1,48 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=83 color="536870912" )
+detail(height=93 color="536870912" )
+table(column=(type=long update=yes updatewhereclause=yes key=yes identity=yes name=doc_doc_id dbname="doc.doc_id" )
+ column=(type=char(16) updatewhereclause=yes name=doc_doc_numero dbname="doc.doc_numero" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data dbname="doc.doc_data" )
+ column=(type=long updatewhereclause=yes name=doc_doc_num_prog dbname="doc.doc_num_prog" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data_prog dbname="doc.doc_data_prog" )
+ column=(type=long updatewhereclause=yes name=doc_doc_conto_id dbname="doc.doc_conto_id" )
+ column=(type=long updatewhereclause=yes name=guida_id dbname="doc.guida_id" )
+ column=(type=char(1) updatewhereclause=yes name=c_cancella dbname="c_cancella" initial="1" values="	1/	0" )
+ retrieve="  SELECT  doc.doc_id ,           doc.doc_numero ,           doc.doc_data ,           doc.doc_num_prog ,      
+     doc.doc_data_prog ,           doc.doc_conto_id ,           doc.guida_id ,           cast(0 as char(1)) as c_cancella    FROM dba.doc    " update="dba.doc" updatewhere=0 updatekeyinplace=yes  sort="doc_doc_data A doc_doc_numero A " )
+text(band=header alignment="2" text="Doc
+Numero" border="2" color="33554432" x="143" y="10" height="128" width="322" html.valueishtml="0"  name=doc_doc_numero_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Data" border="2" color="33554432" x="472" y="10" height="128" width="311" html.valueishtml="0"  name=doc_doc_data_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Num Prog" border="2" color="33554432" x="790" y="10" height="128" width="307" html.valueishtml="0"  name=doc_doc_num_prog_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Data Prog" border="2" color="33554432" x="1104" y="10" height="128" width="322" html.valueishtml="0"  name=doc_doc_data_prog_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Conto Id" border="2" color="33554432" x="1434" y="10" height="128" width="874" html.valueishtml="0"  name=doc_doc_conto_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guida Id" border="2" color="33554432" x="2315" y="10" height="128" width="464" html.valueishtml="0"  name=guida_id_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Scegli" border="2" color="33554432" x="2787" y="10" height="128" width="183" html.valueishtml="0"  name=c_cancella_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="5" color="33554432" x="143" y="10" height="74" width="322" format="[general]" html.valueishtml="0"  name=doc_doc_numero visible="1" edit.limit=16 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554432" x="472" y="10" height="74" width="311" format="[general]" html.valueishtml="0"  name=doc_doc_data visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=4 alignment="1" tabsequence=32766 border="5" color="33554432" x="790" y="10" height="74" width="307" format="[General]" html.valueishtml="0"  name=doc_doc_num_prog visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554432" x="7" y="10" height="80" width="128" format="[general]" html.valueishtml="0"  name=doc_doc_id visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="33554432" x="1104" y="10" height="74" width="318" format="[general]" html.valueishtml="0"  name=doc_doc_data_prog visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="5" color="33554432" x="1434" y="10" height="74" width="874" format="[general]" html.valueishtml="0"  name=doc_doc_conto_id visible="1" dddw.name=d_ana_conto_dddw dddw.displaycolumn=ana_ana_rag_sociale dddw.datacolumn=conto_conto_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=yes dddw.useasborder=no dddw.case=any dddw.nilisnull=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="5" color="33554432" x="2315" y="10" height="74" width="464" format="[general]" html.valueishtml="0"  name=guida_id visible="1" dddw.name=d_guida_gd dddw.displaycolumn=guida_codice dddw.datacolumn=guida_id dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.nilisnull=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="1073741824" )
+column(band=detail id=8 alignment="2" tabsequence=10 border="0" color="33554432" x="2787" y="10" height="74" width="183" format="[general]" html.valueishtml="0"  name=c_cancella visible="1" checkbox.text="" checkbox.on="1" checkbox.off="0" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=footer alignment="0" expression="~"Righe da cancellare: ~"+string(rowcount())"border="0" color="0" x="1434" y="3" height="77" width="874" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Tahoma" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

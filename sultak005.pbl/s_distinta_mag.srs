@@ -1,0 +1,6 @@
+﻿global type s_distinta_mag from structure
+	long		id_distinta
+	long		qta
+	string		nota
+end type
+

@@ -1,0 +1,46 @@
+﻿release 6;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long updatewhereclause=yes identity=yes name=dis_banca_id_distinta_banca dbname="dis_banca.id_distinta_banca" )
+ column=(type=decimal(0) updatewhereclause=yes name=riga_dis_banca_num_riga dbname="riga_dis_banca.num_riga" )
+ column=(type=char(40) updatewhereclause=yes name=rag_soc_1 dbname="anagrafica.rag_soc_1" )
+ column=(type=char(40) updatewhereclause=yes name=indirizzo dbname="anagrafica.indirizzo" )
+ column=(type=char(40) updatewhereclause=yes name=localita dbname="anagrafica.localita" )
+ column=(type=char(40) updatewhereclause=yes name=azienda_rag_soc_1 dbname="azienda.rag_soc_1" )
+ column=(type=char(40) updatewhereclause=yes name=azienda_rag_soc_2 dbname="azienda.rag_soc_2" )
+ retrieve="PBSELECT( VERSION(400) TABLE(NAME=~"dis_banca~" )  TABLE(NAME=~"scadenza~" )  TABLE(NAME=~"riga_dis_banca~" )  TABLE(NAME=~"sog_commerciale~" )  TABLE(NAME=~"anagrafica~" )  TABLE(NAME=~"azienda~" ) COLUMN(NAME=~"dis_banca.id_distinta_banca~") COLUMN(NAME=~"riga_dis_banca.num_riga~") COLUMN(NAME=~"anagrafica.rag_soc_1~") COLUMN(NAME=~"anagrafica.indirizzo~") COLUMN(NAME=~"anagrafica.localita~") COLUMN(NAME=~"azienda.rag_soc_1~") COLUMN(NAME=~"azienda.rag_soc_2~")    JOIN (LEFT=~"riga_dis_banca.id_riga_distinta_banca~"    OP =~"=~"RIGHT=~"scadenza.id_riga_distinta_banca~" )    JOIN (LEFT=~"riga_dis_banca.id_distinta_banca~"    OP =~"=~"RIGHT=~"dis_banca.id_distinta_banca~" )    JOIN (LEFT=~"sog_commerciale.id_sog_commerciale~"    OP =~"=~"RIGHT=~"scadenza.id_sog_commerciale~" )    JOIN (LEFT=~"anagrafica.id_anagrafica~"    OP =~"=~"RIGHT=~"sog_commerciale.id_anagrafica~" )    JOIN (LEFT=~"anagrafica.id_azienda~"    OP =~"=~"RIGHT=~"azienda.id_azienda~" )WHERE(    EXP1 =~"~~~"dis_banca~~~".~~~"id_distinta_banca~~~"~"   OP =~"=~"    EXP2 =~":rn_id_dis~" )  GROUP(NAME=~"dis_banca.id_distinta_banca~") GROUP(NAME=~"riga_dis_banca.num_riga~") GROUP(NAME=~"anagrafica.indirizzo~") GROUP(NAME=~"anagrafica.rag_soc_1~") GROUP(NAME=~"anagrafica.localita~") GROUP(NAME=~"azienda.rag_soc_2~") GROUP(NAME=~"azienda.rag_soc_1~")) ORDER(NAME=~"riga_dis_banca.num_riga~" ASC=yes ) ARG(NAME = ~"rn_id_dis~" TYPE = number) " arguments=(("rn_id_dis", number)) )
+text(band=header alignment="2" text="Anagrafica
+Rag Soc 1"border="0" color="0" x="777" y="4" height="112" width="937"  name=anagrafica_rag_soc_1_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Indirizzo"border="0" color="0" x="1719" y="4" height="112" width="937"  name=anagrafica_indirizzo_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Localita"border="0" color="0" x="2665" y="4" height="112" width="480"  name=anagrafica_localita_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Record 20"border="0" color="0" x="3163" y="4" height="112" width="2139"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dis Banca
+Id Distinta Banca"border="0" color="0" x="5" y="4" height="112" width="366"  name=dis_banca_id_distinta_banca_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Riga Dis Banca
+Num Riga"border="0" color="0" x="439" y="4" height="112" width="334"  name=riga_dis_banca_num_riga_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="777" y="4" height="68" width="937" format="[general]"  name=rag_soc_1 edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1719" y="4" height="68" width="937" format="[general]"  name=indirizzo edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2661" y="4" height="68" width="489" format="[general]"  name=localita edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" /* space(1) +
+'20' + 
+right('0000000' + riga_dis_banca_num_riga, 7) + 
+left( if(isnull(indirizzo), space(24), indirizzo)  + space(24), 24) + 
+left( if(isnull( localita ), space(24), indirizzo)  + space(24), 24) + 
+space(48) +
+space(14) */                                                                                                                 space(1) +
+'20' + 
+right('0000000' + riga_dis_banca_num_riga, 7) +
+left( if(isnull( azienda_rag_soc_1 ), space(24),  azienda_rag_soc_1 )  + space(24), 24) + 
+left( if(isnull(  azienda_rag_soc_2  ), space(24),  azienda_rag_soc_2 )  + space(24), 24) + 
+space(48) +
+space(14) "border="0" color="0" x="3163" y="4" height="68" width="2139" format="[general]"  name=rec_20  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="68" width="366" format="[general]"  name=dis_banca_id_distinta_banca edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="439" y="4" height="68" width="334" format="[general]"  name=riga_dis_banca_num_riga edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="5321" y="12" height="56" width="919" format="[general]"  name=azienda_rag_soc_1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="6254" y="12" height="56" width="923" format="[general]"  name=azienda_rag_soc_2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")  

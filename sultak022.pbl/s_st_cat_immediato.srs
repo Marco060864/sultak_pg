@@ -1,0 +1,6 @@
+﻿global type s_st_cat_immediato from structure
+	long		id_articolo[]
+	long		id_sog_commerciale[]
+	string		cod_articolo[]
+end type
+

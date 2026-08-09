@@ -1,0 +1,4 @@
+﻿global type s_dw_risultati from structure
+	datastore		ds
+end type
+

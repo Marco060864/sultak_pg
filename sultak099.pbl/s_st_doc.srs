@@ -1,0 +1,6 @@
+﻿global type s_st_doc from structure
+	string		ss_name
+	long		sl_id_doc
+	date		dt_inizio_esercizio
+end type
+

@@ -1,0 +1,72 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=67108864 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=144 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=93 color="536870912" )
+table(column=(type=char(32) updatewhereclause=yes name=art_art_codice dbname="art.art_codice" )
+ column=(type=long updatewhereclause=yes name=doc_doc_num_prog dbname="doc.doc_num_prog" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data_prog dbname="doc.doc_data_prog" )
+ column=(type=char(16) updatewhereclause=yes name=doc_doc_numero dbname="doc.doc_numero" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data dbname="doc.doc_data" )
+ column=(type=long updatewhereclause=yes name=rdoc_rdoc_numero dbname="rdoc.rdoc_numero" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_rdoc_peso dbname="rdoc.rdoc_peso" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_rdoc_qta dbname="rdoc.rdoc_qta" )
+ column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_calo dbname="rdoc.rdoc_calo" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_finoecalo dbname="rdoc.finoecalo" )
+ column=(type=char(1) update=yes updatewhereclause=yes name=rdoc_partita_oro dbname="rdoc.partita_oro" initial="S" values="	S/	N" )
+ column=(type=long updatewhereclause=yes key=yes identity=yes name=rdoc_rdoc_id dbname="rdoc.rdoc_id" )
+ column=(type=char(8) updatewhereclause=yes name=causale_caus_codice dbname="causale.caus_codice" )
+ column=(type=char(8) updatewhereclause=yes name=guida_guida_codice dbname="guida.guida_codice" )
+ retrieve="  SELECT  art.art_codice ,           doc.doc_num_prog ,           doc.doc_data_prog ,           doc.doc_numero ,   
+        doc.doc_data ,           rdoc.rdoc_numero ,           rdoc.rdoc_peso ,           rdoc.rdoc_qta ,           rdoc.rdoc_calo ,     
+      rdoc.finoecalo ,           rdoc.partita_oro ,           rdoc.rdoc_id ,           causale.caus_codice ,           guida.guida_codice     
+FROM   dba.art ,           dba.doc ,           dba.rdoc ,           dba.guida ,           dba.causale     WHERE ( rdoc.rdoc_doc_id = doc.doc_id ) and          ( rdoc.rdoc_art_id = art.art_id ) and          ( guida.guida_id = doc.guida_id ) and          ( rdoc.causale_id = causale.caus_id )   " update="dba.rdoc" updatewhere=1 updatekeyinplace=yes  sort="doc_doc_data A doc_doc_num_prog A doc_doc_numero A " )
+text(band=header alignment="2" text="Art
+Art Codice" border="0" color="33554432" x="7" y="10" height="128" width="903" html.valueishtml="0"  name=art_art_codice_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Guida Guida Codice" border="0" color="33554432" x="918" y="10" height="64" width="347" html.valueishtml="0"  name=guida_guida_codice_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Num Prog" border="0" color="33554432" x="1273" y="10" height="128" width="388" html.valueishtml="0"  name=doc_doc_num_prog_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Data Prog" border="0" color="33554432" x="1668" y="10" height="128" width="388" html.valueishtml="0"  name=doc_doc_data_prog_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Numero" border="0" color="33554432" x="2063" y="10" height="128" width="344" html.valueishtml="0"  name=doc_doc_numero_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rdoc
+Partita Oro" border="0" color="33554432" x="2414" y="10" height="128" width="282" html.valueishtml="0"  name=rdoc_partita_oro_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Data" border="0" color="33554432" x="2703" y="10" height="128" width="347" html.valueishtml="0"  name=doc_doc_data_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rdoc
+Rdoc Numero" border="0" color="33554432" x="3057" y="10" height="128" width="362" html.valueishtml="0"  name=rdoc_rdoc_numero_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rdoc
+Rdoc Peso" border="0" color="33554432" x="3427" y="10" height="128" width="329" html.valueishtml="0"  name=rdoc_rdoc_peso_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rdoc
+Rdoc Qta" border="0" color="33554432" x="3763" y="10" height="128" width="329" html.valueishtml="0"  name=rdoc_rdoc_qta_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rdoc
+Rdoc Calo" border="0" color="33554432" x="4100" y="10" height="128" width="329" html.valueishtml="0"  name=rdoc_rdoc_calo_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rdoc
+Finoecalo" border="0" color="33554432" x="4436" y="10" height="128" width="329" html.valueishtml="0"  name=rdoc_finoecalo_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Causale Caus Codice" border="0" color="33554432" x="4773" y="10" height="64" width="205" html.valueishtml="0"  name=causale_caus_codice_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="5" color="33554432" x="7" y="10" height="74" width="903" format="[general]" html.valueishtml="0"  name=art_art_codice visible="1" edit.limit=32 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="5" color="33554432" x="1273" y="10" height="64" width="388" format="[General]" html.valueishtml="0"  name=doc_doc_num_prog visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="5" color="33554432" x="1668" y="10" height="64" width="388" format="[general]" html.valueishtml="0"  name=doc_doc_data_prog visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="5" color="33554432" x="2063" y="10" height="64" width="344" format="[general]" html.valueishtml="0"  name=doc_doc_numero visible="1" edit.limit=16 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="5" color="33554432" x="2703" y="10" height="64" width="347" format="[general]" html.valueishtml="0"  name=doc_doc_data visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="5" color="33554432" x="3057" y="10" height="64" width="362" format="[General]" html.valueishtml="0"  name=rdoc_rdoc_numero visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="1" tabsequence=32766 border="5" color="33554432" x="3427" y="10" height="74" width="329" format="[general]" html.valueishtml="0"  name=rdoc_rdoc_peso visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=8 alignment="1" tabsequence=32766 border="5" color="33554432" x="3763" y="10" height="74" width="329" format="[general]" html.valueishtml="0"  name=rdoc_rdoc_qta visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=9 alignment="1" tabsequence=32766 border="5" color="33554432" x="4100" y="10" height="74" width="329" format="[general]" html.valueishtml="0"  name=rdoc_rdoc_calo visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=10 alignment="1" tabsequence=32766 border="5" color="33554432" x="4436" y="10" height="74" width="329" format="[general]" html.valueishtml="0"  name=rdoc_finoecalo visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=11 alignment="2" tabsequence=20 border="5" color="33554432" x="2414" y="10" height="74" width="282" format="[general]" html.valueishtml="0"  name=rdoc_partita_oro visible="1" checkbox.text="" checkbox.on="S" checkbox.off="N" checkbox.scale=no checkbox.threed=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=13 alignment="0" tabsequence=30 border="5" color="33554432" x="4773" y="10" height="74" width="205" format="[general]" html.valueishtml="0"  name=causale_caus_codice visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=14 alignment="0" tabsequence=10 border="5" color="33554432" x="918" y="10" height="64" width="347" format="[general]" html.valueishtml="0"  name=guida_guida_codice visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

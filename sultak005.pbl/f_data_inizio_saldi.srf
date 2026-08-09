@@ -1,0 +1,15 @@
+﻿global type f_data_inizio_saldi from function_object
+end type
+
+forward prototypes
+global function date f_data_inizio_saldi ()
+end prototypes
+
+global function date f_data_inizio_saldi ();date ldt_data
+select data_inizio_saldi
+into :ldt_data
+from dba.val_base
+;
+return ldt_data
+end function
+

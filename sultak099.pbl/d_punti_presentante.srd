@@ -1,0 +1,78 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=136 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=84 color="536870912" )
+detail(height=84 color="536870912" )
+table(column=(type=long updatewhereclause=yes identity=yes name=rdoc_rdoc_id dbname="rdoc.rdoc_id" )
+ column=(type=decimal(4) updatewhereclause=yes name=qta dbname="rdoc.rdoc_qta" )
+ column=(type=decimal(6) updatewhereclause=yes name=pr_pezzo dbname="rdoc.rdoc_pr_pezzo" )
+ column=(type=char(16) updatewhereclause=yes name=doc_doc_numero dbname="doc.doc_numero" )
+ column=(type=date updatewhereclause=yes name=doc_doc_data dbname="doc.doc_data" )
+ column=(type=char(8) updatewhereclause=yes name=conto_conto_codice dbname="conto.conto_codice" )
+ column=(type=char(80) updatewhereclause=yes name=rag_sociale_cliente dbname="ana.ana_rag_sociale" )
+ column=(type=long updatewhereclause=yes name=rdoc_rdoc_art_id dbname="rdoc.rdoc_art_id" )
+ column=(type=long updatewhereclause=yes name=val_base_art_sconto_punti dbname="val_base.art_sconto_punti" )
+ column=(type=char(80) updatewhereclause=yes name=anab_rag_sociale dbname="ana.ana_rag_sociale" )
+ retrieve="  SELECT ~"rdoc~".~"rdoc_id~",   
+         ~"rdoc~".~"rdoc_qta~",   
+         ~"rdoc~".~"rdoc_pr_pezzo~",   
+         ~"doc~".~"doc_numero~",   
+         ~"doc~".~"doc_data~",   
+         ~"conto_a~".~"conto_codice~",   
+         ~"ana_a~".~"ana_rag_sociale~",   
+         ~"rdoc~".~"rdoc_art_id~",   
+         ~"val_base~".~"art_sconto_punti~",   
+         ~"ana_b~".~"ana_rag_sociale~"  
+    FROM ~"conto~" ~"conto_a~",   
+         ~"doc~",   
+         ~"rdoc~",   
+         ~"lega_conto_a_presentante~",   
+         ~"conto~" ~"conto_b~",   
+         ~"ana~" ~"ana_a~",   
+         ~"ana~" ~"ana_b~",   
+         ~"val_base~"  
+   WHERE ( ~"doc~".~"doc_conto_id~" = ~"conto_a~".~"conto_id~" ) and  
+         ( ~"rdoc~".~"rdoc_doc_id~" = ~"doc~".~"doc_id~" ) and  
+         ( ~"lega_conto_a_presentante~".~"id_conto_cliente~" = ~"conto_a~".~"conto_id~" ) and  
+         ( ~"lega_conto_a_presentante~".~"id_conto_presentante~" = ~"conto_b~".~"conto_id~" ) and  
+         ( ~"ana_a~".~"ana_id~" = ~"conto_a~".~"ana_id~" ) and  
+         ( ~"ana_b~".~"ana_id~" = ~"conto_b~".~"ana_id~" ) and  
+         ( ( ~"conto_b~".~"id_tipo_conto~" = 1 ) AND  
+         ( ~"doc~".~"doc_data~" >= :da_data ) AND  
+         ( ~"doc~".~"doc_data~" <= :a_data ) )    
+" arguments=(("perc", number),("da_data", date),("a_data", date))  sort="anab_rag_sociale A doc_doc_data A " )
+group(level=1 header.height=176 trailer.height=104 by=("anab_rag_sociale" ) header.color="536870912" trailer.color="536870912" )
+text(band=header alignment="0" text="Stampa Punteggio Presentante" border="0" color="33554432" x="32" y="28" height="92" width="1426" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-14" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="0" text="Rag Sociale" border="2" color="33554432" x="18" y="100" height="68" width="777" html.valueishtml="0"  name=ana_ana_rag_sociale_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="Doc Numero" border="2" color="33554432" x="823" y="100" height="68" width="343" html.valueishtml="0"  name=doc_doc_numero_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="1" text="Qta" border="2" color="33554432" x="1467" y="100" height="68" width="329" html.valueishtml="0"  name=rdoc_rdoc_qta_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="Doc Data" border="2" color="33554432" x="1193" y="100" height="68" width="247" html.valueishtml="0"  name=doc_doc_data_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="1" text="Punti" border="2" color="33554432" x="2647" y="100" height="68" width="325" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="1" text="Pr Pezzo" border="2" color="33554432" x="1824" y="100" height="68" width="402" html.valueishtml="0"  name=rdoc_rdoc_pr_pezzo_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="1" text="Totale" border="2" color="33554432" x="2258" y="100" height="68" width="361" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="23" y="8" height="64" width="2162" format="[general]" html.valueishtml="0"  name=anab_rag_sociale visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=4 alignment="2" tabsequence=32766 border="0" color="33554432" x="823" y="4" height="72" width="343" format="[general]" html.valueishtml="0"  name=doc_doc_numero visible="1" edit.limit=16 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="18" y="4" height="72" width="777" format="[general]" html.valueishtml="0"  name=rag_sociale_cliente visible="1" edit.limit=80 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="33554432" x="1467" y="4" height="72" width="329" format="[general]" html.valueishtml="0"  name=qta visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=5 alignment="2" tabsequence=32766 border="0" color="33554432" x="1193" y="4" height="72" width="247" format="dd/mm/yy" html.valueishtml="0"  name=doc_doc_data visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="1824" y="4" height="76" width="402" format="#,0.000" html.valueishtml="0"  name=pr_pezzo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="if( rdoc_rdoc_art_id = val_base_art_sconto_punti , qta* -1,  qta * pr_pezzo * perc /100)"border="0" color="33554432" x="2647" y="4" height="76" width="325" format="#,0.00" html.valueishtml="0"  name=c_punti_riga visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression=" qta * pr_pezzo "border="0" color="33554432" x="2258" y="4" height="76" width="361" format="#,0.00" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=trailer.1 alignment="0" text="TOTALE PUNTI:" border="0" color="33554432" x="1609" y="20" height="76" width="448" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=trailer.1 alignment="1" expression="sum( c_punti_riga for group 1)"border="0" color="33554432" x="2647" y="20" height="76" width="325" format="#,0.00" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=trailer.1 x1="27" y1="8" x2="2967" y2="8"  name=l_1 visible="1" pen.style="0" pen.width="5" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=trailer.1 id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="18" y="28" height="64" width="1550" format="[general]" html.valueishtml="0"  name=anab_rag_sociale_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="today()"border="0" color="33554432" x="2528" y="4" height="76" width="448" format="[general]" html.valueishtml="0"  name=date_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="'Page ' + page() + ' of ' + pageCount()"border="0" color="33554432" x="32" y="4" height="76" width="686" format="[general]" html.valueishtml="0"  name=page_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

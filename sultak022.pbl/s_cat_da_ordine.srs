@@ -1,0 +1,8 @@
+﻿global type s_cat_da_ordine from structure
+	string		cod_articolo
+	decimal {2}	lunghezza
+	decimal {2}	peso
+	long		id_articolo
+	long		id_cliente
+end type
+

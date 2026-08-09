@@ -1,0 +1,17 @@
+﻿global type f_trova_tipo_um from function_object
+end type
+
+forward prototypes
+global function string f_trova_tipo_um (long al_id_um)
+end prototypes
+
+global function string f_trova_tipo_um (long al_id_um);string ls_tipo_um
+
+select um_tipo
+into :ls_tipo_um
+from u_misura
+where um_id=:al_id_um
+;
+return ls_tipo_um
+end function
+

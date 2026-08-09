@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Project>
+  <Type Name="pb"/>
+  <Application Name="sultak"/>
+  <Libraries AppEntry="sultak.pbl">
+    <Library Path="sultak.pbl"/>
+    <Library Path="sultak002.pbl"/>
+    <Library Path="sultak003.pbl"/>
+    <Library Path="sultak004.pbl"/>
+    <Library Path="sultak005.pbl"/>
+    <Library Path="sultak006.pbl"/>
+    <Library Path="sultak007.pbl"/>
+    <Library Path="sultak010.pbl"/>
+    <Library Path="sultak011.pbl"/>
+    <Library Path="sultak022.pbl"/>
+    <Library Path="sultak030.pbl"/>
+    <Library Path="sultak040.pbl"/>
+    <Library Path="sultak099.pbl"/>
+    <Library Path="sultak100.pbl"/>
+    <Library Path="sultak999.pbl"/>
+    <Library Path="asa_sqlserver.pbl"/>
+    <Library Path="r1c_riba.pbl"/>
+  </Libraries>
+  <Deployings>
+    <Deploying Deploy="1" Library="sultak.pbl" Name="sultak"/>
+  </Deployings>
+</Project>

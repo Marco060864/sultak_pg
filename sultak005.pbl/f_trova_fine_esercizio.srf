@@ -1,0 +1,19 @@
+﻿global type f_trova_fine_esercizio from function_object
+end type
+
+forward prototypes
+global function date f_trova_fine_esercizio (date adt_data_doc)
+end prototypes
+
+global function date f_trova_fine_esercizio (date adt_data_doc);date ldt_data_fine
+
+
+select ese_data_fine
+into :ldt_data_fine
+from dba.esercizio
+where ese_data_inizio<=:adt_data_doc
+and ese_data_fine>=:adt_data_doc
+;
+return ldt_data_fine
+end function
+

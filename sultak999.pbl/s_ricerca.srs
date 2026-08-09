@@ -1,0 +1,8 @@
+﻿global type s_ricerca from structure
+	string		dataobject
+	string		titolo_finestra
+	transaction		uo_trans
+	string		filtro[]
+	string		colonna_filtro[]
+end type
+

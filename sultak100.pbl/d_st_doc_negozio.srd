@@ -1,0 +1,360 @@
+﻿release 10;
+datawindow(units=3 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 800 print.margin.right = 800 print.margin.top = 1500 print.margin.bottom = 1500 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=9927 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=7450 color="536870912" )
+detail(height=0 color="536870912"  height.autosize=yes)
+table(column=(type=char(16) updatewhereclause=yes name=doc_doc_numero dbname="doc.doc_numero" )
+ column=(type=date updatewhereclause=yes name=doc_doc_data dbname="doc.doc_data" )
+ column=(type=char(1) updatewhereclause=yes name=doc_doc_a_mezzo dbname="doc.doc_a_mezzo" )
+ column=(type=char(4) updatewhereclause=yes name=valuta_val_codice dbname="valuta.val_codice" )
+ column=(type=char(80) updatewhereclause=yes name=ana_ana_rag_sociale dbname="ana.ana_rag_sociale" )
+ column=(type=char(40) updatewhereclause=yes name=ana_ana_indirizzo dbname="ana.ana_indirizzo" )
+ column=(type=char(40) updatewhereclause=yes name=ana_ana_localita dbname="ana.ana_localita" )
+ column=(type=char(5) updatewhereclause=yes name=ana_ana_cap dbname="ana.ana_cap" )
+ column=(type=char(16) updatewhereclause=yes name=ana_ana_citta dbname="ana.ana_citta" )
+ column=(type=char(2) updatewhereclause=yes name=ana_ana_provincia dbname="ana.ana_provincia" )
+ column=(type=char(16) updatewhereclause=yes name=ana_ana_p_iva dbname="ana.ana_p_iva" )
+ column=(type=char(8) updatewhereclause=yes name=iva_iva_codice dbname="iva.iva_codice" )
+ column=(type=char(32) updatewhereclause=yes name=art_art_codice dbname="art.art_codice" )
+ column=(type=char(80) updatewhereclause=yes name=art_art_descrizione dbname="art.art_descrizione" )
+ column=(type=long updatewhereclause=yes name=rdoc_rdoc_numero dbname="rdoc.rdoc_numero" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_rdoc_qta dbname="rdoc.rdoc_qta" )
+ column=(type=decimal(6) updatewhereclause=yes name=rdoc_rdoc_pr_man dbname="rdoc.rdoc_pr_man" )
+ column=(type=decimal(6) updatewhereclause=yes name=rdoc_rdoc_quotazione dbname="rdoc.rdoc_quotazione" )
+ column=(type=decimal(6) updatewhereclause=yes name=rdoc_rdoc_pr_gr_complessivo dbname="rdoc.rdoc_pr_gr_complessivo" )
+ column=(type=decimal(6) updatewhereclause=yes name=rdoc_rdoc_pr_pezzo dbname="rdoc.rdoc_pr_pezzo" )
+ column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_misura dbname="rdoc.rdoc_misura" )
+ column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_calo dbname="rdoc.rdoc_calo" )
+ column=(type=char(32766) updatewhereclause=no name=rdoc_rdoc_descrizione dbname="rdoc.rdoc_descrizione" )
+ column=(type=decimal(2) updatewhereclause=yes name=titolo_tit_titolo dbname="titolo.tit_titolo" )
+ column=(type=char(2) updatewhereclause=yes name=metallo_met_metallo dbname="metallo.met_metallo" )
+ column=(type=char(2) updatewhereclause=yes name=u_misura_um_codice dbname="u_misura.um_codice" )
+ column=(type=char(64) updatewhereclause=yes name=guida_guida_tipo_doc dbname="guida.guida_tipo_doc" )
+ column=(type=char(16) updatewhereclause=yes name=ana_ana_c_f dbname="ana.ana_c_f" )
+ column=(type=char(32766) updatewhereclause=no name=doc_nota dbname="doc.nota" )
+ column=(type=char(40) updatewhereclause=yes name=destinazione_dest_rag_soc dbname="destinazione.dest_rag_soc" )
+ column=(type=char(40) updatewhereclause=yes name=destinazione_dest_indirizzo dbname="destinazione.dest_indirizzo" )
+ column=(type=char(10) updatewhereclause=yes name=destinazione_dest_cap dbname="destinazione.dest_cap" )
+ column=(type=char(40) updatewhereclause=yes name=destinazione_dest_localita dbname="destinazione.dest_localita" )
+ column=(type=char(5) updatewhereclause=yes name=destinazione_dest_provincia dbname="destinazione.dest_provincia" )
+ column=(type=char(5) updatewhereclause=yes name=destinazione_dest_nazione dbname="destinazione.dest_nazione" )
+ column=(type=char(16) updatewhereclause=yes name=azienda_az_codice dbname="azienda.az_codice" )
+ column=(type=char(40) updatewhereclause=yes name=azienda_az_indirizzo dbname="azienda.az_indirizzo" )
+ column=(type=char(5) updatewhereclause=yes name=azienda_az_cap dbname="azienda.az_cap" )
+ column=(type=char(40) updatewhereclause=yes name=azienda_az_localita dbname="azienda.az_localita" )
+ column=(type=char(16) updatewhereclause=yes name=azienda_az_citta dbname="azienda.az_citta" )
+ column=(type=char(2) updatewhereclause=yes name=azienda_az_provincia dbname="azienda.az_provincia" )
+ column=(type=char(11) updatewhereclause=yes name=azienda_az_pi dbname="azienda.az_pi" )
+ column=(type=char(12) updatewhereclause=yes name=azienda_az_cciaa dbname="azienda.az_cciaa" )
+ column=(type=char(12) updatewhereclause=yes name=azienda_az_trib dbname="azienda.az_trib" )
+ column=(type=char(255) updatewhereclause=yes name=azienda_az_logo dbname="azienda.az_logo" )
+ column=(type=char(16) updatewhereclause=yes name=azienda_az_tel dbname="azienda.az_tel" )
+ column=(type=char(16) updatewhereclause=yes name=azienda_az_fax dbname="azienda.az_fax" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_rdoc_peso dbname="rdoc.rdoc_peso" )
+ column=(type=decimal(6) updatewhereclause=yes name=rdoc_rdoc_sconto_imp dbname="rdoc.rdoc_sconto_imp" )
+ column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_sconto_perc dbname="rdoc.rdoc_sconto_perc" )
+ column=(type=decimal(2) updatewhereclause=yes name=doc_doc_sconto_perc dbname="doc.doc_sconto_perc" )
+ column=(type=char(40) updatewhereclause=yes name=banca_banca_den_abi dbname="banca.banca_den_abi" )
+ column=(type=char(40) updatewhereclause=yes name=banca_banca_den_cab dbname="banca.banca_den_cab" )
+ column=(type=decimal(0) updatewhereclause=yes name=doc_doc_colli dbname="doc.doc_colli" )
+ column=(type=char(32) updatewhereclause=yes name=asp_beni_asp_beni_descrizione dbname="asp_beni.asp_beni_descrizione" )
+ column=(type=char(64) updatewhereclause=yes name=azienda_az_rag_sociale dbname="azienda.az_rag_sociale" )
+ column=(type=char(16) updatewhereclause=yes name=azienda_az_cf dbname="azienda.az_cf" )
+ column=(type=char(40) updatewhereclause=yes name=trasporto_trasp_descrizione dbname="trasporto.trasp_descrizione" )
+ column=(type=datetime updatewhereclause=yes name=doc_data_ora_trasporto dbname="doc.data_ora_trasporto" )
+ column=(type=char(80) updatewhereclause=yes name=vet_rag_sociale_1 dbname="ana.ana_rag_sociale" )
+ column=(type=char(40) updatewhereclause=yes name=vet_indirizzo_1 dbname="ana.ana_indirizzo" )
+ column=(type=char(40) updatewhereclause=yes name=vet_localita_1 dbname="ana.ana_localita" )
+ column=(type=char(5) updatewhereclause=yes name=vet_cap_1 dbname="ana.ana_cap" )
+ column=(type=char(16) updatewhereclause=yes name=vet_citta_1 dbname="ana.ana_citta" )
+ column=(type=char(2) updatewhereclause=yes name=vet_provincia_1 dbname="ana.ana_provincia" )
+ column=(type=char(2) updatewhereclause=yes name=reg_tipo dbname="registro.reg_tipo" )
+ column=(type=long updatewhereclause=yes name=conto_di_ns_prot dbname="conto.di_ns_prot" )
+ column=(type=long updatewhereclause=yes name=conto_di_vs_prot dbname="conto.di_vs_prot" )
+ column=(type=date updatewhereclause=yes name=conto_di_ns_data dbname="conto.di_ns_data" )
+ column=(type=date updatewhereclause=yes name=conto_di_vs_data dbname="conto.di_vs_data" )
+ column=(type=long updatewhereclause=yes name=conto_di_ns_pag dbname="conto.di_ns_pag" )
+ column=(type=char(16) updatewhereclause=yes name=doc_numero_padre dbname="doc.doc_numero" )
+ column=(type=date updatewhereclause=yes name=doc_data_padre dbname="doc.doc_data" )
+ column=(type=char(40) updatewhereclause=yes name=pagamento_paga_descrizione dbname="pagamento.paga_descrizione" )
+ column=(type=char(4) updatewhereclause=yes name=conto_banca_cin_internazionale dbname="conto_banca.cin_internazionale" )
+ column=(type=char(1) updatewhereclause=yes name=conto_banca_cin dbname="conto_banca.cin" )
+ column=(type=char(12) updatewhereclause=yes name=conto_banca_c_c dbname="conto_banca.c_c" )
+ column=(type=char(5) updatewhereclause=yes name=banca_banca_cod_abi dbname="banca.banca_cod_abi" )
+ column=(type=char(5) updatewhereclause=yes name=banca_banca_cod_cab dbname="banca.banca_cod_cab" )
+ column=(type=decimal(4) updatewhereclause=yes name=doc_peso_netto dbname="doc.peso_netto" )
+ column=(type=decimal(4) updatewhereclause=yes name=doc_peso_lordo dbname="doc.peso_lordo" )
+ column=(type=char(32) updatewhereclause=yes name=cod_clfo dbname="cod_clfo" )
+ column=(type=char(2) updatewhereclause=yes name=causale_caus_partita dbname="causale.caus_partita" )
+ column=(type=long updatewhereclause=yes identity=yes name=conto_conto_id dbname="conto.conto_id" )
+ column=(type=char(255) updatewhereclause=yes name=az_nota dbname="azienda.az_nota" )
+ column=(type=char(128) updatewhereclause=yes name=az_email dbname="azienda.az_email" )
+ column=(type=char(80) updatewhereclause=yes name=azienda_rag_soc2 dbname="azienda.rag_soc2" )
+ column=(type=decimal(0) updatewhereclause=yes name=conto_anno_dich_intento dbname="conto.anno_dich_intento" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_rdoc_non_prezioso dbname="rdoc.rdoc_non_prezioso" )
+ column=(type=long updatewhereclause=yes name=rdoc_id_taglia dbname="rdoc.id_taglia" )
+ column=(type=long updatewhereclause=yes name=rdoc_id_colore dbname="rdoc.id_colore" )
+ column=(type=date updatewhereclause=yes name=val_base_data_inizio_saldi dbname="val_base.data_inizio_saldi" )
+ retrieve="  SELECT ~"doc_a~".~"doc_numero~",   
+         ~"doc_a~".~"doc_data~",   
+         ~"doc_a~".~"doc_a_mezzo~",   
+         ~"valuta~".~"val_codice~",   
+         ~"ana_a~".~"ana_rag_sociale~",   
+         ~"ana_a~".~"ana_indirizzo~",   
+         ~"ana_a~".~"ana_localita~",   
+         ~"ana_a~".~"ana_cap~",   
+         ~"ana_a~".~"ana_citta~",   
+         ~"ana_a~".~"ana_provincia~",   
+         ~"ana_a~".~"ana_p_iva~",   
+         ~"iva~".~"iva_codice~",   
+         ~"art~".~"art_codice~",   
+         ~"art~".~"art_descrizione~",   
+         ~"rdoc_a~".~"rdoc_numero~",   
+         ~"rdoc_a~".~"rdoc_qta~",   
+         ~"rdoc_a~".~"rdoc_pr_man~",   
+         ~"rdoc_a~".~"rdoc_quotazione~",   
+         ~"rdoc_a~".~"rdoc_pr_gr_complessivo~",   
+         ~"rdoc_a~".~"rdoc_pr_pezzo~",   
+         ~"rdoc_a~".~"rdoc_misura~",   
+         ~"rdoc_a~".~"rdoc_calo~",   
+         ~"rdoc_a~".~"rdoc_descrizione~",   
+         ~"titolo~".~"tit_titolo~",   
+         ~"metallo~".~"met_metallo~",   
+         ~"u_misura~".~"um_codice~",   
+         ~"guida~".~"guida_tipo_doc~",   
+         ~"ana_a~".~"ana_c_f~",   
+         ~"doc_a~".~"nota~",   
+         ~"destinazione~".~"dest_rag_soc~",   
+         ~"destinazione~".~"dest_indirizzo~",   
+         ~"destinazione~".~"dest_cap~",   
+         ~"destinazione~".~"dest_localita~",   
+         ~"destinazione~".~"dest_provincia~",   
+         ~"destinazione~".~"dest_nazione~",   
+         ~"azienda~".~"az_codice~",   
+         ~"azienda~".~"az_indirizzo~",   
+         ~"azienda~".~"az_cap~",   
+         ~"azienda~".~"az_localita~",   
+         ~"azienda~".~"az_citta~",   
+         ~"azienda~".~"az_provincia~",   
+         ~"azienda~".~"az_pi~",   
+         ~"azienda~".~"az_cciaa~",   
+         ~"azienda~".~"az_trib~",   
+         ~"azienda~".~"az_logo~",   
+         ~"azienda~".~"az_tel~",   
+         ~"azienda~".~"az_fax~",   
+         ~"rdoc_a~".~"rdoc_peso~",   
+         ~"rdoc_a~".~"rdoc_sconto_imp~",   
+         ~"rdoc_a~".~"rdoc_sconto_perc~",   
+         ~"doc_a~".~"doc_sconto_perc~",   
+         ~"banca~".~"banca_den_abi~",   
+         ~"banca~".~"banca_den_cab~",   
+         ~"doc_a~".~"doc_colli~",   
+         ~"asp_beni~".~"asp_beni_descrizione~",   
+         ~"azienda~".~"az_rag_sociale~",   
+         ~"azienda~".~"az_cf~",   
+         ~"trasporto~".~"trasp_descrizione~",   
+         ~"doc_a~".~"data_ora_trasporto~",   
+         ~"ana_b~".~"ana_rag_sociale~",   
+         ~"ana_b~".~"ana_indirizzo~",   
+         ~"ana_b~".~"ana_localita~",   
+         ~"ana_b~".~"ana_cap~",   
+         ~"ana_b~".~"ana_citta~",   
+         ~"ana_b~".~"ana_provincia~",   
+         ~"registro~".~"reg_tipo~",   
+         ~"conto_a~".~"di_ns_prot~",   
+         ~"conto_a~".~"di_vs_prot~",   
+         ~"conto_a~".~"di_ns_data~",   
+         ~"conto_a~".~"di_vs_data~",   
+         ~"conto_a~".~"di_ns_pag~",   
+         ~"doc_b~".~"doc_numero~",   
+         ~"doc_b~".~"doc_data~",   
+         ~"pagamento~".~"paga_descrizione~",   
+         ~"conto_banca~".~"cin_internazionale~",   
+         ~"conto_banca~".~"cin~",   
+         ~"conto_banca~".~"c_c~",   
+         ~"banca~".~"banca_cod_abi~",   
+         ~"banca~".~"banca_cod_cab~",   
+         ~"doc_a~".~"peso_netto~",   
+         ~"doc_a~".~"peso_lordo~",   
+         (select codice_art from m_m_art_sog where id_art=~"rdoc_a~".~"rdoc_art_id~" and id_sog=~"doc_a~".~"doc_conto_id~") as cod_clfo,   
+         ~"causale~".~"caus_partita~",   
+         ~"conto_a~".~"conto_id~",   
+         ~"azienda~".~"az_nota~",   
+         ~"azienda~".~"az_email~",   
+         ~"azienda~".~"rag_soc2~",   
+         ~"conto_a~".~"anno_dich_intento~",   
+         ~"rdoc_a~".~"rdoc_non_prezioso~",   
+         ~"rdoc_a~".~"id_taglia~",   
+         ~"rdoc_a~".~"id_colore~",
+~"val_base~".~"data_inizio_saldi~"  
+    FROM {oj ~"rdoc~" ~"rdoc_a~" LEFT OUTER JOIN ~"titolo~" ON ~"rdoc_a~".~"tit_id~" = ~"titolo~".~"tit_id~" LEFT OUTER JOIN ~"iva~" ON ~"rdoc_a~".~"iva_id~" = ~"iva~".~"iva_id~"}, {oj ~"doc~" ~"doc_a~" LEFT OUTER JOIN ~"destinazione~" ON ~"doc_a~".~"dest_id~" = ~"destinazione~".~"dest_id~"}, {oj ~"rdoc~" ~"rdoc_a~" LEFT OUTER JOIN ~"art~" ON ~"rdoc_a~".~"rdoc_art_id~" = ~"art~".~"art_id~" LEFT OUTER JOIN ~"u_misura~" ON ~"rdoc_a~".~"um_id~" = ~"u_misura~".~"um_id~"}, {oj ~"doc~" ~"doc_a~" LEFT OUTER JOIN ~"pagamento~" ON ~"doc_a~".~"paga_id~" = ~"pagamento~".~"paga_id~"}, {oj ~"titolo~" LEFT OUTER JOIN ~"metallo~" ON ~"titolo~".~"tit_met_id~" = ~"metallo~".~"met_id~"}, {oj ~"doc~" ~"doc_a~" LEFT OUTER JOIN ~"asp_beni~" ON ~"doc_a~".~"asp_beni_id~" = ~"asp_beni~".~"asp_beni_id~" LEFT OUTER JOIN ~"conto~" ~"conto_b~" ON ~"doc_a~".~"conto_id_vettore~" = ~"conto_b~".~"conto_id~" LEFT OUTER JOIN ~"ana~" ~"ana_b~" ON ~"conto_b~".~"ana_id~" = ~"ana_b~".~"ana_id~" LEFT OUTER JOIN ~"trasporto~" ON ~"doc_a~".~"trasp_id~" = ~"trasporto~".~"trasp_id~"}, {oj ~"rdoc~" ~"rdoc_b~" LEFT OUTER JOIN ~"doc~" ~"doc_b~" ON ~"rdoc_b~".~"rdoc_doc_id~" = ~"doc_b~".~"doc_id~"}, {oj ~"rdoc~" ~"rdoc_a~" LEFT OUTER JOIN ~"rdoc~" ~"rdoc_b~" ON ~"rdoc_a~".~"rdoc_id_riga_madre~" = ~"rdoc_b~".~"rdoc_id~"}, {oj ~"doc~" ~"doc_a~" LEFT OUTER JOIN ~"conto_banca~" ON ~"doc_a~".~"banca_id~" = ~"conto_banca~".~"conto_banca_id~" LEFT OUTER JOIN ~"banca~" ON ~"conto_banca~".~"banca_id~" = ~"banca~".~"banca_id~"}, {oj ~"rdoc~" ~"rdoc_a~" LEFT OUTER JOIN ~"causale~" ON ~"rdoc_a~".~"causale_id~" = ~"causale~".~"caus_id~"},   
+         ~"ana~" ~"ana_a~",   
+         ~"valuta~",   
+         ~"conto~" ~"conto_a~",   
+         ~"guida~",   
+         ~"azienda~",   
+         ~"registro~",   
+         ~"val_base~"  
+   WHERE ( ~"doc_a~".~"doc_id~" = ~"rdoc_a~".~"rdoc_doc_id~" ) and  
+         ( ~"doc_a~".~"val_id~" = ~"valuta~".~"val_id~" ) and  
+         ( ~"doc_a~".~"doc_conto_id~" = ~"conto_a~".~"conto_id~" ) and  
+         ( ~"conto_a~".~"ana_id~" = ~"ana_a~".~"ana_id~" ) and  
+         ( ~"doc_a~".~"guida_id~" = ~"guida~".~"guida_id~" ) and  
+         ( ~"doc_a~".~"reg_id~" = ~"registro~".~"reg_id~" ) and  
+         ( ~"val_base~".~"guida_da_evadere~" = ~"guida~".~"guida_id~" ) and  
+         ( ( ~"doc_a~".~"doc_id~" = :doc_id ) AND  
+         ( ~"rdoc_a~".~"stampa~" = 'S' ) )    
+" arguments=(("doc_id", number),("dt_inizio_esercizio", date))  sort="rdoc_rdoc_numero A " )
+line(band=header x1="4064" y1="7937" x2="18986" y2="7937"  name=l_1 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=header x1="9461" y1="4000" x2="9461" y2="7937"  name=l_3 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=header x1="4064" y1="3958" x2="4064" y2="7958"  name=l_4 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=header x1="84" y1="5270" x2="9461" y2="5270"  name=l_6 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=header x1="84" y1="9419" x2="18986" y2="9419"  name=l_12 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+report(band=header dataobject="d_st_scadenze" x="4169" y="5312" height="2603" width="5228" border="0"  height.autosize=yes criteria="" nest_arguments=((" doc_id ")) trail_footer = yes  name=dw_3 visible="1"  slideup=directlyabove )
+line(band=header x1="18986" y1="3958" x2="18986" y2="9884"  name=l_11 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="1" text="Destinazione:" border="0" color="33554432" x="9546" y="6117" height="423" width="2286" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="11959" y="5482" height="486" width="1079" format="[general]" html.valueishtml="0"  name=ana_ana_cap visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="13165" y="5482" height="486" width="3852" format="[general]" html.valueishtml="0"  name=ana_ana_citta visible="1" edit.limit=16 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="17229" y="5482" height="486" width="465" format="[general]" html.valueishtml="0"  name=ana_ana_provincia visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=30 alignment="0" tabsequence=32766 border="0" color="33554432" x="11938" y="6117" height="423" width="6244" format="[general]" html.valueishtml="0"  name=destinazione_dest_rag_soc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=31 alignment="0" tabsequence=32766 border="0" color="33554432" x="11938" y="6561" height="423" width="6244" format="[general]" html.valueishtml="0"  name=destinazione_dest_indirizzo visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=33 alignment="0" tabsequence=32766 border="0" color="33554432" x="11938" y="7006" height="423" width="6265" format="[general]" html.valueishtml="0"  name=destinazione_dest_localita visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=32 alignment="0" tabsequence=32766 border="0" color="33554432" x="11938" y="7450" height="423" width="1545" format="[general]" html.valueishtml="0"  name=destinazione_dest_cap visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=34 alignment="0" tabsequence=32766 border="0" color="33554432" x="13631" y="7450" height="423" width="783" format="[general]" html.valueishtml="0"  name=destinazione_dest_provincia visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=35 alignment="0" tabsequence=32766 border="0" color="33554432" x="14605" y="7450" height="423" width="783" format="[general]" html.valueishtml="0"  name=destinazione_dest_nazione visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=5 alignment="0" tabsequence=32766 border="0" color="33554432" x="11959" y="4042" height="508" width="6921" format="[general]" html.valueishtml="0"  name=ana_ana_rag_sociale visible="1" edit.limit=80 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=7 alignment="0" tabsequence=32766 border="0" color="33554432" x="11959" y="4995" height="508" width="6921" format="[general]" html.valueishtml="0"  name=ana_ana_localita visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="12001" y1="7937" x2="12001" y2="8932"  name=l_13 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="1" text="Importo" border="0" color="33554432" x="17547" y="9461" height="402" width="1375" html.valueishtml="0"  name=t_14 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=header x1="42" y1="6434" x2="4064" y2="6434"  name=l_2 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="1" text="Spett.:" border="0" color="33554432" x="9525" y="4042" height="423" width="2159" html.valueishtml="0"  name=ana_ana_rag_sociale_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=6 alignment="0" tabsequence=32766 border="0" color="33554432" x="11959" y="4529" height="486" width="6921" format="[general]" html.valueishtml="0"  name=ana_ana_indirizzo visible="1" edit.limit=40 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Numero" border="0" color="33554432" x="4169" y="4064" height="423" width="2010" html.valueishtml="0"  name=doc_doc_numero_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="42" y1="7429" x2="4064" y2="7429"  name=l_7 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=header id=4 alignment="2" tabsequence=32766 border="0" color="33554432" x="190" y="5905" height="423" width="1587" format="[general]" html.valueishtml="0"  name=valuta_val_codice visible="1" edit.limit=4 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=51 alignment="0" tabsequence=32766 border="0" color="33554432" x="2010" y="5905" height="423" width="1883" format="[general]" html.valueishtml="0"  name=doc_doc_sconto_perc visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="6265" y1="3958" x2="6265" y2="5270"  name=l_8 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=header id=27 alignment="2" tabsequence=32766 border="0" color="33554432" x="148" y="4656" height="423" width="3852" format="[general]" html.valueishtml="0"  name=guida_guida_tipo_doc visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="14626" y1="7937" x2="14626" y2="9440"  name=l_14 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=header id=55 alignment="2" tabsequence=32766 border="0" color="33554432" x="12107" y="8466" height="423" width="2497" format="[general]" html.valueishtml="0"  name=asp_beni_asp_beni_descrizione visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Valuta" border="0" color="33554432" x="190" y="5376" height="423" width="1587" html.valueishtml="0"  name=valuta_val_codice_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Sconto %" border="0" color="33554432" x="2010" y="5376" height="423" width="1883" html.valueishtml="0"  name=t_15 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo Documento" border="0" color="33554432" x="148" y="4064" height="423" width="3873" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Term. pagamento" border="0" color="33554432" x="148" y="6477" height="423" width="3852" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Banca d'appoggio" border="0" color="33554432" x="211" y="7493" height="423" width="3704" html.valueishtml="0"  name=t_16 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=11 alignment="2" tabsequence=32766 border="0" color="33554432" x="9567" y="4974" height="444" width="2286" format="[general]" html.valueishtml="0"  name=ana_ana_p_iva visible="1" edit.limit=16 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-9" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Partita Iva" border="0" color="33554432" x="9884" y="4550" height="402" width="1566" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="C.F.:" border="0" color="33554432" x="14626" y="7958" height="486" width="804" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=28 alignment="0" tabsequence=32766 border="0" color="33554432" x="15451" y="7958" height="486" width="3492" format="[general]" html.valueishtml="0"  name=ana_ana_c_f visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="42" y1="8932" x2="9355" y2="8932"  name=l_17 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Data ora Trasporto" border="0" color="33554432" x="14837" y="8487" height="423" width="4042" html.valueishtml="0"  name=t_24 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=59 alignment="2" tabsequence=32766 border="0" color="33554432" x="14837" y="8974" height="423" width="4127" format="[shortdate] [time]" html.valueishtml="0"  name=doc_data_ora_trasporto visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="14626" y1="8466" x2="19028" y2="8466"  name=l_18 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Codice" border="0" color="33554432" x="148" y="9461" height="402" width="1460" html.valueishtml="0"  name=art_art_codice_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+column(band=header id=74 alignment="2" tabsequence=32766 border="0" color="33554432" x="148" y="6963" height="423" width="3873" format="[general]" html.valueishtml="0"  name=pagamento_paga_descrizione visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Descrizione" border="0" color="33554432" x="2455" y="9461" height="402" width="6879" html.valueishtml="0"  name=art_art_descrizione_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="Sc.%" border="0" color="33554432" x="16446" y="9461" height="402" width="889" html.valueishtml="0"  name=t_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="Prezzo" border="0" color="33554432" x="14922" y="9461" height="402" width="1375" html.valueishtml="0"  name=rdoc_rdoc_pr_pezzo_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="1" text="PZ" border="0" color="33554432" x="13779" y="9461" height="402" width="1058" html.valueishtml="0"  name=rdoc_rdoc_qta_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+line(band=header x1="42" y1="9884" x2="19028" y2="9884"  name=l_10 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="~"COME SOPRA~""border="0" color="0" x="11938" y="6074" height="508" width="3026" format="[GENERAL]" html.valueishtml="0"  name=compute_6 visible="1~tif(destinazione_dest_rag_soc>~" ~" or  reg_tipo ='IV',0 , 1)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=header x1="9398" y1="8932" x2="14647" y2="8932"  name=l_23 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Trasporto a Mezzo" border="0" color="33554432" x="9419" y="7979" height="381" width="2561" html.valueishtml="0"  name=doc_doc_a_mezzo_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Aspetto Beni" border="0" color="33554432" x="12170" y="7979" height="381" width="2201" html.valueishtml="0"  name=t_18 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+compute(band=header alignment="2" expression="if( doc_doc_a_mezzo ='M', ~"MITTENTE~", if(doc_doc_a_mezzo ='D', ~"DESTINATARIO~", if(doc_doc_a_mezzo ='V', ~"VETTORE~", if(doc_doc_a_mezzo ='U', ~"Mittente-Vettore~", ~"~"))))"border="0" color="33554432" x="9546" y="8466" height="423" width="2413" format="[GENERAL]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Tipo trasporto: " border="0" color="33554432" x="9419" y="9017" height="381" width="2095" html.valueishtml="0"  name=t_23 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=58 alignment="0" tabsequence=32766 border="0" color="33554432" x="11620" y="9017" height="423" width="2921" format="[general]" html.valueishtml="0"  name=trasporto_trasp_descrizione visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="9398" y1="7937" x2="9398" y2="9440"  name=l_25 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=header x1="8297" y1="4000" x2="8297" y2="5228"  name=l_26 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=header alignment="2" expression="page() + '/ ' + pageCount()"border="0" color="33554432" x="8382" y="4677" height="444" width="1037" format="[general]" html.valueishtml="0"  name=page_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Pg./pgg." border="0" color="33554432" x="8403" y="4106" height="381" width="1058" html.valueishtml="0"  name=t_29 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Data" border="0" color="33554432" x="6350" y="4064" height="423" width="1905" html.valueishtml="0"  name=doc_doc_data_t visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=2 alignment="2" tabsequence=32766 border="0" color="33554432" x="6350" y="4656" height="508" width="1905" format="[general]" html.valueishtml="0"  name=doc_doc_data visible="1" edit.limit=0 edit.case=any edit.format="dd/mm/yy" edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=54 alignment="2" tabsequence=32766 border="0" color="33554432" x="8551" y="9017" height="381" width="762" format="#,0" html.valueishtml="0"  name=doc_doc_colli visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="6773" y1="8932" x2="6773" y2="9398"  name=l_19 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="P. Netto Kg.:" border="0" color="33554432" x="190" y="9017" height="381" width="1608" html.valueishtml="0"  name=t_27 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=80 alignment="1" tabsequence=32766 border="0" color="33554432" x="1883" y="9017" height="381" width="1481" format="#,0.00" html.valueishtml="0"  name=doc_peso_netto visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="P. Lordo Kg.:" border="0" color="33554432" x="3577" y="9017" height="381" width="1651" html.valueishtml="0"  name=t_28 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=81 alignment="0" tabsequence=32766 border="0" color="33554432" x="5312" y="9017" height="381" width="1397" format="#,0.00" html.valueishtml="0"  name=doc_peso_lordo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="3429" y1="8932" x2="3429" y2="9398"  name=l_24 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+text(band=header alignment="2" text="Num. Colli:" border="0" color="33554432" x="6879" y="9017" height="381" width="1629" html.valueishtml="0"  name=t_17 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=header id=52 alignment="0" tabsequence=32766 border="0" color="33554432" x="211" y="8022" height="423" width="5270" format="[general]" html.valueishtml="0"  name=banca_banca_den_abi visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=53 alignment="0" tabsequence=32766 border="0" color="33554432" x="5545" y="8022" height="423" width="3788" format="[general]" html.valueishtml="0"  name=banca_banca_den_cab visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression="~"IBAN: ~"+if( conto_banca_cin_internazionale >~"~",  conto_banca_cin_internazionale , ~"-~")+~" ~"+ if(conto_banca_cin>~"~",  conto_banca_cin , ~"-~") +~" ~"+ banca_banca_cod_abi +~" ~"+ banca_banca_cod_cab +~" ~"+if(conto_banca_c_c>~"0~",  conto_banca_c_c , ~"~") "border="0" color="33554432" x="211" y="8509" height="423" width="9017" format="[GENERAL]" html.valueishtml="0"  name=compute_7 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=header x1="21" y1="3958" x2="18965" y2="3958"  name=l_5 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=header x1="21" y1="3958" x2="21" y2="9884"  name=l_9 visible="1" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+column(band=header id=45 alignment="0" tabsequence=32766 border="0" color="33554432" x="190" y="105" height="3746" width="3979" format="[general]" html.valueishtml="0"  name=azienda_az_logo visible="1" bitmapname=yes edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=44 alignment="0" tabsequence=32766 border="0" color="33554432" x="14816" y="2899" height="423" width="1883" format="[general]" html.valueishtml="0"  name=azienda_az_trib visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=43 alignment="0" tabsequence=32766 border="0" color="33554432" x="10181" y="2899" height="423" width="1905" format="[general]" html.valueishtml="0"  name=azienda_az_cciaa visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="CCIAA: " border="0" color="0" x="8805" y="2899" height="423" width="1291" html.valueishtml="0"  name=t_12 visible="1~tif( azienda_az_cciaa >~"~", 1,0)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="FAX:" border="0" color="0" x="7979" y="2370" height="423" width="740" html.valueishtml="0"  name=t_10 visible="1~tif( azienda_az_fax >~"~", 1, 0)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="C.F.:" border="0" color="0" x="11535" y="2370" height="423" width="762" html.valueishtml="0"  name=t_19 visible="1~tif( azienda_az_cf >~"~", 1,0)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=56 alignment="0" tabsequence=32766 border="0" color="33554432" x="4445" y="105" height="1143" width="12192" format="[general]" html.valueishtml="0"  name=azienda_az_rag_sociale visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-28" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=47 alignment="0" tabsequence=32766 border="0" color="33554432" x="8826" y="2370" height="423" width="2540" format="[general]" html.valueishtml="0"  name=azienda_az_fax visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=46 alignment="0" tabsequence=32766 border="0" color="33554432" x="5228" y="2370" height="423" width="2540" format="[general]" html.valueishtml="0"  name=azienda_az_tel visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=42 alignment="0" tabsequence=32766 border="0" color="33554432" x="6286" y="2899" height="423" width="2391" format="[general]" html.valueishtml="0"  name=azienda_az_pi visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="1" text="Reg. Trib.:" border="0" color="0" x="12192" y="2899" height="423" width="2540" html.valueishtml="0"  name=t_13 visible="1~tif(  azienda_az_trib >~"~", 1,0)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=header id=57 alignment="0" tabsequence=32766 border="0" color="33554432" x="12403" y="2370" height="423" width="4254" format="[general]" html.valueishtml="0"  name=azienda_az_cf visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header id=87 alignment="0" tabsequence=32766 border="0" color="33554432" x="4445" y="1312" height="465" width="12213" format="[general]" html.valueishtml="0"  name=azienda_rag_soc2 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=header alignment="0" expression=" if(isnull(azienda_az_indirizzo), ~"~",  azienda_az_indirizzo )+~"   ~"+
+  if(isnull(  azienda_az_cap ), ~"~",   azienda_az_cap  )+~"   ~"+
+  if(isnull(    azienda_az_citta ), ~"~",    azienda_az_citta )+~"   ~"+
+  if(isnull(   azienda_az_provincia ), ~"~",    azienda_az_provincia )"border="0" color="33554432" x="4445" y="1841" height="423" width="12213" format="[GENERAL]" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Tel.:" border="0" color="0" x="4445" y="2370" height="423" width="656" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Partita IVA:" border="0" color="0" x="4445" y="2899" height="423" width="1778" html.valueishtml="0"  name=t_11 visible="1~tif( azienda_az_pi >~"~", 1,0)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=header alignment="0" expression="~"E-Mail: ~"+ az_email "border="0" color="33554432" x="4445" y="3429" height="423" width="6582" format="[GENERAL]" html.valueishtml="0"  name=compute_9 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="UM" border="0" color="33554432" x="12890" y="9461" height="402" width="656" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Taglia" border="0" color="33554432" x="8826" y="9461" height="423" width="1947" html.valueishtml="0"  name=titolo_tit_titolo_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+text(band=header alignment="2" text="Colore" border="0" color="33554432" x="10816" y="9440" height="423" width="1926" html.valueishtml="0"  name=rdoc_rdoc_calo_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="553648127" )
+compute(band=header alignment="2" expression="if( left(reg_tipo,1)='I', if( doc_doc_data >= date(2013-01-01),  doc_doc_numero +~"/~"+year( doc_doc_data ),  doc_doc_numero ),  doc_doc_numero)
+
+//right(string(year( doc_doc_data )),2),  doc_doc_numero )"border="0" color="33554432" x="4169" y="4656" height="508" width="2074" format="[GENERAL]" html.valueishtml="0"  name=c_num_fattura visible="1"  font.face="Arial" font.height="-10" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="f_dich_intento( conto_conto_id ,  year( doc_doc_data ) )"border="0" color="33554432" x="127" y="1080" height="931" width="18817" format="[GENERAL]" html.valueishtml="0"  name=c_dich_intento visible="1~tif( c_dich_intento>~"00~" and  left(reg_tipo, 1)='I' AND GETROW()=ROWCOUNT() , 1, 0) "  slideup=directlyabove  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="~"Rif. Doc. n. ~"+  doc_numero_padre + ~" del ~"+ string( doc_data_padre )"border="0" color="33554432" x="84" y="551" height="423" width="12424" format="[GENERAL]" html.valueishtml="0"  name=compute_5 visible="1~tif( (doc_numero_padre<>doc_numero_padre[1] or isnull(doc_numero_padre[1]) ) and doc_numero_padre>~"~" ,1,0)"  slideup=allabove  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" font.italic="1" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="1" tabsequence=32766 border="0" color="33554432" x="13779" y="43" height="423" width="1058" format="#,0" html.valueishtml="0"  name=rdoc_rdoc_qta visible="1~tif(rdoc_rdoc_qta>0.1, 1,0)" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="if( u_misura_um_codice ='PZ',  rdoc_rdoc_qta , rdoc_rdoc_peso )"border="0" color="33554432" x="12700" y="551" height="423" width="1714" format="[GENERAL]~tif(  u_misura_um_codice ='PZ', '#,0', '#,0.00')" html.valueishtml="0"  name=c_qta visible="0"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="if(cod_clfo>~" ~", cod_clfo, art_art_codice)"border="0" color="33554432" x="105" y="43" height="423" width="2243" format="[GENERAL]" html.valueishtml="0"  name=compute_8 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=26 alignment="2" tabsequence=32766 border="0" color="33554432" x="12848" y="43" height="423" width="825" format="[general]" html.valueishtml="0"  name=u_misura_um_codice visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="ROUND( c_qta * c_prezzo - if( rdoc_rdoc_sconto_imp >0,  rdoc_rdoc_sconto_imp , if( rdoc_rdoc_sconto_perc >0,  c_qta * c_prezzo*rdoc_rdoc_sconto_perc /100, 0)), 3)"border="0" color="33554432" x="17250" y="43" height="423" width="1693" format="#,0.00" html.valueishtml="0"  name=c_imp_riga visible="1~tif(c_imp_riga>0 and  left(reg_tipo, 1)='I' , 1,0)"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=23 alignment="0" tabsequence=32766 border="0" color="33554432" x="2455" y="43" height="423" width="6223" format="[general]" html.valueishtml="0"  name=rdoc_rdoc_descrizione visible="1" height.autosize=yes edit.limit=32000 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=90 alignment="2" tabsequence=32766 border="0" color="33554432" x="8784" y="43" height="423" width="1926" format="[general]" html.valueishtml="0"  name=rdoc_id_taglia visible="1" dddw.name=d_taglia_gd dddw.displaycolumn=taglia dddw.datacolumn=id_taglia dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.nilisnull=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=91 alignment="2" tabsequence=32766 border="0" color="33554432" x="10816" y="43" height="423" width="1926" format="[general]" html.valueishtml="0"  name=rdoc_id_colore visible="1" dddw.name=d_colore_gd dddw.displaycolumn=colore dddw.datacolumn=id_colore dddw.percentwidth=0 dddw.lines=0 dddw.limit=0 dddw.allowedit=no dddw.useasborder=no dddw.case=any dddw.nilisnull=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="if( rdoc_rdoc_pr_man >0,  rdoc_rdoc_pr_man , if( rdoc_rdoc_pr_gr_complessivo >0,  rdoc_rdoc_pr_gr_complessivo ,  rdoc_rdoc_pr_pezzo ))"border="0" color="33554432" x="14922" y="43" height="423" width="1354" format="#,0.000" html.valueishtml="0"  name=c_prezzo visible="1~tif(c_prezzo>0, 1,0)"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="1" expression="if( rdoc_rdoc_sconto_perc >0,  rdoc_rdoc_sconto_perc,  rdoc_rdoc_sconto_imp)  "border="0" color="33554432" x="16319" y="43" height="423" width="825" format="#,0.00" html.valueishtml="0"  name=c_sconto visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+report(band=footer dataobject="d_st_vedi_saldi_partite" x="11451" y="0" height="1714" width="3619" border="0"  height.autosize=yes criteria="" nest_arguments=(("f_data_inizio_saldi()"),(" doc_doc_data "),(" causale_caus_partita "),(" conto_conto_id ")) trail_footer = yes  name=dw_5 visible="1~tif( causale_caus_partita >~" ~" and page()=pageCount() and   val_base_vedi_saldi_bolla ='S' , 1, 0)"  slideup=allabove )
+report(band=footer dataobject="d_st_cast_iva" x="11091" y="2117" height="1418" width="8191" border="0"  height.autosize=yes criteria="" nest_arguments=((" doc_id ")) trail_footer = yes  name=dw_2 visible="1~tif(page()=pageCount() and left(reg_tipo,1)='I', 1, 0)" )
+compute(band=footer alignment="0" expression="pageCount()"border="0" color="0" x="296" y="1799" height="508" width="2370" format="[GENERAL]" html.valueishtml="0"  name=tot_pagine visible="0"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+report(band=footer dataobject="d_st_riep_titoli" x="0" y="85" height="1587" width="11324" border="0"  height.autosize=yes criteria="" nest_arguments=((" doc_id "),(" reg_tipo ")) trail_footer = yes  name=dw_1 visible="1~tif(page()=pageCount()and sum( rdoc_rdoc_peso for all)>0, 1, 0)" )
+report(band=footer dataobject="d_spese_doc" x="15113" y="0" height="889" width="3852" border="0"  height.autosize=yes criteria="" nest_arguments=((" doc_id ")) trail_footer = yes  name=dw_4 visible="1~tif(page()=pageCount() and left(reg_tipo,1)='I', 1, 0)" )
+text(band=footer alignment="0" text="Contributo CONAI assolto ove dovuto" border="0" color="0" x="232" y="6879" height="359" width="5397" html.valueishtml="0"  name=t_8 visible="1~tif(page()=pageCount(), 1, 0)"  font.face="Arial" font.height="-8" font.weight="700"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+rectangle(band=footer x="232" y="3895" height="1629" width="9927"  name=r_2 visible="1~tif(page()=pageCount(), 1, 0)" brush.hatch="7" brush.color="536870912" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="0" )
+column(band=footer id=60 alignment="0" tabsequence=32766 border="0" color="33554432" x="1714" y="4001" height="423" width="8318" format="[general]" html.valueishtml="0"  name=vet_rag_sociale_1 visible="1~tif(page()=pageCount(), 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=footer alignment="0" text="Vettore:" border="0" color="0" x="359" y="4001" height="423" width="1312" html.valueishtml="0"  name=t_25 visible="1~tif(page()=pageCount(), 1, 0)"  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=footer id=61 alignment="0" tabsequence=32766 border="0" color="33554432" x="359" y="4530" height="423" width="6392" format="[general]" html.valueishtml="0"  name=vet_indirizzo_1 visible="1~tif(page()=pageCount(), 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=footer id=63 alignment="0" tabsequence=32766 border="0" color="33554432" x="6900" y="4530" height="423" width="1291" format="[general]" html.valueishtml="0"  name=vet_cap_1 visible="1~tif(page()=pageCount(), 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=footer id=65 alignment="0" tabsequence=32766 border="0" color="33554432" x="8382" y="4530" height="423" width="508" format="[general]" html.valueishtml="0"  name=vet_provincia_1 visible="1~tif(page()=pageCount(), 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=footer id=62 alignment="0" tabsequence=32766 border="0" color="33554432" x="3069" y="5017" height="423" width="6985" format="[general]" html.valueishtml="0"  name=vet_localita_1 visible="1~tif(page()=pageCount(), 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=footer id=64 alignment="0" tabsequence=32766 border="0" color="33554432" x="359" y="5017" height="423" width="2540" format="[general]" html.valueishtml="0"  name=vet_citta_1 visible="1~tif(page()=pageCount(), 1, 0)" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=footer alignment="0" expression="~"Nota: ~"+doc_nota"border="2" color="33554432" x="296" y="5715" height="952" width="9863" format="[GENERAL]" html.valueishtml="0"  name=c_nota_doc visible="1~tif(page()=pageCount(), 1, 0)"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+line(band=footer x1="13525" y1="5758" x2="13525" y2="6604"  name=l_15 visible="1~tif(page()=pageCount(), 1, 0)" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="0" )
+line(band=footer x1="16023" y1="5758" x2="16023" y2="6604"  name=l_16 visible="1~tif(page()=pageCount(), 1, 0)" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="0" )
+text(band=footer alignment="0" text="Firma Conducente" border="0" color="0" x="10604" y="5736" height="423" width="2857" html.valueishtml="0"  name=t_21 visible="1~tif(page()=pageCount(), 1, 0)"  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="Firma Vettore" border="0" color="0" x="13631" y="5736" height="402" width="2349" html.valueishtml="0"  name=t_20 visible="1~tif(page()=pageCount(), 1, 0)"  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=footer alignment="0" text="Firma Destinatario" border="0" color="0" x="16129" y="5736" height="402" width="2794" html.valueishtml="0"  name=t_22 visible="1~tif(page()=pageCount(), 1, 0)"  font.face="Tahoma" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+line(band=footer x1="10519" y1="6139" x2="19028" y2="6139"  name=l_20 visible="1~tif(page()=pageCount(), 1, 0)" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="0" )
+rectangle(band=footer x="10519" y="5736" height="931" width="8530"  name=r_1 visible="1~tif(page()=pageCount(), 1, 0)" brush.hatch="7" brush.color="536870912" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="0" )
+line(band=footer x1="254" y1="6752" x2="19155" y2="6752"  name=l_21 visible="1~tif(page()=pageCount(), 1, 0)" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+line(band=footer x1="254" y1="7409" x2="19155" y2="7409"  name=l_22 visible="1~tif(page()=pageCount(), 1, 0)" pen.style="0" pen.width="21" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=footer alignment="0" expression="~"Condizione di vendita: Otto giorni dopo la consegna o il ricevimento della merce non si accettano reclami. Per ogni controversia riconosciamo competente solo il Foro di Arezzo.~""border="0" color="0" x="5820" y="6795" height="529" width="13462" format="[GENERAL]" html.valueishtml="0"  name=compute_2 visible="0"  font.face="Arial" font.height="-7" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215"  height.autosize=yes)
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="1" xslfop.print="0" )
+export.xhtml()
+ 

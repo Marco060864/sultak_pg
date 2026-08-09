@@ -1,0 +1,15 @@
+﻿global type f_peso_lacci_fili from function_object
+end type
+
+forward prototypes
+global function decimal f_peso_lacci_fili (string as_tipo, integer ai_numero, date adt_data_doc)
+end prototypes
+
+global function decimal f_peso_lacci_fili (string as_tipo, integer ai_numero, date adt_data_doc);decimal ldc_peso
+
+select first(peso) into :ldc_peso from dba.filo_laccio where data_inserimento<= :adt_data_doc and tipo=:as_tipo order by data_inserimento desc;
+ldc_peso*=ai_numero
+if isnull(ldc_peso) then ldc_peso=0
+return ldc_peso
+end function
+

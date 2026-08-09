@@ -1,0 +1,81 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=1073741824 processing=0 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no )
+header(height=138 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=115 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=partita_scarico_id_scarico dbname="partita_scarico.id_scarico" )
+ column=(type=long updatewhereclause=yes name=partita_scarico_id_apertura dbname="partita_scarico.id_apertura" )
+ column=(type=decimal(2) updatewhereclause=yes name=partita_scarico_scarico dbname="partita_scarico.scarico" )
+ column=(type=ulong updatewhereclause=yes name=partita_scarico_numero dbname="partita_scarico.numero" )
+ column=(type=long updatewhereclause=yes identity=yes name=rdoc_rdoc_id dbname="rdoc.rdoc_id" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_finoecalo_ap dbname="rdoc.finoecalo" )
+ column=(type=long updatewhereclause=yes name=doc_doc_num_prog dbname="doc.doc_num_prog" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data_prog dbname="doc.doc_data_prog" )
+ column=(type=char(16) updatewhereclause=yes name=doc_doc_numero dbname="doc.doc_numero" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data dbname="doc.doc_data" )
+ column=(type=long updatewhereclause=yes name=doc_doc_num_prog_1 dbname="doc.doc_num_prog" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data_prog_1 dbname="doc.doc_data_prog" )
+ column=(type=char(16) updatewhereclause=yes name=doc_doc_numero_1 dbname="doc.doc_numero" )
+ column=(type=datetime updatewhereclause=yes name=doc_doc_data_1 dbname="doc.doc_data" )
+ column=(type=decimal(4) updatewhereclause=yes name=rdoc_finoecalo_1_ap dbname="rdoc.finoecalo" )
+ column=(type=long updatewhereclause=yes name=rdoc_rdoc_numero dbname="rdoc.rdoc_numero" )
+ column=(type=long updatewhereclause=yes name=rdoc_rdoc_numero dbname="rdoc.rdoc_numero" )
+ retrieve="  SELECT  partita_scarico.id_scarico ,           partita_scarico.id_apertura ,           partita_scarico.scarico ,       
+    partita_scarico.numero ,           rdoc_b.rdoc_id ,           rdoc_b.finoecalo ,           doc_b.doc_num_prog ,  
+         doc_b.doc_data_prog ,           doc_b.doc_numero ,           doc_b.doc_data ,           doc_a.doc_num_prog ,        
+   doc_a.doc_data_prog ,           doc_a.doc_numero ,           doc_a.doc_data ,           rdoc_a.finoecalo ,           rdoc_b.rdoc_numero , 
+          rdoc_a.rdoc_numero     FROM dba.partita_scarico ,           dba.rdoc rdoc_a ,           dba.rdoc rdoc_b ,           dba.doc doc_a ,           dba.doc doc_b   
+  WHERE ( rdoc_a.rdoc_id = partita_scarico.id_apertura ) and          ( partita_scarico.id_scarico = rdoc_b.rdoc_id ) and          ( doc_a.doc_id = rdoc_a.rdoc_doc_id ) and          ( rdoc_b.rdoc_doc_id = doc_b.doc_id )   " filter=" doc_doc_data >DATE('2011-12-31')" sort="partita_scarico_id_apertura A partita_scarico_id_scarico A doc_doc_data A doc_doc_numero A partita_scarico_numero A " )
+group(level=1 header.height=154 trailer.height=134 by=("partita_scarico_id_apertura" ) header.color="536870912" trailer.color="536870912" )
+group(level=2 header.height=0 trailer.height=0 by=("partita_scarico_id_apertura" , "partita_scarico_id_scarico" ) header.color="536870912" trailer.color="134217730" )
+text(band=header alignment="2" text="Apertura" border="0" color="33554432" x="1518" y="77" height="64" width="395" html.valueishtml="0"  name=partita_scarico_numero_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Rdoc
+Finoecalo" border="0" color="33554432" x="2183" y="3" height="128" width="329" html.valueishtml="0"  name=rdoc_finoecalo_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Num Prog" border="0" color="33554432" x="2520" y="3" height="128" width="391" html.valueishtml="0"  name=doc_doc_num_prog_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Data Prog" border="0" color="33554432" x="2918" y="3" height="128" width="388" html.valueishtml="0"  name=doc_doc_data_prog_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Numero" border="0" color="33554432" x="3310" y="3" height="128" width="344" html.valueishtml="0"  name=doc_doc_numero_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Data" border="0" color="33554432" x="3657" y="3" height="128" width="249" html.valueishtml="0"  name=doc_doc_data_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Num Prog" border="0" color="33554432" x="3909" y="3" height="128" width="388" html.valueishtml="0"  name=doc_doc_num_prog_t_1_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Data Prog" border="0" color="33554432" x="4301" y="3" height="128" width="391" html.valueishtml="0"  name=doc_doc_data_prog_t_1_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Numero" border="0" color="33554432" x="4696" y="3" height="128" width="464" html.valueishtml="0"  name=doc_doc_numero_t_1_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Doc
+Doc Data" border="0" color="33554432" x="5171" y="3" height="128" width="325" html.valueishtml="0"  name=doc_doc_data_t_1_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="1" text="Riga Scarico" border="0" color="33554432" x="1927" y="92" height="64" width="340" html.valueishtml="0"  name=rdoc_finoecalo_t_1_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header.1 alignment="2" text="Partita Scarico" border="0" color="33554432" x="1456" y="92" height="64" width="505" html.valueishtml="0"  name=partita_scarico_scarico_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=header.1 id=7 alignment="1" tabsequence=32766 border="0" color="33554432" x="48" y="9" height="64" width="315" format="[General]" html.valueishtml="0"  name=doc_doc_num_prog visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=header.1 id=8 alignment="0" tabsequence=32766 border="0" color="33554432" x="443" y="9" height="64" width="329" format="[general]" html.valueishtml="0"  name=doc_doc_data_prog visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=header.1 id=9 alignment="0" tabsequence=32766 border="0" color="33554432" x="837" y="9" height="64" width="344" format="[general]" html.valueishtml="0"  name=doc_doc_numero visible="1" edit.limit=16 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=header.1 id=10 alignment="0" tabsequence=32766 border="0" color="33554432" x="1185" y="9" height="64" width="197" format="[general]" html.valueishtml="0"  name=doc_doc_data visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=header.1 id=15 alignment="1" tabsequence=32766 border="0" color="33554432" x="1499" y="9" height="74" width="329" format="#,0.00" html.valueishtml="0"  name=rdoc_finoecalo_1_ap visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=detail id=11 alignment="1" tabsequence=32766 border="0" color="33554432" x="2289" y="0" height="77" width="329" format="[general]" html.valueishtml="0"  name=doc_doc_num_prog_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="33554432" x="2651" y="0" height="77" width="329" format="[general]" html.valueishtml="0"  name=doc_doc_data_prog_1 visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=16 alignment="0" tabsequence=32766 border="0" color="33554432" x="3021" y="3" height="64" width="249" format="[General]" html.valueishtml="0"  name=rdoc_rdoc_numero visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="33554432" x="3313" y="7" height="64" width="223" format="[general]" html.valueishtml="0"  name=partita_scarico_id_scarico visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="33554432" x="4359" y="19" height="64" width="197" format="[general]" html.valueishtml="0"  name=partita_scarico_id_apertura visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+column(band=detail id=17 alignment="0" tabsequence=32766 border="0" color="33554432" x="5497" y="0" height="64" width="2132" format="[general]" html.valueishtml="0"  name=rdoc_rdoc_numero_1 visible="1" edit.limit=0 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=detail id=6 alignment="1" tabsequence=32766 border="0" color="33554432" x="1902" y="0" height="77" width="329" format="#,0.00" html.valueishtml="0"  name=rdoc_finoecalo_ap visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+column(band=detail id=3 alignment="1" tabsequence=32766 border="0" color="33554432" x="1510" y="3" height="77" width="329" format="#,0.00" html.valueishtml="0"  name=partita_scarico_scarico visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16776960" )
+column(band=trailer.2 id=4 alignment="1" tabsequence=32766 border="0" color="33554432" x="1284" y="7" height="77" width="154" format="[general]" html.valueishtml="0"  name=partita_scarico_numero visible="1" edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16776960" )
+compute(band=trailer.2 alignment="1" expression="sum(partita_scarico_scarico for group 2)"border="0" color="33554432" x="1499" y="16" height="77" width="329" format="#,0.00" html.valueishtml="0"  name=compute_2 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16776960" )
+compute(band=trailer.2 alignment="1" expression="sum(rdoc_finoecalo_ap for group 2)"border="0" color="33554432" x="1894" y="16" height="77" width="329" format="#,0.00" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+line(band=trailer.1 x1="1024" y1="96" x2="4001" y2="96"  name=l_2 visible="1" pen.style="0" pen.width="4" pen.color="0"  background.mode="2" background.color="16777215" )
+compute(band=trailer.1 alignment="1" expression="sum(partita_scarico_scarico for group 1)"border="0" color="33554432" x="1510" y="7" height="77" width="329" format="#,0.00" html.valueishtml="0"  name=compute_3 visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="65535" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

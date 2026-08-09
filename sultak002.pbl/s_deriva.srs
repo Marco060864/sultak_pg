@@ -1,0 +1,9 @@
+﻿global type s_deriva from structure
+	long		s_id_conto
+	long		s_id_guida
+	date		s_da_data
+	date		s_a_data
+	udw_000		s_udw_riga
+	string		s_evadi_per
+end type
+

@@ -1,0 +1,4 @@
+﻿global type s_riga_derivata from structure
+	string		eee
+end type
+

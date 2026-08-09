@@ -1,0 +1,83 @@
+﻿release 6;
+datawindow(units=0 timer_interval=0 color=78682240 processing=0 print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.prompt=no print.buttons=no print.preview.buttons=no )
+header(height=120 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=76 color="536870912" )
+table(column=(type=long updatewhereclause=yes name=dis_banca_id_distinta_banca dbname="dis_banca.id_distinta_banca" )
+ column=(type=decimal(0) updatewhereclause=yes name=riga_dis_banca_num_riga dbname="riga_dis_banca.num_riga" )
+ column=(type=char(40) updatewhereclause=yes name=rag_soc_1 dbname="anagrafica.rag_soc_1" )
+ column=(type=char(40) updatewhereclause=yes name=rag_soc_2 dbname="anagrafica.rag_soc_2" )
+ column=(type=char(16) updatewhereclause=yes name=cod_fiscale dbname="anagrafica.cod_fiscale" )
+ column=(type=char(16) updatewhereclause=yes name=par_iva dbname="anagrafica.par_iva" )
+ column=(type=char(40) updatewhereclause=yes name=destinazione_rag_soc_1 dbname="destinazione.rag_soc_1" )
+ column=(type=char(40) updatewhereclause=yes name=destinazione_rag_soc_2 dbname="destinazione.rag_soc_2" )
+ retrieve="  SELECT ~"dis_banca~".~"id_distinta_banca~",   
+         ~"riga_dis_banca~".~"num_riga~",   
+         ~"anagrafica~".~"rag_soc_1~",   
+         ~"anagrafica~".~"rag_soc_2~",   
+         ~"anagrafica~".~"cod_fiscale~",   
+         ~"anagrafica~".~"par_iva~",   
+         ~"destinazione~".~"rag_soc_1~",   
+         ~"destinazione~".~"rag_soc_2~"  
+    FROM ~"dis_banca~",   
+         ~"riga_dis_banca~",   
+         ~"scadenza~",   
+         ~"anagrafica~",
+			~"sog_commerciale~",
+			~"destinazione~"
+   WHERE ~"dis_banca~".~"id_distinta_banca~" = :rn_id_dis AND
+			~"riga_dis_banca~".~"id_distinta_banca~" = ~"dis_banca~".~"id_distinta_banca~" AND
+         ~"scadenza~".~"id_riga_distinta_banca~"  = ~"riga_dis_banca~".~"id_riga_distinta_banca~" AND
+         ~"sog_commerciale~".~"id_sog_commerciale~" = ~"scadenza~".~"id_sog_commerciale~" AND
+         ~"anagrafica~".~"id_anagrafica~" = ~"sog_commerciale~".~"id_anagrafica~" and
+			~"destinazione~".~"id_sog_commerciale~"	=* ~"sog_commerciale~".~"id_sog_commerciale~" AND
+			~"destinazione~".~"tipo_destinazione~" = 'R'
+GROUP BY ~"dis_banca~".~"id_distinta_banca~",   
+         ~"riga_dis_banca~".~"num_riga~",   
+         ~"anagrafica~".~"rag_soc_1~",   
+         ~"anagrafica~".~"rag_soc_2~",   
+         ~"anagrafica~".~"cod_fiscale~",   
+         ~"anagrafica~".~"par_iva~",   
+         ~"destinazione~".~"rag_soc_1~",   
+         ~"destinazione~".~"rag_soc_2~"
+ORDER BY ~"riga_dis_banca~".~"num_riga~" ASC   
+" arguments=(("rn_id_dis", number)) )
+text(band=header alignment="2" text="Anagrafica
+Rag Soc 1"border="0" color="0" x="727" y="4" height="112" width="937"  name=anagrafica_rag_soc_1_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Rag Soc 2"border="0" color="0" x="1669" y="4" height="112" width="937"  name=anagrafica_rag_soc_2_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Cod Fiscale"border="0" color="0" x="2610" y="4" height="112" width="389"  name=anagrafica_cod_fiscale_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Anagrafica
+Par Iva"border="0" color="0" x="3003" y="4" height="112" width="389"  name=anagrafica_par_iva_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Dis Banca
+Id Distinta Banca"border="0" color="0" x="5" y="4" height="112" width="366"  name=dis_banca_id_distinta_banca_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Riga Dis Banca
+Num Riga"border="0" color="0" x="379" y="4" height="112" width="334"  name=riga_dis_banca_num_riga_t  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+compute(band=detail alignment="0" expression="space(1) +
+'30' +
+right('0000000' + riga_dis_banca_num_riga, 7) +
+
+left( 
+if( isnull(destinazione_rag_soc_1),  if(isnull(rag_soc_1), space(30), rag_soc_1),
+ destinazione_rag_soc_1) 
++ space(30), 30) +
+
+left( 
+if(isnull(destinazione_rag_soc_2), if(isnull(rag_soc_2), space(30), rag_soc_2),
+destinazione_rag_soc_2 ) 
++ space(30), 30) +
+
+left( if(isnull(cod_fiscale),  space(16), cod_fiscale)  + space(16), 16) +
+space(34)
+"border="0" color="0" x="3397" y="4" height="68" width="1595" format="[general]"  name=rec_30  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="727" y="4" height="68" width="937" format="[general]"  name=rag_soc_1 edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1669" y="4" height="68" width="937" format="[general]"  name=rag_soc_2 edit.limit=40 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=5 alignment="0" tabsequence=32766 border="0" color="0" x="2610" y="4" height="68" width="389" format="[general]"  name=cod_fiscale edit.limit=16 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="3003" y="4" height="68" width="389" format="[general]"  name=par_iva edit.limit=16 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="1" tabsequence=32766 border="0" color="0" x="5" y="4" height="68" width="366" format="[general]"  name=dis_banca_id_distinta_banca edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="1" tabsequence=32766 border="0" color="0" x="379" y="4" height="68" width="334" format="[general]"  name=riga_dis_banca_num_riga edit.limit=0 edit.case=any edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="4992" y="0" height="56" width="919" format="[general]"  name=destinazione_rag_soc_1 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="5911" y="0" height="56" width="923" format="[general]"  name=destinazione_rag_soc_2 edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" cellpadding="0" cellspacing="0" generatecss="no" nowrap="yes")  

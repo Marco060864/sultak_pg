@@ -1,0 +1,22 @@
+# pcode binario, rigenerato ad ogni build
+**/.pb/
+**/build/
+
+# deploy binari (pbd), rigenerati dalla build - non serve versionarli
+*.pbd
+
+# backup interni creati dal wizard di conversione workspace -> solution
+_BackupFiles/
+
+# backup manuali / zip di sicurezza - troppo pesanti per git
+*.bak
+*.zip
+
+# stato dell'IDE specifico dell'utente/macchina
+*.usr.opt
+
+# log della migrazione a Solution
+sultak_mig.log
+
+# config locale di Claude Code - permessi specifici di questa macchina
+.claude/settings.local.json

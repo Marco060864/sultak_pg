@@ -1,0 +1,18 @@
+﻿global type f_scadenza_in_dis_banca from function_object
+end type
+
+forward prototypes
+global function long f_scadenza_in_dis_banca (long al_id_scad)
+end prototypes
+
+global function long f_scadenza_in_dis_banca (long al_id_scad);long ll_id_distinta
+
+select id_dist_banca
+into :ll_id_distinta
+from dba.distinta_banca d, dba.riga_dis_banca r
+where r.id_scadenza=:al_id_scad
+and r.id_distinta_banca=d.id_dist_banca
+;
+return ll_id_distinta
+end function
+

@@ -1,0 +1,99 @@
+﻿release 10;
+datawindow(units=0 timer_interval=0 color=78682240 processing=1 HTMLDW=no print.printername="" print.documentname="" print.orientation = 0 print.margin.left = 110 print.margin.right = 110 print.margin.top = 96 print.margin.bottom = 96 print.paper.source = 0 print.paper.size = 0 print.canusedefaultprinter=yes print.prompt=no print.buttons=no print.preview.buttons=no print.cliptext=no print.overrideprintjob=no print.collate=yes hidegrayline=no grid.lines=0 )
+header(height=128 color="536870912" )
+summary(height=0 color="536870912" )
+footer(height=0 color="536870912" )
+detail(height=83 color="536870912" )
+table(column=(type=char(1) updatewhereclause=yes name=rb_1 dbname="rb_1" )
+ column=(type=char(5) updatewhereclause=yes name=codice_sia dbname="codice_sia" )
+ column=(type=char(5) updatewhereclause=yes name=cod_abi dbname="cod_abi" )
+ column=(type=char(6) updatewhereclause=yes name=d_crea_sup dbname="d_crea_sup" )
+ column=(type=char(20) updatewhereclause=yes name=rag_sociale dbname="rag_sociale" )
+ column=(type=char(6) updatewhereclause=yes name=dis_banca_id_distinta_banca dbname="dis_banca_id_distinta_banca" )
+ column=(type=char(1) updatewhereclause=yes name=filler dbname="filler" )
+ column=(type=char(5) updatewhereclause=yes name=centro_applicativo dbname="centro_applicativo" )
+ column=(type=char(69) updatewhereclause=yes name=rb_3 dbname="rb_3" )
+ column=(type=long updatewhereclause=yes name=num_disp dbname="num_disp" )
+ column=(type=char(2) updatewhereclause=yes name=rb_2 dbname="rb_2" )
+ column=(type=decimal(4) updatewhereclause=yes name=tot_importi_negativi dbname="tot_importi_negativi" )
+ column=(type=char(1) updatewhereclause=yes name=codice_divisa dbname="codice_divisa" )
+ column=(type=char(15) updatewhereclause=yes name=tot_importi_negativi_euro dbname="tot_importi_negativi_euro" )
+ retrieve="  SELECT  cast(' ' as char) as rb_1,          
+ SUBSTR(~"az_banca~".~"cod_sia~" || '00000', 1, 5) AS codice_sia,         
+  SUBSTR(~"banca~".~"banca_cod_abi~" || '00000', 1, 5) AS cod_abi,       
+    cast(DATEFORMAT(:rd_data_riba, 'ddmmyy') as char(6)) as d_crea_sup,           
+SUBSTR(~"azienda~".~"az_rag_sociale~" || '                    ', 1, 20) AS rag_sociale,         
+  SUBSTR(~"distinta_banca~".~"id_dist_banca~" || '                    ', 1, 6) AS dis_banca_id_distinta_banca,      
+     CAST(' ' as char(1)) as filler,          
+ CAST('00000' as char(5)) as centro_applicativo,           
+CAST('                                                                    ' as char(69)) as rb_3,          
+ CAST(:rn_num_disp AS INTEGER) AS num_disp,          
+ cast('EF' as char) as rb_2,          
+ CAST(:rn_tot_importi_negativi AS DECIMAL(18, 4)) AS tot_importi_negativi,           
+CAST('E' as char(1)) as codice_divisa,          
+ cast('' as char(15)) as tot_importi_negativi_euro    
+
+
+FROM dba.~"azienda~" ,           dba.~"banca~" ,          dba.~"distinta_banca~"     , dba.~"az_banca~"
+WHERE    ~"distinta_banca~".~"id_banca_ditta~" = ~"az_banca~".~"id_banca_azienda~"  
+and ~"az_banca~".~"id_banca~"=~"banca~".~"banca_id~"
+and  ~"distinta_banca~".~"id_dist_banca~" = :rn_id_dis   
+" arguments=(("rn_id_dis", number),("rd_data_riba", date),("rn_num_disp", number),("rn_tot_importi_negativi", number)) )
+text(band=header alignment="2" text="Filler" border="0" color="0" x="7" y="10" height="112" width="102" html.valueishtml="0"  name=rb_1_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Tipo
+Record" border="0" color="0" x="117" y="10" height="112" width="187" html.valueishtml="0"  name=rb_2_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Mittente" border="0" color="0" x="311" y="10" height="112" width="453" html.valueishtml="0"  name=banca_azienda_codice_sia_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Ricevente" border="0" color="0" x="772" y="10" height="112" width="362" html.valueishtml="0"  name=banca_appoggio_cod_abi_t visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Data
+Creazione" border="0" color="0" x="1141" y="10" height="112" width="362" html.valueishtml="0"  name=t_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Campo a
+disposizione" border="0" color="0" x="1510" y="3" height="112" width="501" html.valueishtml="0"  name=t_3 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Filler" border="0" color="0" x="2019" y="10" height="112" width="494" html.valueishtml="0"  name=t_4 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Codice Divisa" border="0" color="0" x="2520" y="10" height="112" width="219" html.valueishtml="0"  name=t_5 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="2" text="Centro Applicativo" border="0" color="0" x="2984" y="10" height="112" width="325" html.valueishtml="0"  name=t_6 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" )
+text(band=header alignment="0" text="Num Disp" border="0" color="0" x="9051" y="3" height="58" width="976" html.valueishtml="0"  name=t_7 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Tot Importi Negativi" border="0" color="0" x="10035" y="3" height="77" width="980" html.valueishtml="0"  name=t_8 visible="1"  font.face="Arial" font.height="-12" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+text(band=header alignment="0" text="Tot Importi Negativi Euro" border="0" color="0" x="11023" y="3" height="58" width="333" html.valueishtml="0"  name=t_9 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="len(string(d_crea_sup))"border="0" color="0" x="5595" y="0" height="74" width="366" format="[general]" html.valueishtml="0"  name=compute_1 visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=1 alignment="0" tabsequence=32766 border="0" color="0" x="7" y="0" height="74" width="102" format="[general]" html.valueishtml="0"  name=rb_1 visible="1" edit.limit=1 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=11 alignment="0" tabsequence=32766 border="0" color="0" x="117" y="0" height="74" width="187" format="[general]" html.valueishtml="0"  name=rb_2 visible="1" edit.limit=2 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=2 alignment="0" tabsequence=32766 border="0" color="0" x="311" y="0" height="74" width="453" format="[general]" html.valueishtml="0"  name=codice_sia visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=no  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=3 alignment="0" tabsequence=32766 border="0" color="0" x="772" y="0" height="74" width="362" format="[general]" html.valueishtml="0"  name=cod_abi visible="1" edit.limit=5 edit.case=any edit.focusrectangle=no edit.autoselect=yes edit.autohscroll=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="mid(string(d_crea_sup), 1, 2)"border="0" color="0" x="5968" y="0" height="74" width="183" format="[general]" html.valueishtml="0"  name=gg visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="mid(string(d_crea_sup), 4, 2)"border="0" color="0" x="6159" y="0" height="74" width="183" format="[general]" html.valueishtml="0"  name=mm visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="mid(string(d_crea_sup), 7, 2)"border="0" color="0" x="6349" y="0" height="74" width="187" format="[general]" html.valueishtml="0"  name=aa visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="gg + mm + aa"border="0" color="0" x="6543" y="0" height="74" width="241" format="[general]" html.valueishtml="0"  name=d_data visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="len(string( codice_sia ))"border="0" color="0" x="6791" y="0" height="74" width="311" format="[general]" html.valueishtml="0"  name=c_sia_l visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if (c_sia_l < 4, (space(4 - c_sia_l) + codice_sia), codice_sia)"border="0" color="0" x="7109" y="0" height="74" width="421" format="[general]" html.valueishtml="0"  name=sia visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="len(string(  cod_abi ))"border="0" color="0" x="7537" y="0" height="74" width="304" format="[general]" html.valueishtml="0"  name=c_abi_l visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression="if (c_abi_l < 4, (space(4 - c_abi_l) +  cod_abi ),  cod_abi )"border="0" color="0" x="7848" y="0" height="74" width="508" format="[general]" html.valueishtml="0"  name=abi visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" if(len(rag_sociale) > 20, mid(rag_sociale, 1, 20), rag_sociale + space(20 - len(rag_sociale))) "border="0" color="0" x="8364" y="0" height="74" width="680" format="[general]" html.valueishtml="0"  name=r_s visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=4 alignment="0" tabsequence=32766 border="0" color="0" x="1141" y="0" height="74" width="362" format="" html.valueishtml="0"  name=d_crea_sup visible="1" edit.limit=6 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=6 alignment="0" tabsequence=32766 border="0" color="0" x="1510" y="0" height="74" width="501" format="[general]" html.valueishtml="0"  name=dis_banca_id_distinta_banca visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=9 alignment="0" tabsequence=32766 border="0" color="0" x="2019" y="0" height="74" width="494" format="[general]" html.valueishtml="0"  name=rb_3 visible="1" edit.limit=68 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=13 alignment="0" tabsequence=32766 border="0" color="0" x="2520" y="0" height="74" width="219" format="[general]" html.valueishtml="0"  name=codice_divisa visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=7 alignment="0" tabsequence=32766 border="0" color="0" x="2747" y="0" height="74" width="230" format="[general]" html.valueishtml="0"  name=filler visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=8 alignment="0" tabsequence=32766 border="0" color="0" x="2984" y="0" height="74" width="325" format="[general]" html.valueishtml="0"  name=centro_applicativo visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+compute(band=detail alignment="0" expression=" rb_1 + rb_2 +  codice_sia  +  cod_abi   +  d_crea_sup  +   rag_sociale +  dis_banca_id_distinta_banca +  
+right('0000000' +  num_disp , 7) +
+tot_importi_negativi_euro +
+'000000000000000' +
+right('0000000' +  (  (num_disp * 7) + 2 ), 7) +
+space(24) +
+codice_divisa +
+space(6)
+ "border="0" color="0" x="3317" y="0" height="74" width="2271" format="[general]" html.valueishtml="0"  name=coda visible="1"  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=10 alignment="0" tabsequence=32766 border="0" color="0" x="9051" y="0" height="58" width="976" format="[general]" html.valueishtml="0"  name=num_disp visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=12 alignment="0" tabsequence=32766 border="0" color="0" x="10035" y="0" height="58" width="980" format="[general]" html.valueishtml="0"  name=tot_importi_negativi visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+column(band=detail id=14 alignment="0" tabsequence=32766 border="0" color="0" x="11023" y="0" height="58" width="333" format="[general]" html.valueishtml="0"  name=tot_importi_negativi_euro visible="1" edit.limit=0 edit.case=any edit.autoselect=yes  font.face="Arial" font.height="-8" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="2" background.color="16777215" )
+htmltable(border="1" )
+htmlgen(clientevents="1" clientvalidation="1" clientcomputedfields="1" clientformatting="0" clientscriptable="0" generatejavascript="1" encodeselflinkargs="1" netscapelayers="0" )
+xhtmlgen() cssgen(sessionspecific="0" )
+xmlgen(inline="0" )
+xsltgen()
+jsgen()
+export.xml(headgroups="1" includewhitespace="0" metadatatype=0 savemetadata=0 )
+import.xml()
+export.pdf(method=0 distill.custompostscript="0" xslfop.print="0" )
+export.xhtml()
+ 

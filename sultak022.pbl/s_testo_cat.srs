@@ -1,0 +1,6 @@
+﻿global type s_testo_cat from structure
+	integer		s_left
+	integer		s_top
+	integer		s_num_riga
+end type
+

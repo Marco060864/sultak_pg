@@ -1,0 +1,19 @@
+﻿global type f_lettera_anno from function_object
+end type
+
+forward prototypes
+global function string f_lettera_anno (date adt_data)
+end prototypes
+
+global function string f_lettera_anno (date adt_data);integer li_lettera, li_anno
+string ls_anno
+
+li_anno=year(adt_data)
+li_lettera=li_anno - 2018
+if li_lettera=0 then li_lettera=1
+li_lettera=li_lettera+64
+	
+ls_anno=char(li_lettera)
+return ls_anno
+end function
+

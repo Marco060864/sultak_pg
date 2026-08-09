@@ -1,0 +1,4 @@
+﻿global type str_calendar from structure
+	date		data
+end type
+

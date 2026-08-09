@@ -1,0 +1,6 @@
+﻿PIPELINE(source_connect=prosperior,destination_connect=prosperior,type=create,commit=100,errors=100)
+SOURCE(name="sog_commerciale_gen",COLUMN(type=varchar,name="codice",dbtype="char(8)",nulls_allowed=no)
+ COLUMN(type=varchar,name="rag_soc_1",dbtype="char(40)",nulls_allowed=no))
+RETRIEVE(statement="PBSELECT( VERSION(400) TABLE(NAME=~"sog_commerciale_gen~" ) COLUMN(NAME=~"sog_commerciale_gen.codice~") COLUMN(NAME=~"sog_commerciale_gen.rag_soc_1~"))")
+DESTINATION(name="sog_commerciale_gen",COLUMN(type=varchar,name="codice",dbtype="char(8)",nulls_allowed=no,initial_value="spaces")
+ COLUMN(type=varchar,name="rag_soc_1",dbtype="char(40)",nulls_allowed=no,initial_value="spaces"))

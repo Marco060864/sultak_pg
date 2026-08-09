@@ -1,0 +1,17 @@
+﻿global type f_trova_id_conto from function_object
+end type
+
+forward prototypes
+global function long f_trova_id_conto (long al_doc_id)
+end prototypes
+
+global function long f_trova_id_conto (long al_doc_id);long ll_id_conto
+
+select doc_conto_id
+into :ll_id_conto
+from dba.doc
+where doc_id=:al_doc_id
+;
+return ll_id_conto
+end function
+

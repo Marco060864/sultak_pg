@@ -1,0 +1,11 @@
+﻿global type s_e_mail from structure
+	string		s_dw_per_stampa
+	string		s_testo
+	string		s_email_1
+	string		s_oggetto
+	string		s_allegato[]
+	string		s_email_2
+	long		l_id_doc
+	string		s_tipo_ae
+end type
+

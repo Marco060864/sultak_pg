@@ -1,0 +1,8 @@
+﻿global type s_dati_foto from structure
+	integer		left
+	integer		top
+	integer		bottom
+	integer		right
+	string		nome_imm
+end type
+

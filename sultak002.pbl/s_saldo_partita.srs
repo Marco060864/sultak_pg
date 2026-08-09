@@ -1,0 +1,7 @@
+﻿global type s_saldo_partita from structure
+	date		da_data
+	date		a_data
+	string		tipo
+	long		id_conto
+end type
+

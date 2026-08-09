@@ -1,0 +1,33 @@
+﻿global type f_aliquota_iva from function_object
+end type
+
+forward prototypes
+global function decimal f_aliquota_iva (integer al_iva_id)
+end prototypes
+
+global function decimal f_aliquota_iva (integer al_iva_id);decimal ld_aliq_iva
+string ls_codice
+
+
+if isnull(al_iva_id) then 
+	select iva_id
+	into :al_iva_id
+	from dba.val_base
+	;
+	if sqlca.sqlcode<>0 then
+		Messagebox("Attenzione!", "Inserire in VAL_BASE (menu: Sistema) l'aliquota iva standard!")
+		return 0
+	end if
+end if
+select iva_aliquota
+into :ld_aliq_iva
+from dba.iva
+where iva_id= :al_iva_id
+;
+if sqlca.sqlcode<>0 then
+	messagebox("Errore!", "Controllare d'avere inserito un'aliquota iva valida in VAL base (Menu: Sistema)")
+end if
+
+return ld_aliq_iva
+end function
+

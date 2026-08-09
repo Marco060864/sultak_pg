@@ -1,0 +1,23 @@
+﻿global type f_trova_contropartita from function_object
+end type
+
+forward prototypes
+global function string f_trova_contropartita (long al_id_pd, string as_segno)
+end prototypes
+
+global function string f_trova_contropartita (long al_id_pd, string as_segno);string ls_conto
+
+select conto_codice
+into :ls_conto
+from conto c, partita_doppia pd, mov_pd m, tipo_conto t
+where pd.id_pd=m.id_pd
+and m.segno=:as_segno
+and c.conto_id=m.conto_id
+and pd.id_pd=:al_id_pd
+and t.id_tipo_conto=c.id_tipo_conto
+and t.tipo<>'IV'
+
+;
+return ls_conto
+end function
+

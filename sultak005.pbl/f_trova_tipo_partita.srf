@@ -1,0 +1,17 @@
+﻿global type f_trova_tipo_partita from function_object
+end type
+
+forward prototypes
+global function string f_trova_tipo_partita (long al_id_caus)
+end prototypes
+
+global function string f_trova_tipo_partita (long al_id_caus);string ls_tipo
+
+select caus_partita
+into :ls_tipo
+from dba.causale
+where caus_id=:al_id_caus
+;
+return ls_tipo
+end function
+

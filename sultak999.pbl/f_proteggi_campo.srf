@@ -1,0 +1,21 @@
+﻿global type f_proteggi_campo from function_object
+end type
+
+forward prototypes
+global subroutine f_proteggi_campo (datawindow dw_dwobj, string s_field, boolean b_status)
+end prototypes
+
+global subroutine f_proteggi_campo (datawindow dw_dwobj, string s_field, boolean b_status);// ***********************************************************************************
+//
+//			 Scopo: Rende un campo inaccessibile e "grigio"
+//      Argomenti: datawindow dw_dwobj 
+//					  string s_field
+//					  boolean b_status (1 protetto, 0 abilitato)
+//       RetVal: -
+//
+// ***********************************************************************************
+
+dw_dwobj.Modify(s_field + ".Protect = " + string(b_status))
+dw_dwobj.Modify(s_field + ".Background.Mode=" + string(b_status))
+end subroutine
+
