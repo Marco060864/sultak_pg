@@ -15,6 +15,11 @@ _BackupFiles/
 # stato dell'IDE specifico dell'utente/macchina
 *.usr.opt
 
+# materiale grafico sorgente: non serve alla build (nessun sorgente né il .pbr
+# li referenzia) e pesa ~7 MB. Il master GIMP e i png del logo restano su disco.
+*.xcf
+SULTAKFPU*.png
+
 # log della migrazione a Solution
 sultak_mig.log
 
