@@ -166,6 +166,7 @@ public subroutine wf_allinea_finocalo (long al_riga)
 public subroutine wf_gestisci_partita_oro (string as_peso, long al_row, decimal adc_peso_originale)
 protected subroutine wf_campi_trasporto (long al_id_guida)
 public subroutine wf_allinea_ddt_collegati (long al_riga)
+public function decimal wf_scarica_partite_auto (s_partita_oro astr)
 end prototypes
 
 public subroutine wf_aggiorna_titolo (long al_riga_corrente);if al_riga_corrente>0 then
@@ -1235,6 +1236,8 @@ date ldt_data_fine, ldt_da_data
 s_partita_oro lstr_partita
 integer li_ret
 decimal ldc_scaricato,ldc_non_prezioso
+long ll_id_guida
+string ls_ges_partite
 
 select attiva_partite, data_inizio_saldi, partite_a_legato
 into :ls_test, :ldt_da_data, :ls_partita_a_legato
@@ -1248,6 +1251,18 @@ if ls_test='S' then
 	from dba.causale
 	where caus_id=:ll_id_caus;
 	if ls_scarico='S' then
+		//20260831 come si gestiscono le partite lo dice la guida del documento:
+		//'A' automatiche, 'P' a scelta utente, 'N' o NULL nessuna gestione
+		ll_id_guida = tab_1.tabpage_1.dw_1.getitemnumber(1, "guida_id")
+		setnull(ls_ges_partite)
+		select ges_partite
+		into   :ls_ges_partite
+		from   dba.guida
+		where  guida_id = :ll_id_guida ;
+		if isnull(ls_ges_partite) then ls_ges_partite = "N"
+		ls_ges_partite = upper(trim(ls_ges_partite))
+		if ls_ges_partite <> "A" and ls_ges_partite <> "P" then return
+
 		lstr_partita.dc_coef_calo=tab_1.tabpage_2.dw_2.getitemdecimal(al_row, "rdoc_calo")
 
 		//20231123 inserisco il legato
@@ -1279,8 +1294,12 @@ if ls_test='S' then
 		//passo la data di inizio saldi
 		lstr_partita.data_inizio_saldi=ldt_da_data
 	 	//recupero il peso che c'era prima dell'itemchanged 20220728
-		openwithparm(w_partita_oro_gd, lstr_partita)
-		ldc_scaricato=message.doubleparm
+		if ls_ges_partite = "A" then
+			ldc_scaricato = wf_scarica_partite_auto(lstr_partita)
+		else
+			openwithparm(w_partita_oro_gd, lstr_partita)
+			ldc_scaricato = message.doubleparm
+		end if
 		if isnull(ldc_scaricato) or ldc_scaricato=0 then ldc_scaricato=adc_peso_originale //non si è scaricato lascio tutto com'era  	//recupero il peso che c'era prima dell'itemchanged 20220728
 		//if ldc_scaricato<>lstr_partita.dc_finocalo then
 			//prima passavo il fino ora passo il legato
@@ -1294,6 +1313,126 @@ if ls_test='S' then
 	end if
 end if
 end subroutine
+
+public function decimal wf_scarica_partite_auto (s_partita_oro astr);//20260831 Allocazione automatica delle partite quando guida.ges_partite='A'.
+//Usa lo stesso dataobject e gli stessi argomenti della finestra manuale
+//w_partita_oro_gd, ma alloca dalla piu' vecchia. Ritorna il legato scaricato.
+datastore lds_aperture, lds_scarico
+decimal ldc_da_scaricare, ldc_residuo, ldc_quota, ldc_chiudi_a_gr, ldc_legato
+long ll_righe, ll_riga, i
+integer li_num
+string ls_err
+
+ldc_da_scaricare = astr.dc_finocalo
+if isnull(ldc_da_scaricare) then return 0
+if ldc_da_scaricare <= 0 then return 0
+if isnull(astr.dc_coef_calo) then return 0
+if astr.dc_coef_calo <= 0 then
+	messagebox("Attenzione!", "Coefficiente di calo mancante o a zero: le partite non sono state scaricate.")
+	return 0
+end if
+
+//soglia sotto la quale una partita si considera chiusa (come nella finestra)
+ldc_chiudi_a_gr = 0.1
+select par_chiusa_residuo into :ldc_chiudi_a_gr from dba.val_base ;
+if isnull(ldc_chiudi_a_gr) then ldc_chiudi_a_gr = 0.1
+
+//--- 1) reintegro: via gli scarichi gia' fatti da QUESTA riga, altrimenti a
+//    ogni ritocco del peso i nuovi si sommerebbero ai vecchi
+lds_scarico = create datastore
+lds_scarico.dataobject = "d_partita_scarico_ra_gd"
+lds_scarico.settransobject(sqlca)
+ll_righe = lds_scarico.retrieve(astr.l_id_riga_scarico)
+if ll_righe > 0 then
+	lds_scarico.rowsmove(1, ll_righe, primary!, lds_scarico, 1, delete!)
+	if lds_scarico.update() = 1 then
+		commit;
+	else
+		rollback;
+		ls_err = sqlca.sqlerrtext
+		if isnull(ls_err) then ls_err = ""
+		messagebox("Errore!", "Non riesco a liberare gli scarichi precedenti:~r~n" + ls_err)
+		destroy lds_scarico
+		return 0
+	end if
+end if
+
+//--- 2) partite aperte: stessi criteri della finestra manuale
+lds_aperture = create datastore
+lds_aperture.dataobject = "d_partita_oro_gd"
+lds_aperture.settransobject(sqlca)
+ll_righe = lds_aperture.retrieve(astr.s_tipo_partita, astr.data_fine, astr.l_conto, &
+                                 astr.l_metallo, astr.data_inizio_saldi, astr.l_tit)
+
+if ll_righe > 0 then
+	//il coef di calo serve alle computed c_residuo / c_a_legato
+	for i = 1 to ll_righe
+		lds_aperture.setitem(i, "c_coef_calo", astr.dc_coef_calo)
+	next
+	//scarto le partite gia' esaurite, come fa la finestra
+	lds_aperture.setfilter("c_residuo > " + f_cambia_virgola_in_punto(string(ldc_chiudi_a_gr)))
+	lds_aperture.filter()
+	//DALLA PIU' VECCHIA: la SELECT di d_partita_oro_gd non ha ORDER BY,
+	//quindi l'ordine va imposto qui
+	lds_aperture.setsort("doc_data A, rdoc_id A")
+	lds_aperture.sort()
+	ll_righe = lds_aperture.rowcount()
+end if
+
+//--- 3) allocazione, dalla piu' vecchia
+li_num = 0
+for i = 1 to ll_righe
+	if ldc_da_scaricare <= 0 then exit
+	ldc_residuo = lds_aperture.getitemdecimal(i, "c_residuo")
+	if isnull(ldc_residuo) then ldc_residuo = 0
+	if ldc_residuo > 0 then
+		if ldc_residuo >= ldc_da_scaricare then
+			ldc_quota = ldc_da_scaricare
+		else
+			ldc_quota = ldc_residuo
+		end if
+		li_num ++
+		ll_riga = lds_scarico.insertrow(0)
+		lds_scarico.setitem(ll_riga, "id_scarico",  astr.l_id_riga_scarico)
+		lds_scarico.setitem(ll_riga, "id_apertura", lds_aperture.getitemnumber(i, "rdoc_id"))
+		lds_scarico.setitem(ll_riga, "numero",      li_num)
+		lds_scarico.setitem(ll_riga, "scarico",     ldc_quota)
+		ldc_da_scaricare -= ldc_quota
+	end if
+next
+
+if li_num > 0 then
+	if lds_scarico.update() = 1 then
+		commit;
+	else
+		rollback;
+		ls_err = sqlca.sqlerrtext
+		if isnull(ls_err) then ls_err = ""
+		messagebox("Errore!", "Scarico partite non riuscito:~r~n" + ls_err)
+		destroy lds_aperture
+		destroy lds_scarico
+		return 0
+	end if
+end if
+
+//--- 4) legato effettivamente scaricato
+ldc_legato = round((astr.dc_finocalo - ldc_da_scaricare) * 1000 / astr.dc_coef_calo, 2)
+//stessa tolleranza della finestra manuale (cb_ok): sotto 0,2 si prende il richiesto
+if abs(astr.dc_legato - ldc_legato) < 0.2 then ldc_legato = astr.dc_legato
+
+if ldc_da_scaricare > 0 then
+	messagebox("Attenzione!", "Carico insufficiente: restano " + &
+	    string(ldc_da_scaricare, "#,##0.00") + " di fino da scaricare.~r~n" + &
+	    "La riga del documento viene creata ugualmente.")
+	//la riga mantiene il peso richiesto dall'utente
+	ldc_legato = astr.dc_legato
+end if
+
+destroy lds_aperture
+destroy lds_scarico
+
+return ldc_legato
+end function
 
 protected subroutine wf_campi_trasporto (long al_id_guida);string ls_mezzo
 long ll_id_trasp, ll_id_caus_trasp, ll_id_asp_beni
