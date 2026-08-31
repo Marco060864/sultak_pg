@@ -3,9 +3,9 @@ global type w_mdi from w_base
 end type
 type mdi_1 from mdiclient within w_mdi
 end type
-type mditbb_1 from tabbedbar within w_mdi
-end type
 type mdirbb_1 from ribbonbar within w_mdi
+end type
+type mditbb_1 from tabbedbar within w_mdi
 end type
 end forward
 
@@ -22,8 +22,8 @@ windowstate windowstate = maximized!
 long backcolor = 67108864
 string icon = "d:\DATI\LAVORO\sultak10\sultak.ico"
 mdi_1 mdi_1
-mditbb_1 mditbb_1
 mdirbb_1 mdirbb_1
+mditbb_1 mditbb_1
 end type
 global w_mdi w_mdi
 
@@ -91,12 +91,26 @@ if ls_odbc_destinazione = "Error!" then
 	OpenWithParm(w_ini_db,sl_file_ini)
 	ls_odbc_destinazione = message.stringparm 
 end if
-sqlca.DBMS = "ODBC"
-sqlca.DBParm ="ConnectString ='DSN="+ls_odbc_destinazione+";UID=DBA;PWD=SQL'"
-sqlca.Database = "'"+ls_odbc_destinazione+"'"
+if pos(ls_odbc_destinazione, "pg")>0 then
+	// Profile sole_pg_ado
+	sqlca.DBMS     = "ADO.Net"
+	sqlca.Database = "sole"
+	sqlca.LogId    = "postgres"
+	sqlca.LogPass  = "Pippone@01"
+	sqlca.DBParm   = "Provider='PostgreSQL',host='localhost',port='5432', PROVIDERSTRING='SSL Mode=Disable;'"
+	sqlca.AutoCommit = TRUE //da togliere dopo aver trovato tutti gli errori di non rollback dopo sqlca.sqlcode<>0
 CONNECT USING sqlca;
-if sqlca.sqlcode<>0 then
-	messagebox("Errore!", sqlca.sqlerrtext)	
+else
+	sqlca.DBMS = "ODBC"
+	//per ASA Sybse 9-17
+	sqlca.DBParm ="ConnectString ='DSN="+ls_odbc_destinazione+";UID=DBA;PWD=SQL'"
+	//per postgres 
+	//sqlca.DBParm ="ConnectString ='DSN="+ls_odbc_destinazione+";UID=postgres;PWD=Pippone@01'"
+	sqlca.Database = "'"+ls_odbc_destinazione+"'"
+	CONNECT USING sqlca;
+	if sqlca.sqlcode<>0 then
+		messagebox("Errore!", sqlca.sqlerrtext)	
+	end if
 end if
 //
 //select id_utente
@@ -169,8 +183,8 @@ on w_mdi.destroy
 call super::destroy
 if IsValid(MenuID) then destroy(MenuID)
 destroy(this.mdi_1)
-destroy(this.mditbb_1)
 destroy(this.mdirbb_1)
+destroy(this.mditbb_1)
 end on
 
 event open;time lt_time, lt_time1
