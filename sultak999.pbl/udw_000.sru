@@ -17,43 +17,74 @@ global udw_000 udw_000
 
 type variables
 string is_asc
+// Dataobject per cui i campi obbligatori sono gia' stati evidenziati.
+// I colori di sfondo sono proprieta' del dataobject, non della riga:
+// vanno impostati una volta sola e non a ogni rowfocuschanged.
+string is_obblig_dataobject = ""
 end variables
 
 forward prototypes
 public subroutine df_segna_obbligatori ()
 end prototypes
 
-public subroutine df_segna_obbligatori ();integer i, li_num_campi, li_test
-string ls_nome_colonna, ls_nome_tabella, ls_test
+public subroutine df_segna_obbligatori ();integer i, li_num_campi, li_punto
+string ls_nome_colonna, ls_nome_tabella, ls_obbligatorie
+boolean lb_postgres
 
-ls_nome_tabella=this.object.datawindow.table.updatetable
-if len(ls_nome_tabella)  > 2 then
-	li_test=pos(ls_nome_tabella, ".")
-	if li_test>0 then
-		ls_nome_tabella=right(ls_nome_tabella, len(ls_nome_tabella) - li_test)
-	end if
-	li_num_campi=integer(object.datawindow.column.count)
-	if getrow()>0 and  li_num_campi>0 then
-		if describe("datawindow.querymode")='yes' then return
-		for i = 2 to li_num_campi
-			ls_nome_colonna=describe("#"+string(i)+".dbname")
-			ls_nome_colonna=right(ls_nome_colonna, len(ls_nome_colonna) - len(ls_nome_tabella) -1)
-			ls_test="Y"
-			  SELECT "sys"."syscolumns"."nulls"  
-			  into :ls_test
-				 FROM "sys"."syscolumns"  
-				WHERE ( creator = 'DBA' ) AND  
-				 ( nulls = 'N' ) AND  
-				 ( cname = :ls_nome_colonna ) AND  
-				 ( tname = :ls_nome_tabella )    ;
-			if ls_test ='N'  then
-				modify("#"+string(i)+".background.color='12582911'")
-				ls_test =''
-			end if
-		next
-	end if
+ls_nome_tabella = this.object.datawindow.table.updatetable
+if len(ls_nome_tabella) <= 2 then return
+
+li_punto = pos(ls_nome_tabella, ".")
+if li_punto > 0 then ls_nome_tabella = right(ls_nome_tabella, len(ls_nome_tabella) - li_punto)
+
+li_num_campi = integer(object.datawindow.column.count)
+if getrow() <= 0 or li_num_campi <= 0 then return
+if describe("datawindow.querymode") = 'yes' then return
+
+// Gia' fatto per questo dataobject: non c'e' niente da rifare.
+if is_obblig_dataobject = this.dataobject then return
+
+// Se un domani si arrivera' a PostgreSQL via ODBC, qui va cambiato il test.
+lb_postgres = ( upper(left(sqlca.DBMS, 3)) = "ADO" )
+
+// Una sola query per tutto il dataobject: elenco delle colonne NOT NULL
+// delimitato da virgole, invece di una SELECT per ogni colonna.
+ls_obbligatorie = ","
+if lb_postgres then
+	SELECT ',' || string_agg(lower(column_name), ',') || ','
+	  INTO :ls_obbligatorie
+	  FROM information_schema.columns
+	 WHERE table_schema = 'dba'
+	   AND table_name   = :ls_nome_tabella
+	   AND is_nullable  = 'NO' ;
+else
+	SELECT ',' || list(lower(cname), ',') || ','
+	  INTO :ls_obbligatorie
+	  FROM sys.syscolumns
+	 WHERE creator = 'DBA'
+	   AND tname   = :ls_nome_tabella
+	   AND nulls   = 'N' ;
 end if
 
+if sqlca.sqlcode < 0 then
+	// In PostgreSQL un errore aborta la transazione: senza rollback ogni
+	// statement successivo fallirebbe con 25P02.
+	if lb_postgres then 
+		ROLLBACK USING sqlca;
+	end if
+	return
+end if
+if isnull(ls_obbligatorie) then ls_obbligatorie = ","
+
+for i = 2 to li_num_campi
+	ls_nome_colonna = describe("#" + string(i) + ".dbname")
+	ls_nome_colonna = right(ls_nome_colonna, len(ls_nome_colonna) - len(ls_nome_tabella) - 1)
+	if pos(ls_obbligatorie, "," + lower(ls_nome_colonna) + ",") > 0 then
+		modify("#" + string(i) + ".background.color='12582911'")
+	end if
+next
+
+is_obblig_dataobject = this.dataobject
 
 end subroutine
 
@@ -102,15 +133,34 @@ if getrow()>0 then
 	ls_table=left(ls_dbcol, li_len - 1)
 	ls_dbcol=right(ls_dbcol, len(ls_dbcol) - li_len)
 	li_len=len(ls_dbcol)
+	ls_indice = ""
+	ls_col_index = ""
 	
-	select iname, colnames
-	into :ls_indice, :ls_col_index
-	from sys.sysindexes
-	where creator='DBA'
-	and indextype='Unique'
-	and  left(colnames, :li_len)= :ls_dbcol
-	and tname=:ls_table
-	;
+	if upper(left(sqlca.DBMS, 3)) = "ADO" then
+		SELECT i.relname, a.attname
+		  INTO :ls_indice, :ls_col_index
+		  FROM pg_index x
+		  JOIN pg_class t     ON t.oid = x.indrelid
+		  JOIN pg_class i     ON i.oid = x.indexrelid
+		  JOIN pg_namespace n ON n.oid = t.relnamespace
+		  JOIN pg_attribute a ON a.attrelid = t.oid AND a.attnum = x.indkey[0]
+		 WHERE n.nspname = 'dba'
+		   AND t.relname = :ls_table
+		   AND x.indisunique
+		   AND array_length(x.indkey, 1) = 1
+		   AND a.attname = :ls_dbcol ;
+		if sqlca.sqlcode < 0 then 
+			ROLLBACK USING sqlca;
+		end if
+	else
+		select iname, colnames
+		  into :ls_indice, :ls_col_index
+		  from sys.sysindexes
+		 where creator = 'DBA'
+		   and indextype = 'Unique'
+		   and left(colnames, :li_len) = :ls_dbcol
+		   and tname = :ls_table ;
+	end if
 	
 	
 	if ls_indice>"" and pos(ls_col_index, ",")<=0 then
