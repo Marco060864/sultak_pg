@@ -4,7 +4,7 @@ end type
 end forward
 
 global type w_guida_gd from w_semplice_gd
-integer width = 5883
+integer width = 6354
 end type
 global w_guida_gd w_guida_gd
 
@@ -41,7 +41,7 @@ integer y = 1204
 end type
 
 type dw_1 from w_semplice_gd`dw_1 within w_guida_gd
-integer width = 5728
+integer width = 6235
 integer height = 1128
 string dataobject = "d_guida_doc_gd"
 end type

@@ -1222,9 +1222,30 @@ end function
 
 public subroutine wf_allinea_finocalo (long al_riga);decimal ldc_finocalo
 string ls_finocalo
+decimal ldc_attuale
+boolean lb_da_scrivere
 if al_riga>0 then
 	ldc_finocalo=tab_1.tabpage_2.dw_5.getitemdecimal(al_riga, "c_fino_calo")
-	tab_1.tabpage_2.dw_2.setitem(al_riga, "finoecalo", ldc_finocalo)
+	//20260904 Con le partite automatiche ('A') l'allineamento e' gia' stato
+	//fatto dentro wf_gestisci_partita_oro PRIMA del cb_salva. Questa chiamata
+	//arriva dal 'post' dell'itemchanged e gira DOPO il salvataggio: se
+	//riscrivesse il valore, la riga tornerebbe "modificata" subito dopo
+	//l'update pur senza modifiche reali da salvare. Quindi scrivo solo se
+	//il valore e' davvero diverso. (PowerScript non ha short-circuit: annido.)
+	ldc_attuale=tab_1.tabpage_2.dw_2.getitemdecimal(al_riga, "finoecalo")
+	lb_da_scrivere = false
+	if isnull(ldc_finocalo) then
+		if not isnull(ldc_attuale) then lb_da_scrivere = true
+	else
+		if isnull(ldc_attuale) then
+			lb_da_scrivere = true
+		else
+			if ldc_attuale <> ldc_finocalo then lb_da_scrivere = true
+		end if
+	end if
+	if lb_da_scrivere then
+		tab_1.tabpage_2.dw_2.setitem(al_riga, "finoecalo", ldc_finocalo)
+	end if
 	tab_1.tabpage_2.dw_2.setfocus()
 //	tab_1.tabpage_2.dw_2.trigger event ue_update()
 end if

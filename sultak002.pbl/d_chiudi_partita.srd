@@ -12,10 +12,10 @@ table(column=(type=long updatewhereclause=yes name=doc_doc_id dbname="doc.doc_id
  column=(type=long updatewhereclause=yes name=doc_conto_id dbname="doc.doc_conto_id" )
  column=(type=long updatewhereclause=yes key=yes identity=yes name=rdoc_rdoc_id dbname="rdoc.rdoc_id" )
  column=(type=long updatewhereclause=yes name=rdoc_rdoc_numero dbname="rdoc.rdoc_numero" )
- column=(type=decimal(4) updatewhereclause=yes name=rdoc_rdoc_peso dbname="rdoc.rdoc_peso" )
+ column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_peso dbname="rdoc.rdoc_peso" )
  column=(type=char(1) update=yes updatewhereclause=yes name=rdoc_partita_oro dbname="rdoc.partita_oro" values="CHIUSA	C/APERTA	S/" )
  column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_calo dbname="rdoc.rdoc_calo" )
- column=(type=decimal(4) updatewhereclause=yes name=rdoc_finoecalo dbname="rdoc.finoecalo" )
+ column=(type=decimal(2) updatewhereclause=yes name=rdoc_finoecalo dbname="rdoc.finoecalo" )
  column=(type=long updatewhereclause=yes name=rdoc_tit_id dbname="rdoc.tit_id" )
  column=(type=decimal(3) updatewhereclause=yes name=tot_scarico dbname="tot_scarico" )
  retrieve="  SELECT ~"doc~".~"doc_id~",   
@@ -35,7 +35,7 @@ cast((select sum(scarico) from partita_scarico where id_apertura=rdoc_id) as dec
     FROM ~"doc~", 
          ~"rdoc~" , ~"causale~"
    WHERE ( ~"rdoc~".~"rdoc_doc_id~" = ~"doc~".~"doc_id~" )  and  ~"rdoc~".~"rdoc_peso~">0
-and causale.caus_c_s='C' and causale.caus_id=rdoc.causale_id" update="rdoc" updatewhere=1 updatekeyinplace=yes )
+and causale.caus_c_s='C' and causale.caus_id=rdoc.causale_id" update="rdoc" updatewhere=2 updatekeyinplace=yes )
 text(band=header alignment="2" text="Doc
 Doc Num Prog" border="0" color="33554432" x="9" y="8" height="128" width="233" html.valueishtml="0"  name=doc_doc_num_prog_t visible="1"  font.face="Arial" font.height="-10" font.weight="400"  font.family="2" font.pitch="2" font.charset="0" background.mode="1" background.color="536870912" background.transparency="0" background.gradient.color="8421504" background.gradient.transparency="0" background.gradient.angle="0" background.brushmode="0" background.gradient.repetition.mode="0" background.gradient.repetition.count="0" background.gradient.repetition.length="100" background.gradient.focus="0" background.gradient.scale="100" background.gradient.spread="100" tooltip.backcolor="134217752" tooltip.delay.initial="0" tooltip.delay.visible="32000" tooltip.enabled="0" tooltip.hasclosebutton="0" tooltip.icon="0" tooltip.isbubble="0" tooltip.maxwidth="0" tooltip.textcolor="134217751" tooltip.transparency="0" transparency="0" )
 text(band=header alignment="2" text="Doc
