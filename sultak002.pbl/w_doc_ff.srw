@@ -1307,6 +1307,12 @@ if ls_test='S' then
 		//tab_1.tabpage_2.dw_2.post setitem(al_row, "rdoc_peso", ldc_scaricato) //spostato sotto senza post 20220824
 		tab_1.tabpage_2.dw_2.setitem(al_row, "rdoc_peso", ldc_scaricato)
 		//end if
+		//20260904 Con 'A' non si apre nessuna modale. Il message loop di
+		//w_partita_oro_gd era anche cio' che faceva girare in tempo il
+		//"post wf_allinea_finocalo(row)" dell'itemchanged: senza modale quel
+		//post gira DOPO il cb_salva qui sotto, su un buffer che non viene piu'
+		//salvato, e finoecalo puo' restare a zero sul database. Lo allineo prima.
+		if ls_ges_partite = "A" then wf_allinea_finocalo(al_row)
 		 idw_corrente=tab_1.tabpage_2.dw_2 
 		cb_salva.trigger event clicked()
 		

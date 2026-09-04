@@ -81,16 +81,28 @@ ls_solo_path= mid(ls_path,1,ll_last_slash)
 
 
 //commento per ora (14092017
+//20260904 Ricerca dell'ini in tre passi, per non dipendere da CHI e' l'eseguibile
+//in esecuzione. GetModuleFileNameA torna l'exe che gira davvero: con l'applicativo
+//compilato e' sultak.exe e l'ini giusto gli sta accanto, ma lanciando dall'IDE e'
+//PB250.exe, il cui PB250.ini non ha nessuna sezione [Database]. Prima in quel caso
+//si finiva sempre sulla finestrella w_ini_db, che ACCODA una nuova sezione
+//[Database] in fondo all'ini: ProfileString pero' legge sempre la PRIMA, quindi si
+//restava collegati al database vecchio credendo di averlo cambiato.
 sl_file_ini = ls_solo_path+ls_nome_file+".ini"
-
-//sl_file_ini="c:\sultak\sultak.ini"
-
 ls_odbc_destinazione = ProfileString ( sl_file_ini, "Database", "Nome", "Error!" )
 
+//2) ini dell'applicativo a percorso fisso: e' questo che copre il caso IDE
+if ls_odbc_destinazione = "Error!" then
+	sl_file_ini = "C:\sultak\sultak.ini"
+	ls_odbc_destinazione = ProfileString ( sl_file_ini, "Database", "Nome", "Error!" )
+end if
+
+//3) solo se non si e' trovato nulla si chiede all'utente
 if ls_odbc_destinazione = "Error!" then
 	OpenWithParm(w_ini_db,sl_file_ini)
 	ls_odbc_destinazione = message.stringparm 
 end if
+ls_odbc_destinazione = trim(ls_odbc_destinazione)
 if pos(ls_odbc_destinazione, "pg")>0 then
 	// Profile sole_pg_ado
 	sqlca.DBMS     = "ADO.Net"
@@ -99,7 +111,10 @@ if pos(ls_odbc_destinazione, "pg")>0 then
 	sqlca.LogPass  = "Pippone@01"
 	sqlca.DBParm   = "Provider='PostgreSQL',host='localhost',port='5432', PROVIDERSTRING='SSL Mode=Disable;'"
 	sqlca.AutoCommit = TRUE //da togliere dopo aver trovato tutti gli errori di non rollback dopo sqlca.sqlcode<>0
-CONNECT USING sqlca;
+	CONNECT USING sqlca;
+	if sqlca.sqlcode<>0 then
+		messagebox("Errore!", "Connessione a PostgreSQL non riuscita:~r~n"+sqlca.sqlerrtext)
+	end if
 else
 	sqlca.DBMS = "ODBC"
 	//per ASA Sybse 9-17
@@ -111,6 +126,11 @@ else
 	if sqlca.sqlcode<>0 then
 		messagebox("Errore!", sqlca.sqlerrtext)	
 	end if
+end if
+//20260904 deve essere sempre visibile A QUALE database si e' connessi e da quale
+//ini e' stato deciso: senza, un ini sbagliato non si nota fino all'errore SQL.
+if sqlca.sqlcode = 0 then
+	this.title = "SULTAK - DB: "+ls_odbc_destinazione+"  ("+sqlca.DBMS+" - ini: "+sl_file_ini+")"
 end if
 //
 //select id_utente
