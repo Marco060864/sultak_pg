@@ -4,12 +4,12 @@ header(height=144 color="536870912" transparency="0" gradient.color="8421504" gr
 summary(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
 footer(height=0 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
 detail(height=92 color="536870912" transparency="0" gradient.color="8421504" gradient.transparency="0" gradient.angle="0" brushmode="0" gradient.repetition.mode="0" gradient.repetition.count="0" gradient.repetition.length="100" gradient.focus="0" gradient.scale="100" gradient.spread="100" )
-table(column=(type=long updatewhereclause=yes name=doc_doc_id dbname="doc.doc_id" )
- column=(type=long updatewhereclause=yes name=doc_doc_num_prog dbname="doc.doc_num_prog" )
- column=(type=date updatewhereclause=yes name=doc_doc_data_prog dbname="doc.doc_data_prog" )
- column=(type=char(16) updatewhereclause=yes name=doc_doc_numero dbname="doc.doc_numero" )
- column=(type=date updatewhereclause=yes name=doc_doc_data dbname="doc.doc_data" )
- column=(type=long updatewhereclause=yes name=doc_conto_id dbname="doc.doc_conto_id" )
+table(column=(type=long updatewhereclause=no name=doc_doc_id dbname="doc.doc_id" )
+ column=(type=long updatewhereclause=no name=doc_doc_num_prog dbname="doc.doc_num_prog" )
+ column=(type=date updatewhereclause=no name=doc_doc_data_prog dbname="doc.doc_data_prog" )
+ column=(type=char(16) updatewhereclause=no name=doc_doc_numero dbname="doc.doc_numero" )
+ column=(type=date updatewhereclause=no name=doc_doc_data dbname="doc.doc_data" )
+ column=(type=long updatewhereclause=no name=doc_conto_id dbname="doc.doc_conto_id" )
  column=(type=long updatewhereclause=yes key=yes identity=yes name=rdoc_rdoc_id dbname="rdoc.rdoc_id" )
  column=(type=long updatewhereclause=yes name=rdoc_rdoc_numero dbname="rdoc.rdoc_numero" )
  column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_peso dbname="rdoc.rdoc_peso" )
@@ -17,7 +17,7 @@ table(column=(type=long updatewhereclause=yes name=doc_doc_id dbname="doc.doc_id
  column=(type=decimal(2) updatewhereclause=yes name=rdoc_rdoc_calo dbname="rdoc.rdoc_calo" )
  column=(type=decimal(2) updatewhereclause=yes name=rdoc_finoecalo dbname="rdoc.finoecalo" )
  column=(type=long updatewhereclause=yes name=rdoc_tit_id dbname="rdoc.tit_id" )
- column=(type=decimal(3) updatewhereclause=yes name=tot_scarico dbname="tot_scarico" )
+ column=(type=decimal(3) updatewhereclause=no name=tot_scarico dbname="tot_scarico" )
  retrieve="  SELECT ~"doc~".~"doc_id~",   
          ~"doc~".~"doc_num_prog~",   
          ~"doc~".~"doc_data_prog~",   

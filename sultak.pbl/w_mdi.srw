@@ -116,7 +116,9 @@ if pos(ls_odbc_destinazione, "pg")>0 then
 		messagebox("Errore!", "Connessione a PostgreSQL non riuscita:~r~n"+sqlca.sqlerrtext)
 	end if
 else
-	sqlca.DBMS = "ODBC"
+	//20260907 DIAGNOSI TEMPORANEA: "TRACE ODBC" fa scrivere a PowerBuilder la SQL
+	//esatta (UPDATE + WHERE con i valori) in dbtrace.log. Rimettere "ODBC" dopo.
+	sqlca.DBMS = "TRACE ODBC"
 	//per ASA Sybse 9-17
 	sqlca.DBParm ="ConnectString ='DSN="+ls_odbc_destinazione+";UID=DBA;PWD=SQL'"
 	//per postgres 
